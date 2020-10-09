@@ -1,0 +1,112 @@
+html {
+    height: 100%;
+}
+
+body {
+    /* height: calc(100vh - 164px); */
+    color: #000;
+    font-family: 'Roboto';
+    height: 100%;
+}
+
+.homepage-photo1 {
+    background: url('/media/homepage1.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.search-icon {
+    right: 0;
+    z-index: 1050;
+}
+
+.title-font {
+    letter-spacing: 2px;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+.callout-btn {
+    background-color: rgb(170, 89, 22);
+    color: white;
+    min-width: 260px;
+}
+
+.btn-orange {
+    background-color: rgb(170, 89, 22);
+    color: white;
+}
+
+.btn-outline-orange {
+    background: white;
+    color: rgb(170, 89, 22) !important;
+    border: 1px solid rgb(170, 89, 22);
+}
+
+.btn-outline-orange:hover,
+.btn-outline-orange:active,
+.btn-outline-orange:focus {
+    background: rgb(192, 98, 22);
+    color: white !important;
+}
+
+.callout-btn:hover,
+.callout-btn:active,
+.callout-btn:focus,
+.btn-orange:hover,
+.btn-orange:active,
+.btn-orange:focus {
+    background: rgb(192, 98, 22);
+    color: white;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.text-orange {
+    color: rgb(170, 89, 22) !important;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.bg-black {
+    background-color: #000 !important;
+}
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
