@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
-    <h1 class="display-4 text-success">It worked!!</h1>
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto">
+                <h5 class="title-font text-black text-uppercase">Welcome to route share</h5>
+                <h3 class="paragraph-font text-black">Come and join the cycle route sharing community!</h3>
+                <div class="my-5">
+                    <h4>
+                        <a href="" class="btn btn-lg rounded-50 text uppercase py-3 callout-btn">Find a Route</a>
+                    </h4>
+                    <h4>
+                        <a href="" class="btn btn-lg rounded-50 text uppercase py-3 callout-btn">Sign Up</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
