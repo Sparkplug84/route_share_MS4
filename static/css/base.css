@@ -3,17 +3,52 @@ html {
 }
 
 body {
-    /* height: calc(100vh - 164px); */
     color: #000;
     font-family: 'Roboto';
     height: 100%;
 }
+
+/* ---------------------------- Homepage */
 
 .homepage-photo1 {
     background: url('/media/homepage1.jpg') no-repeat center center;
     background-size: cover;
     height: 100%;
 }
+
+.homepage-photo2 {
+    background: url('/media/homepage2.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+.homepage-photo3 {
+    background: url('/media/homepage3.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+.text-section {
+    background-size: contain;
+    height: 60%;
+    position: relative;
+}
+
+/* from CSS Tricks tranparent background image */
+.text-section::after {
+    content: "";
+    background: url('/media/tours_path.png') no-repeat center center;
+    background-size: contain;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; 
+    opacity: 0.1;
+}
+
+/* ------------------------- Site icons */
 
 /* from Bulma */
 .icon {
@@ -28,6 +63,8 @@ body {
     right: 0;
     z-index: 1050;
 }
+
+/*-------------------- Buttons, colours and fonts */
 
 .title-font {
     letter-spacing: 2px;
@@ -81,6 +118,7 @@ body {
 
 .text-black {
     color: #000 !important;
+    opacity: 1 !important;
 }
 
 .bg-black {
