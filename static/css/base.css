@@ -30,7 +30,7 @@ body {
 
 .text-section {
     background-size: contain;
-    height: 60%;
+    height: 75%;
     position: relative;
 }
 
@@ -64,10 +64,26 @@ body {
     z-index: 1050;
 }
 
+/* From stack overflow. Change burger icon to X when toggled */
+.navbar-toggler>.close {
+    display: inline;
+}
+.navbar-toggler.collapsed>.close, 
+.navbar-toggler:not(.collapsed)>.navbar-toggler-icon {
+    display: none;
+}
+
+.close {
+    color: rgb(170, 89, 22);
+    text-shadow: none;
+    opacity: 1;
+}
+
 /*-------------------- Buttons, colours and fonts */
 
 .title-font {
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .main-logo-link {
@@ -123,6 +139,11 @@ body {
 
 .bg-black {
     background-color: #000 !important;
+}
+
+/* found this tip on stackoverflow on how to change toggler icon to different colour */
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(170,89,22, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 /* -------------------------------- Media Queries */

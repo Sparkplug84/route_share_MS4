@@ -87,7 +87,7 @@
                         <a class="nav-link text-orange" href="">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="{% if item in basket %}basket-full font-weight-bold{% else %}basket-empty{% endif %} my-0 rounded-pill">
+                                <p class="{% if item in basket %}basket-full font-weight-bold{% else %}basket-empty{% endif %} my-0">
                                     {% if item in basket %}
                                         {{ item.count }}
                                     {% else %}
@@ -99,6 +99,16 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div class="row bg-black">
+            <nav class="navbar navbar-expand-lg navbar-dark w-100">
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="my-1 mx-2 close">X</span>
+                </button>
+                {% include 'includes/mobile-top-header.html' %}
+                {% include 'includes/main-nav.html' %}
+            </nav>
         </div>
     </header>
 
