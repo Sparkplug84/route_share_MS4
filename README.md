@@ -4,6 +4,12 @@
 
 ## Route Share – Django application
 
+### Table of Contents
+* [Why make Route Share?](#Why-make-Route-Share)
+* [How the website works](#How-the-website-works)
+* [UX: Strategy](#UX-Strategy)
+* [Scope](#Scope)
+
 
 ### Why make Route Share?
 
@@ -12,8 +18,6 @@ For the fourth milestone project I decided to build an application where users c
 Due to a recent foot injury which restricts my ability to exercise on foot, I bought a road bike and for the past few months have been enjoying a new lease of life with a new form of exercise that has no effect on my foot injury. 
 
 During this time I have found myself trying to come up with all different routes in and around the area where I live using Google Maps. That’s when I thought it would be a good idea to create an application where cyclists can share and view each other’s favourite routes. 
-
- 
 
 ### How the website works
 
@@ -37,8 +41,6 @@ When a user wants to get a route, they first need to click on that route in the 
 
 For uploading routes there will be some instructions on the site about how users can do that but basically they will have to first create their route in Google maps and copy the URL from Google maps into the upload route form so it can be stored in the database. 
 
- 
-
 ### Technical Details
 
 The application was built using Django 3 and follows a good practise architecture pattern of model-template-view. The application also uses ‘Separation of Concern’ for the apps created within the project to utilise the Django framework effectively. 
@@ -50,6 +52,28 @@ There is also an Admin side to this application where the site owner will be abl
 Git and Github are used for version control and Heroku for the full deployment of the site. All project secret keys are stored in the Gitpod Environmental Variables in the settings menu. For deployment these are then stored in the Config. Variables of the Heroku dashboard. This is to keep them hidden to protect the integrity and security of the application.
 
 [↥ Back to top](#Mark-McClean)
+
+
+## UX: Strategy
+
+### Primary Target Audience
+
+The target audience is for cyclists of all kinds. Regardless of what type of bike you have, there will be routes to enjoy for everyone from leisure bikes, road bikes and mountain bikes. This will be particularly useful for people new to the cycling world, who otherwise have little knowledge of available cycle routes where they live. 
+
+### Appropriate Content
+
+I think it would be appropriate to have many beautiful images of cyclists on the website to give off a feel of excitement and adventure to the potential users. I plan to have a home page with several images below each other separated by some small paragraphs about the website’s content. Some of the other pages will also have striking images to help maintain the theme and feel of the website overall. The users who upload routes also have the opportunity to attach a photo to the route which also adds to the visual aspect of the site and the display of the routes. There will also be a dark theme to the navbar, footer and several buttons along with an orange aspect for the primary buttons. 
+
+Appropriate content also includes giving the users clear instructions on how to use and manage all aspects of the site and ensuring a seamless use of all functions like instructions on how to create the route and paste into the route upload form.
+
+### Why this website?
+
+As I briefly mentioned earlier I have recently taken up cycling with a road bike and am very much enjoying it but I’m always looking for new routes. I thought that a website where people can share and views other people favourite routes would be a good idea.
+
+I have also recently read that, especially since the Covid-19 crisis, cycling has become very popular in many countries. It is a great form of exercise which can be done alone or in small (socially distanced) groups. With this growing popularity people will always be looking for more resources to find routes and this could be a very useful application for many cyclists.
+
+[↥ Back to top](#Mark-McClean)
+
 
 ## Scope
 
@@ -84,3 +108,5 @@ Git and Github are used for version control and Heroku for the full deployment o
 |     21         |     Member               |     Admin & Route Management        |     Delete a route                                       |     To delete a route that is no longer correct                                         |
 |     22         |     Member               |     Admin & Route Management        |     Rate and review a route                              |     To have a rating and review of a route posted on the website                        |
 |     23         |     Member               |     Admin & Route Management        |     Create a forum post                                  |     Create a post on the site about a subject I’d like to discuss                       |
+
+[↥ Back to top](#Mark-McClean)
