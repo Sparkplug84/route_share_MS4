@@ -48,6 +48,28 @@ body {
     opacity: 0.1;
 }
 
+/* Underline hover effect on main navbar found on codepen */
+a:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 3px;
+  width: 0;
+  background: transparent;
+}
+
+.hover-centre:after {
+  transition: width .5s ease, background-color .5s ease, left .5s ease;
+}
+
+.hover-centre:hover:after {
+  width: 100%;
+  left: 0;
+  background: rgb(170, 89, 22)
+}
+
 /* ------------------------- Site icons */
 
 /* from Bulma */

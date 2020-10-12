@@ -1,0 +1,32 @@
+[
+  {
+    "pk": 1,
+    "model": "routes.biketype",
+    "fields": { "name": "roadbike", "friendly_name": "Road Bike" }
+  },
+  {
+    "pk": 2,
+    "model": "routes.biketype",
+    "fields": { "name": "mountainbike", "friendly_name": "Mountain Bike" }
+  },
+  {
+    "pk": 3,
+    "model": "routes.biketype",
+    "fields": { "name": "hybridebike", "friendly_name": "Hybride Bike" }
+  },
+  {
+    "pk": 4,
+    "model": "routes.biketype",
+    "fields": { "name": "citybike", "friendly_name": "City Bike" }
+  },
+  {
+    "pk": 5,
+    "model": "routes.biketype",
+    "fields": { "name": "touringbike", "friendly_name": "Touring Bike" }
+  },
+  {
+    "pk": 6,
+    "model": "routes.biketype",
+    "fields": { "name": "adventureroadbike", "friendly_name": "Adventure Road Bike" }
+  }
+]

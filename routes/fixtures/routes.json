@@ -1,0 +1,66 @@
+[
+  {
+    "pk": 1,
+    "model": "routes.route",
+    "fields": {
+      "name": "Lake District",
+      "description": "A beautiful cycle through the Lake District Area of England",
+      "bike_type": 3,
+      "length": 20.5,
+      "route_type": "Round Trip",
+      "map_url": "https://www.google.nl/maps/dir/54.4122186,-3.0336704/54.3238866,-3.1342988/@54.3680323,-3.1540246,12z/data=!4m2!4m1!3e1?hl=en",
+      "country": "UK",
+      "rating": 4.6,
+      "image_url": "",
+      "image": "route1.jpg"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "routes.route",
+    "fields": {
+      "name": "The Keys, Florida",
+      "description": "A beautiful cycle through The Keys in Florida, USA",
+      "bike_type": 1,
+      "length": 26.8,
+      "route_type": "One Way",
+      "map_url": "https://www.google.nl/maps/dir/Key+West/Big+Pine+Key,+FL+33043,+USA/@24.6959881,-81.5848427,10.1z/data=!4m14!4m13!1m5!1m1!1s0x88d1b134ad952377:0x3fcee92f77463b5e!2m2!1d-81.7799871!2d24.5550593!1m5!1m1!1s0x88d0e24b32fb93d7:0xa9be6ac5b0dd0442!2m2!1d-81.353969!2d24.6698652!3e1?hl=en",
+      "country": "USA",
+      "rating": 4.8,
+      "image_url": "",
+      "image": "route2.jpg"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "routes.route",
+    "fields": {
+      "name": "North Coast, Northern Ireland",
+      "description": "A beautiful cycle along the Famous north coastal route of Northern Ireland",
+      "bike_type": 5,
+      "length": 33.5,
+      "route_type": "One Way",
+      "map_url": "https://www.google.nl/maps/dir/Giant's+Causeway/Dunluce+Castle,+87+Dunluce+Rd,+Bushmills+BT57+8UY,+United+Kingdom/@55.2351003,-6.5332432,13.88z/data=!4m14!4m13!1m5!1m1!1s0x48602944f4158f0f:0xf3228ca019de1fd2!2m2!1d-6.5115554!2d55.2408073!1m5!1m1!1s0x48602f44a2eb43c5:0x10a91dc5612d9ab8!2m2!1d-6.5796063!2d55.2106924!3e1?hl=en",
+      "country": "UK",
+      "rating": 4.9,
+      "image_url": "",
+      "image": "route3.jpg"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "routes.route",
+    "fields": {
+      "name": "Katwijk Coast, Netherlands",
+      "description": "A beautiful cycle along the coastal route of Katwijk, The Netherlands",
+      "bike_type": 4,
+      "length": 15.7,
+      "route_type": "One Way",
+      "map_url": "https://www.google.nl/maps/dir/Meijendel,+Wassenaar/Katwijk+aan+Zee+Beach,+Boulevard+141,+2225+HD+Katwijk+aan+Zee/@52.1622369,4.2881807,12z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x47c5b9c41ba7bf27:0x4844430ece429e80!2m2!1d4.338636!2d52.12601!1m5!1m1!1s0x47c5bf34418a61f3:0x7d6ae0c83316f23a!2m2!1d4.3868682!2d52.1985077!3e1?hl=en",
+      "country": "Netherlands",
+      "rating": 4.4,
+      "image_url": "",
+      "image": ""
+    }
+  }
+]
