@@ -49,4 +49,38 @@ There is also an Admin side to this application where the site owner will be abl
 
 Git and Github are used for version control and Heroku for the full deployment of the site. All project secret keys are stored in the Gitpod Environmental Variables in the settings menu. For deployment these are then stored in the Config. Variables of the Heroku dashboard. This is to keep them hidden to protect the integrity and security of the application.
 
-[↥ Back to top](#Mark-McClean) 
+[↥ Back to top](#Mark-McClean)
+
+## Scope
+
+### User Stories
+
+|     Story #    |     User Type            |     Activity                        |     Goal                                                 |     Reason                                                                              |
+|----------------|--------------------------|-------------------------------------|----------------------------------------------------------|-----------------------------------------------------------------------------------------|
+|     1          |     Member/non-member    |     Viewing & Navigation            |     View a list of routes                                |     To find a suitable cycle route                                                      |
+|     2          |     Member/non-member    |     Viewing & Navigation            |     View route details                                   |     To get more information on the route                                                |
+|     3          |     Non-member           |     Viewing & Navigation            |     View membership options                              |     To choose the correct membership for myself                                         |
+|     4          |     Non-member           |     Viewing & Navigation            |     To see I’ve selected a membership to purchase        |     Incase I forget to follow the purchase procedure                                    |
+|     5          |     Member               |     Viewing & Navigation            |     Instructions on how to upload my favourite route     |     To share my favourite route with fellow users                                       |
+|                |                          |                                     |                                                          |                                                                                         |
+|     6          |     Member/Non-member    |     Sorting & Searching             |     Sort the list of routes                              |     To find the best rated or closest routes to the user                                |
+|     7          |     Member/Non-member    |     Sorting & Searching             |     Sort a specific category of route                    |     To find the best rated or closest routes in a specific bike type or route length    |
+|     8          |     Member/Non-member    |     Sorting & Searching             |     Search for a route by name or description            |     Find a specific route with a keyword search of the name or description              |
+|     9          |     Member/Non-member    |     Sorting & Searching             |     See what I’ve searched for and number of results     |     Quickly find if there’s a route with the keywords I’m looking for.                  |
+|                |                          |                                     |                                                          |                                                                                         |
+|     10         |     Non-Member           |     Registration/User Accounts      |     Register for an account                              |     To have an account to access full details of all routes                             |
+|     11         |     Member               |     Registration/User Accounts      |     Log in and out                                       |     To access my personal information and full route details                            |
+|     12         |     Member               |     Registration/User Accounts      |     Recover my lost password                             |     To regain access to my account if I forget password                                 |
+|     13         |     Member               |     Registration/User Accounts      |     Receive email notification on registration           |     To confirm that my registration was successful                                      |
+|     14         |     Member               |     Registration/User Accounts      |     Have a personalised user profile                     |     To view or update personal details and view membership restrictions                 |
+|                |                          |                                     |                                                          |                                                                                         |
+|     15         |     Member               |     Purchasing and checkout         |     View membership type in my basket to be purchased    |     To identify the membership type and cost                                            |
+|     16         |     Member               |     Purchasing and checkout         |     Enter my payment details                             |     To easily purchase membership type required                                         |
+|     17         |     Member               |     Purchasing and checkout         |     View an order confirmation after payment             |     To ensure I have received the product that I have ordered                           |
+|     18         |     Member               |     Purchasing and checkout         |     Receive an email confirmation after checkout         |     To have a separate confirmation of what I’ve purchased                              |
+|                |                          |                                     |                                                          |                                                                                         |
+|     19         |     Member               |     Admin & Route Management        |     Add a route                                          |     Add a route for other members to view                                               |
+|     20         |     Member               |     Admin & Route Management        |     Edit or update a route                               |     To change the route details of route I uploaded                                     |
+|     21         |     Member               |     Admin & Route Management        |     Delete a route                                       |     To delete a route that is no longer correct                                         |
+|     22         |     Member               |     Admin & Route Management        |     Rate and review a route                              |     To have a rating and review of a route posted on the website                        |
+|     23         |     Member               |     Admin & Route Management        |     Create a forum post                                  |     Create a post on the site about a subject I’d like to discuss                       |
