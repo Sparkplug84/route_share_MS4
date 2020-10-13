@@ -11,19 +11,19 @@ body {
 /* ---------------------------- Homepage */
 
 .homepage-photo1 {
-    background: url('/media/homepage1.jpg') no-repeat center center;
+    background: url('/media/homepage1.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 }
 
 .homepage-photo2 {
-    background: url('/media/homepage2.jpg') no-repeat center center;
+    background: url('/media/homepage2.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 }
 
 .homepage-photo3 {
-    background: url('/media/homepage3.jpg') no-repeat center center;
+    background: url('/media/homepage3.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 }
