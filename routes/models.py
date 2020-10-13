@@ -13,6 +13,7 @@ class BikeType(models.Model):
     def get_friendly_name(self):
         return self.friendly_name
 
+
 class Route(models.Model):
     bike_type = models.ForeignKey('BikeType', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
