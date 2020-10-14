@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <div class="image-container my-5">
+                    {% if route.image %}
+                        <a href="{{ route.img.url }}" target="_blank">
+                            <img class="card-img" src="{{ route.image.url }}" alt="{{ route.name }}">
+                        </a>
+                    {% else %}
+                        <a href="">
+                            <img class="card-img border-0" src="{{ MEDIA_URL }}noimage.png" alt="{{ route.name }}">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="route-detail-container mb-5 mt-md-5">
+                    <p class="mb-0">{{ route.name }}</p>
+                    <p class="mb-0 text-left">{{ route.length }}km</p>
+                    <p class="mb-0 text-left">{{ route.country }}</p>
+                    {% if route.bike_type %}
+                    <p class="small mt-1 mb-0">
+                        <a class="text-muted" href="">
+                            <i class="fas fa-biking mr-1"></i>{{ route.bike_type.friendly_name }}
+                        </a>
+                    </p>
+                    {% endif %}
+                    {% if route.rating %}
+                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ route.rating }} / 5</small>
+                    {% else %}
+                        <small class="text-muted">No Rating</small>
+                    {% endif %}
+                    <p class="mt-3">{{ route.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
