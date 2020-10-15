@@ -33,16 +33,26 @@
                                         <img class="card-img border-0" src="{{ MEDIA_URL }}noimage.png" alt="{{ route.name }}">
                                     </a>
                                 {% endif %}
-                                <div class="card-body pb-0 bg-black text-white title-font">
+                                <div class="card-body p-3 bg-black text-white title-font my-auto">
                                     <p class="mb-0">{{ route.name }}</p>
                                 </div>
-                                <div class="card-footer bg-black text-white pt-0 border-0 text-left">
+                                <hr class="card-divider w-100 bg-orange">
+                                <div class="card-footer bg-black text-white pt-1 px-3 border-0">
                                     <div class="row">
-                                        <div class="col">
-                                            <p class="mb-0 text-left">{{ route.length }}km</p>
-                                            <p class="mb-0 text-left">{{ route.country }}</p>
+                                        <div class="col mt-1">
+                                            <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ route.length }}km</p>
+                                            <p class="mb-0">
+                                                <a class="text-white" href="">
+                                                    <i class="fas fa-flag mr-1"></i>{{ route.country }}
+                                                </a>
+                                            </p>
+                                            <p class="mb-0 small">
+                                                <a class="text-muted" href="">
+                                                    <i class="fas fa-route mr-1"></i>{{ route.route_type }}
+                                                </a>
+                                            </p>
                                             {% if route.bike_type %}
-                                            <p class="small mt-1 mb-0">
+                                            <p class="mb-0 small">
                                                 <a class="text-muted" href="">
                                                     <i class="fas fa-biking mr-1"></i>{{ route.bike_type.friendly_name }}
                                                 </a>
