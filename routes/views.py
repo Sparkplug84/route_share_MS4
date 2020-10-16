@@ -14,8 +14,23 @@ def all_routes(request):
     biketypes = None
     countries = None
     route_types = None
+    sort = None
+    direction = None
 
     if request.GET:
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                routes = routes.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            routes = routes.order_by(sortkey)
 
         if 'bike_type' in request.GET:
             biketypes = request.GET['bike_type'].split(',')
@@ -39,12 +54,15 @@ def all_routes(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(country__icontains=query) | Q(route_type__icontains=query) | Q(length__icontains=query) 
             routes = routes.filter(queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'routes': routes,
         'search_term': query,
         'current_biketypes': biketypes,
         'current_countries': countries,
         'current_route_types': route_types,
+        'current_sorting': current_sorting,
     }
     return render(request, 'routes/routes.html', context)
 

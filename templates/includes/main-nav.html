@@ -5,11 +5,11 @@
                 All Routes
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-routes-link">
-                <a href="" class="dropdown-item">By Country</a>
-                <a href="" class="dropdown-item">By Length</a>
-                <a href="" class="dropdown-item">By Bike Type</a>
-                <a href="" class="dropdown-item">By Route Type</a>
-                <a href="" class="dropdown-item">By Rating</a>
+                <a href="{% url 'routes' %}?sort=country&direction=desc" class="dropdown-item">By Country</a>
+                <a href="{% url 'routes' %}?sort=length&direction=desc" class="dropdown-item">By Length</a>
+                <a href="{% url 'routes' %}?sort=bike_type&direction=asc" class="dropdown-item">By Bike Type</a>
+                <a href="{% url 'routes' %}?sort=route_type&direction=asc" class="dropdown-item">By Route Type</a>
+                <a href="{% url 'routes' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
                 <a href="{% url 'routes' %}" class="dropdown-item">All Routes</a>
             </div>
         </li>
