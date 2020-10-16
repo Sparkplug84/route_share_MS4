@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Route, BikeType
+from .models import Route, BikeType, RouteType
 
 # Register your models here.
 
@@ -26,7 +26,17 @@ class BikeTypeAdmin(admin.ModelAdmin):
     )
 
 
+class RouteTypeAdmin(admin.ModelAdmin):
+    list_display = (
+        'friendly_name',
+        'name',
+    )
+
+
 admin.site.register(Route, RouteAdmin)
 
 
 admin.site.register(BikeType, BikeTypeAdmin)
+
+
+admin.site.register(RouteType, RouteTypeAdmin)

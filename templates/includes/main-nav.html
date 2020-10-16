@@ -1,10 +1,10 @@
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
-            <a href="#" class="title-font nav-link text-white mx-auto hover-centre px-4" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="title-font nav-link text-white mx-auto hover-centre px-4" id="all-routes-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 All Routes
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+            <div class="dropdown-menu border-0" aria-labelledby="all-routes-link">
                 <a href="" class="dropdown-item">By Country</a>
                 <a href="" class="dropdown-item">By Length</a>
                 <a href="" class="dropdown-item">By Bike Type</a>
@@ -19,10 +19,10 @@
                 Popular Countries
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="popular-countries-link">
-                <a href="" class="dropdown-item">UK</a>
-                <a href="" class="dropdown-item">USA</a>
-                <a href="" class="dropdown-item">France</a>
-                <a href="" class="dropdown-item">Italy</a>
+                <a href="{% url 'routes' %}?country=GB" class="dropdown-item">Great Britain</a>
+                <a href="{% url 'routes' %}?country=US" class="dropdown-item">USA</a>
+                <a href="{% url 'routes' %}?country=NL" class="dropdown-item">Netherlands</a>
+                <a href="{% url 'routes' %}?country=IT" class="dropdown-item">Italy</a>
             </div>
         </li>
 
@@ -31,12 +31,12 @@
                 Bike Types
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="bike-type-link">
-                <a href="" class="dropdown-item">Road Bike</a>
-                <a href="" class="dropdown-item">Mountain Bike</a>
-                <a href="" class="dropdown-item">Hybrid Bike</a>
-                <a href="" class="dropdown-item">City Bike</a>
-                <a href="" class="dropdown-item">Touring Bike</a>
-                <a href="" class="dropdown-item">Adventure Road Bike</a>
+                <a href="{% url 'routes' %}?bike_type=roadbike" class="dropdown-item">Road Bike</a>
+                <a href="{% url 'routes' %}?bike_type=mountainbike" class="dropdown-item">Mountain Bike</a>
+                <a href="{% url 'routes' %}?bike_type=hybridebike" class="dropdown-item">Hybride Bike</a>
+                <a href="{% url 'routes' %}?bike_type=citybike" class="dropdown-item">City Bike</a>
+                <a href="{% url 'routes' %}?bike_type=touringbike" class="dropdown-item">Touring Bike</a>
+                <a href="{% url 'routes' %}?bike_type=adventureroadbike" class="dropdown-item">Adventure Road Bike</a>
             </div>
         </li>
 
@@ -45,8 +45,8 @@
                 Route Types
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="route-type-link">
-                <a href="" class="dropdown-item">One Way</a>
-                <a href="" class="dropdown-item">Round Trip</a>
+                <a href="{% url 'routes' %}?route_type=one_way" class="dropdown-item">One Way</a>
+                <a href="{% url 'routes' %}?route_type=round_trip" class="dropdown-item">Round Trip</a>
             </div>
         </li>
 
