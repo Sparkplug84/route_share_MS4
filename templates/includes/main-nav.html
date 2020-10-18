@@ -5,7 +5,7 @@
                 All Routes
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-routes-link">
-                <a href="{% url 'routes' %}?sort=country&direction=desc" class="dropdown-item">By Country</a>
+                <a href="{% url 'routes' %}?sort=country&direction=asc" class="dropdown-item">By Country</a>
                 <a href="{% url 'routes' %}?sort=length&direction=desc" class="dropdown-item">By Length</a>
                 <a href="{% url 'routes' %}?sort=bike_type&direction=asc" class="dropdown-item">By Bike Type</a>
                 <a href="{% url 'routes' %}?sort=route_type&direction=asc" class="dropdown-item">By Route Type</a>
@@ -19,7 +19,7 @@
                 Popular Countries
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="popular-countries-link">
-                <a href="{% url 'routes' %}?country=GB" class="dropdown-item">Great Britain</a>
+                <a href="{% url 'routes' %}?country=GB" class="dropdown-item">United Kingdom</a>
                 <a href="{% url 'routes' %}?country=US" class="dropdown-item">USA</a>
                 <a href="{% url 'routes' %}?country=NL" class="dropdown-item">Netherlands</a>
                 <a href="{% url 'routes' %}?country=IT" class="dropdown-item">Italy</a>

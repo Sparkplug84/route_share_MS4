@@ -23,17 +23,19 @@
                     <p class="mb-0 text-left"><i class="fas fa-map-marker-alt mr-1"></i>{{ route.length }}km</p>
                     <p class="mb-0 text-left">
                         <a class="text-black" href="">
-                            <i class="fas fa-flag mr-1"></i>{{ route.country }}
+                            <i class="fas fa-flag mr-1"></i>{{ route.country.name }}
                         </a>
                     </p>
+                    {% if route.route_type %}
                     <p class="small mb-0 text-left">
-                        <a class="text-muted" href="">
-                            <i class="fas fa-route mr-1"></i>{{ route.route_type }}
+                        <a class="text-muted" href="{% url 'routes' %}?route_type={{ route.route_type.name }}">
+                            <i class="fas fa-route mr-1"></i>{{ route.route_type.friendly_name }}
                         </a>
                     </p>
+                    {% endif %}
                     {% if route.bike_type %}
                     <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="">
+                        <a class="text-muted" href="{% url 'routes' %}?bike_type={{ route.bike_type.name }}">
                             <i class="fas fa-biking mr-1"></i>{{ route.bike_type.friendly_name }}
                         </a>
                     </p>

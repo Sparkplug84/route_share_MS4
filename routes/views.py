@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
-from .models import Route, BikeType
+from .models import Route, BikeType, RouteType
 
 # Create your views here.
 
@@ -25,6 +25,10 @@ def all_routes(request):
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 routes = routes.annotate(lower_name=Lower('name'))
+            if sortkey == 'bike_type':
+                sortkey = 'bike_type__name'
+            if sortkey == 'route_type':
+                sortkey = 'route_type__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -40,10 +44,12 @@ def all_routes(request):
         if 'country' in request.GET:
             countries = request.GET['country']
             routes = routes.filter(country=countries)
+            # countries = Route.objects.filter(country=countries)
 
         if 'route_type' in request.GET:
             route_types = request.GET['route_type'].split(',')
             routes = routes.filter(route_type__name__in=route_types)
+            route_types = RouteType.objects.filter(name__in=route_types)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -51,7 +57,12 @@ def all_routes(request):
                 messages.error("You didn't enter any search criteria")
                 return redirect(reverse('routes'))
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(country__icontains=query) | Q(route_type__icontains=query) | Q(length__icontains=query) 
+            queries = Q(name__icontains=query) | (
+                Q(description__icontains=query) |
+                Q(country__icontains=query) |
+                Q(length__icontains=query) |
+                Q(route_type__friendly_name__icontains=query) |
+                Q(bike_type__friendly_name__icontains=query))
             routes = routes.filter(queries)
 
     current_sorting = f'{sort}_{direction}'

@@ -14,12 +14,48 @@
         <div class="row"> 
             <div class="col text-center mt-3">
                 <h2 class="title-font font-weight-bold">Routes</h2>
+                <!-- {% for bike in bike_type %}
+                    <a class="text-decoration-none category-badge" href="{% url 'routes' %}?bike_type={{ bike.name }}">
+                        <span class="p-2 mt-2 badge badge-white rounded-pill callout_btn border border-dark">{{ bike.friendly_name }}</span>
+                    </a>
+                {% endfor %} -->
                 <hr class="w-50 mb-3">
             </div>
         </div>
         <div class="row">
             <div class="route-container col-10 offset-1">
-                <div class="row mt-1 mb-2"></div>
+                <div class="row mt-1 mb-2">
+                    <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                        <div class="sort-select-wrapper w-50">
+                            <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                                <option value="length_asc" {% if current_sorting == 'length_asc' %}selected{% endif %}>Length (low to high)</option>
+                                <option value="length_desc" {% if current_sorting == 'length_desc' %}selected{% endif %}>Length (high to low)</option>
+                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                <option value="bike_type_asc" {% if current_sorting == 'bike_type_asc' %}selected{% endif %}>Bike Type (A-Z)</option>
+                                <option value="bike_type_desc" {% if current_sorting == 'bike_type_desc' %}selected{% endif %}>Bike Type (Z-A)</option>
+                                <option value="country_asc" {% if current_sorting == 'country_asc' %}selected{% endif %}>Country (A-Z)</option>
+                                <option value="country_desc" {% if current_sorting == 'country_desc' %}selected{% endif %}>Country (Z-A)</option>
+                                <option value="route_type_asc" {% if current_sorting == 'route_type_asc' %}selected{% endif %}>Route Type (A-Z)</option>
+                                <option value="route_type_desc" {% if current_sorting == 'route_type_desc' %}selected{% endif %}>Route Type (Z-A)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 order-md-first">
+                        <p class="text-center mt-3 text-muted text-md-left">
+                            {% if search_term or current_biketypes or current_countries or current_route_types or current_sorting != 'None_None' %}
+                                <span class="small"><a class="text-orange" href="{% url 'routes' %}">Routes Home</a> | </span>
+                            {% endif %}
+                            {{ routes|length }} Routes{% if search_term %} found for <strong>"{{ search_term }}"</strong>
+                                {% elif current_biketypes %} found for <strong>{% for bike in current_biketypes %}{{ bike.friendly_name }}{% endfor %}</strong>
+                                {% elif current_countries %} found for <strong>{% for country in current_countries %}{{ country }}{% endfor %}</strong>
+                                {% elif current_route_types %} found for <strong>{% for type in current_route_types %}{{ type.friendly_name }}{% endfor %}</strong>{% endif %}
+                        </p>
+                    </div>
+                </div>
                 <div class="row">
                     {% for route in routes %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-5">
@@ -43,17 +79,19 @@
                                             <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ route.length }}km</p>
                                             <p class="mb-0">
                                                 <a class="text-white" href="">
-                                                    <i class="fas fa-flag mr-1"></i>{{ route.country }}
+                                                    <i class="fas fa-flag mr-1"></i>{{ route.country.name }}
                                                 </a>
                                             </p>
+                                            {% if route.route_type %}
                                             <p class="mb-0 small">
-                                                <a class="text-muted" href="">
+                                                <a class="text-muted" href="{% url 'routes' %}?route_type={{ route.route_type.name }}">
                                                     <i class="fas fa-route mr-1"></i>{{ route.route_type.friendly_name }}
                                                 </a>
                                             </p>
+                                            {% endif %}
                                             {% if route.bike_type %}
                                             <p class="mb-0 small">
-                                                <a class="text-muted" href="">
+                                                <a class="text-muted" href="{% url 'routes' %}?bike_type={{ route.bike_type.name }}">
                                                     <i class="fas fa-biking mr-1"></i>{{ route.bike_type.friendly_name }}
                                                 </a>
                                             </p>
