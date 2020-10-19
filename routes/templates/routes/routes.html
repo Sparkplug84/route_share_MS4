@@ -29,10 +29,10 @@
                         <div class="sort-select-wrapper w-50">
                             <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                                <option value="length_asc" {% if current_sorting == 'length_asc' %}selected{% endif %}>Length (low to high)</option>
                                 <option value="length_desc" {% if current_sorting == 'length_desc' %}selected{% endif %}>Length (high to low)</option>
-                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                                <option value="length_asc" {% if current_sorting == 'length_asc' %}selected{% endif %}>Length (low to high)</option>
                                 <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
                                 <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
                                 <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
                                 <option value="bike_type_asc" {% if current_sorting == 'bike_type_asc' %}selected{% endif %}>Bike Type (A-Z)</option>
@@ -49,7 +49,7 @@
                             {% if search_term or current_biketypes or current_countries or current_route_types or current_sorting != 'None_None' %}
                                 <span class="small"><a class="text-orange" href="{% url 'routes' %}">Routes Home</a> | </span>
                             {% endif %}
-                            {{ routes|length }} Routes{% if search_term %} found for <strong>"{{ search_term }}"</strong>
+                            {{ routes|length }} {% if routes|length == 1 %}Route{% else %}Routes{% endif %}{% if search_term %} found for <strong>"{{ search_term }}"</strong>
                                 {% elif current_biketypes %} found for <strong>{% for bike in current_biketypes %}{{ bike.friendly_name }}{% endfor %}</strong>
                                 {% elif current_countries %} found for <strong>{% for country in current_countries %}{{ country }}{% endfor %}</strong>
                                 {% elif current_route_types %} found for <strong>{% for type in current_route_types %}{{ type.friendly_name }}{% endfor %}</strong>{% endif %}
@@ -111,4 +111,44 @@
             </div>
         </div>
     </div>
+    <div class="btt-button shadow-sm bg-orange">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up text-white mx-auto my-auto"></i>
+        </a>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+
+    <script type="text/javascript">
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0,0)
+        })
+    </script>
+
+    <script type="text/javascript">
+        $('#sort-selector').change(function() {
+            var selector = $(this);
+            var currentUrl = new URL(window.location);
+
+            var selectedVal = selector.val();
+            if(selectedVal != 'reset'){
+                var selectorSplit = selectedVal.lastIndexOf('_')
+                var sort = selectedVal.substring(0, selectorSplit);
+                var direction = selectedVal.substring(selectorSplit + 1);
+
+                currentUrl.searchParams.set('sort', sort);
+                currentUrl.searchParams.set('direction', direction);
+
+                window.location.replace(currentUrl);
+            } else {
+                currentUrl.searchParams.delete('sort');
+                currentUrl.searchParams.delete('direction');
+
+                window.location.replace(currentUrl);
+            }
+        })
+    </script>
+
 {% endblock %}

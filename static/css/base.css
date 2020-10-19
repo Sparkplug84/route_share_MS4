@@ -200,6 +200,27 @@ a:after {
     height: 2px;
 }
 
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+}
+
+.btt-link {
+    cursor: pointer;
+    text-decoration: none !important;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+}
+
+.btt-link:hover {
+    top: -8px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 from .models import Route, BikeType, RouteType
 
 # Create your views here.
@@ -29,6 +30,8 @@ def all_routes(request):
                 sortkey = 'bike_type__name'
             if sortkey == 'route_type':
                 sortkey = 'route_type__name'
+            # if sortkey == 'country':
+            #     sortkey = 'country__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
