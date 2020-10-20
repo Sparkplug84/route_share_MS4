@@ -118,6 +118,12 @@ a:after {
     min-width: 260px;
 }
 
+.membership-btn {
+    background-color: rgb(170, 89, 22);
+    color: white;
+    min-width: auto;
+}
+
 .btn-orange {
     background-color: rgb(170, 89, 22);
     color: white;
@@ -219,6 +225,22 @@ a:after {
 
 .btt-link:hover {
     top: -8px;
+}
+
+/* -------------------------------- Membership Page */
+
+.membership-img {
+    background: url('/media/membership1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+}
+
+.membership-card {
+    max-width: 90%;
+}
+
+.membership-desc {
+    min-height: 100px;
 }
 
 /* -------------------------------- Media Queries */
