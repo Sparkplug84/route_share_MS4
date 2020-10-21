@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="membership-img">
+    <div class="membership-img h-50">
         <div class="container h-100">
             <div class="row"> 
                 <div class="col text-center mt-3">
@@ -21,9 +21,9 @@
     <div class="container">
         <div class="row">
             <div class="membership-container col-12">
-                <div class="row">
+                <div class="row mt-4">
                     {% for membership in memberships %}
-                        <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+                        <div class="col-sm-12 col-md-6 col-lg-4 my-3 card-container">
                             <div class="card membership-card mx-auto">
                                 <div class="card-body p-3 bg-black title-font text-white text-lg">
                                     <p class="my-auto">{{ membership.friendly_name }}</p>
@@ -36,9 +36,9 @@
                                             <p class="mt-2 mx-2"><i class="fas fa-coins mr-1"></i>Price: €{{ membership.price }} / month</p>
                                         </div>
                                     </div>
-                                    <div class="row mb-0">
-                                        <div class="col w-100">
-                                            <a href="" class="btn rounded-pill text-uppercase py-2 membership-btn mx-auto mb-2">Add to basket</a>
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <a href="" class="btn rounded-pill text-uppercase py-2 membership-btn mb-2">Add to basket</a>
                                         </div>
                                     </div>
                                 </div>

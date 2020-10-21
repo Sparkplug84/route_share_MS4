@@ -11,7 +11,7 @@ body {
 /* ---------------------------- Homepage */
 
 .homepage-photo1 {
-    background: url('/media/homepage1.jpg') no-repeat center center fixed;
+    background: url('/media/homepage10.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100%;
 }
@@ -122,6 +122,7 @@ a:after {
     background-color: rgb(170, 89, 22);
     color: white;
     min-width: auto;
+    font-size: 15px;
 }
 
 .btn-orange {
@@ -142,11 +143,10 @@ a:after {
     color: white !important;
 }
 
-.callout-btn:hover,
-.callout-btn:active,
-.callout-btn:focus,
-.btn-orange:hover,
-.btn-orange:active,
+.callout-btn:hover, .membership-btn:hover,
+.callout-btn:active, .membership-btn:active,
+.callout-btn:focus, .membership-btn:focus,
+.btn-orange:hover, .btn-orange:active,
 .btn-orange:focus {
     background: rgb(192, 98, 22);
     color: white;
@@ -230,9 +230,9 @@ a:after {
 /* -------------------------------- Membership Page */
 
 .membership-img {
-    background: url('/media/membership1.jpg') no-repeat center center fixed;
+    background: url(/media/membership1.jpg) no-repeat center;
     background-size: cover;
-    height: 100%;
+    background-position: 50% 75%;
 }
 
 .membership-card {
@@ -261,8 +261,11 @@ a:after {
         left: 0;
         z-index: 1030;
     }
+}
 
-    /* .header-container {
-        padding-top: 164px;
-    } */
+/* centres the 3rd membership column on medium screens when it wraps */
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-container:last-child {
+        margin: auto;
+    }
 }
