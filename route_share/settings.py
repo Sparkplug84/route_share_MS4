@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'routes',
     'membership',
+    'basket',
 ]
 
 MIDDLEWARE = [

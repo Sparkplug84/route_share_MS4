@@ -50,7 +50,7 @@
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <form method="GET" action="{% url 'routes' %}">
                     <div class="input-group w-100 position-relative">
-                        <input class="form-control border border-black rounded-pill" type="text" name="q" placeholder="Search our site">
+                        <input class="form-control border border-black rounded-pill" type="text" name="q" placeholder="Search for routes...">
                         <div class="input-group-append position-absolute search-icon">
                             <button class=" form-control btn btn-black rounded-pill" type="submit">
                                 <span class="icon">
@@ -84,7 +84,7 @@
                         </div>
                     </li>
                     <li class="list-inline-item">
-                        <a class="nav-link text-orange" href="">
+                        <a class="nav-link text-orange" href="{% url 'view_basket' %}">
                             <div class="text-center">
                                 <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                                 <p class="{% if item in basket %}basket-full font-weight-bold{% else %}basket-empty{% endif %} my-0">

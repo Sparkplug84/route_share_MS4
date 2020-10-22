@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mb-2">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">Your Basket</h2>
+                <hr class="w-50 mb-3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% if basket_items %}
+                    <div class="table-responsive rounded"></div>
+                {% else %}
+                    <p class="lead mb-5">Your bag is empty at the moment...</p>
+                    <a href="{% url 'membership' %}" class="btn rounded-pill btn-outline-orange">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class=" text-uppercase">Membership Options</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+{% endblock %}
