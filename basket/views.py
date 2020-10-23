@@ -26,3 +26,13 @@ def add_to_basket(request, item_id):
 
     messages.error(request, "You need to be signed in to add a Membership Plan to the basket.")
     return redirect('account_signup')
+
+
+def empty_basket(request):
+    """ A view to empty the basket """
+
+    basket = request.session.get('basket')
+    basket.clear()
+    request.session['basket'] = basket
+    messages.success(request, 'Your shopping basket is now empty.')
+    return redirect(reverse('view_basket'))
