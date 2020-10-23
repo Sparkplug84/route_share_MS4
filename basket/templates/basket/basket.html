@@ -6,14 +6,56 @@
         <div class="row"> 
             <div class="col text-center mt-3">
                 <h2 class="title-font font-weight-bold">Your Basket</h2>
-                <hr class="w-50 mb-3">
+                <hr class="w-50 mb-5">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 {% if basket_items %}
-                    {{ basket_items }}
-                    <div class="table-responsive rounded"></div>
+                    <div class="table-responsive rounded">
+                        <table class="table">
+                            <thead class="text-white bg-black">
+                                <tr>
+                                    <th class="col w-25">Membership Type</th>
+                                    <th class="col w-25">Description</th>
+                                    <th class="col w-25">Quantity</th>
+                                    <th class="col w-25">Price</th>
+                                </tr>
+                            </thead>
+                            {% for item in basket_items %}
+                                <tr class="text-white bg-black">
+                                    <td class="pt-3"><strong>{{ item.membership.friendly_name }}</strong></td>
+                                    <td class="p-3">{{ item.membership.description }}</td>
+                                    <td class="p-3">{{ item.quantity }}</td>
+                                    <td class="p-3">€{{ item.membership.price }} / Month</td>
+                                </tr>
+                            
+                            <tr>
+                                <td class="py-4 text-right" colspan="5">
+                                    <h6><strong>Grand Total: €{{ item.membership.price }} / Month</strong></h6>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                            <tr>
+                                <td class="pt-5 text-right" colspan="5">
+                                    <a href="" class="btn rounded-pill btn-outline-orange mt-2">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class=" text-uppercase">Clear Basket</span>
+                                    </a>
+                                    <a href="" class="btn rounded-pill btn-orange mt-2">
+                                        <span class=" text-uppercase">Secure Checkout</span>
+                                        <span class="icon">
+                                            <i class="fas fa-lock"></i>
+                                        </span>
+                                        
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 {% else %}
                     <p class="lead mb-5">Your bag is empty at the moment...</p>
                     <a href="{% url 'membership' %}" class="btn rounded-pill btn-outline-orange">

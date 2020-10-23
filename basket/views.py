@@ -22,7 +22,6 @@ def add_to_basket(request, item_id):
         request.session['basket'] = basket
 
         messages.success(request, "You've added the Membership Plan to your basket!")
-        print(request.session['basket'])
         return redirect(reverse('membership'))
 
     messages.error(request, "You need to be signed in to add a Membership Plan to the basket.")

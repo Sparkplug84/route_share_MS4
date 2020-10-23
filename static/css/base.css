@@ -243,6 +243,15 @@ a:after {
     min-height: 100px;
 }
 
+
+
+/* -------------------------------- Basket Page */
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 3px solid rgb(170, 89, 22) !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
