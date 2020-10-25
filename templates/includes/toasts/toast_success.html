@@ -1,0 +1,45 @@
+{% if basket_items %}
+<div class="toast custom-toast" data-autohide="false">
+{% else %}
+<div class="toast custom-toast" data-autohide="true" data-delay="5000">
+{% endif %}
+    <div class="arrow-up arrow-success"></div>
+    <div class="toast-header bg-white text-dark">
+        <span class="icon">
+            <i class="far fa-check-circle"></i>
+        </span>
+        <strong class="mr-auto">Success!</strong>
+        {% if basket_items %}
+        <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {% endif %}
+    </div>
+    <div class="w-100 toast-capper bg-success"></div>
+    <div class="toast-body bg-white">
+        <div class="row">
+            <div class="col">
+                {{ message }}
+                {% if basket_items %}
+                <hr class="mt-1 mb-3">
+                <p class="text-black bg-white mb-0"><i class="fas fa-shopping-bag fa-lg mr-1"></i><strong>Your Basket</strong></p>
+                {% for item in basket_items %}
+                    <div class="row">
+                        <div class="col bg-black text-white p-2 m-2">
+                            <p class="my-0"><strong>Membership Type: {{ item.membership.friendly_name }}</strong></p>
+                            <p class="my-0">Item Quantity: {{ item.quantity }}</p>
+                            <p class="my-0">Price: {{ item.membership.price }} / Month</p>
+                        </div>
+                    </div>
+                    <a href="{% url 'view_basket' %}" class="btn rounded-pill btn-orange w-100">
+                        <span class="text-uppercase"><small>View Basket</small></span>
+                        <span class="icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </span>
+                    </a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

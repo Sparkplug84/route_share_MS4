@@ -41,12 +41,12 @@
     </div>
 </li>
 <li class="list-inline-item">
-    <a class="{% if item in basket %}basket-full font-weight-bold{% else %}basket-empty{% endif %} text-orange nav-link d-block d-lg-none" href="{% url 'view_basket' %}">
+    <a class="nav-link {% if basket_items %} text-white{% else %}text-orange{% endif %} d-block d-lg-none" href="{% url 'view_basket' %}">
         <div class="text-center">
             <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-            <p class="my-0">
-                {% if item in basket %}
-                    {{ item.count }}
+            <p class="{% if basket_items %}basket-full font-weight-bold text-white{% else %}basket-empty{% endif %} my-0">
+                {% if basket_items %}
+                    {{ basket_items|length }}
                 {% else %}
                     0
                 {% endif %}

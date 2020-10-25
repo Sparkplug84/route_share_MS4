@@ -15,16 +15,19 @@ def add_to_basket(request, item_id):
 
     if request.user.is_authenticated:
         if basket.items():
-            messages.error(request, "You've already added a Membership Plan to your basket.")
+            messages.error(request, (
+                "You've already added a Membership Plan to your basket."))
             return redirect('view_basket')
 
         basket[item_id] = basket.get(item_id, membership_qty)
         request.session['basket'] = basket
 
-        messages.success(request, "You've added the Membership Plan to your basket!")
+        messages.success(request, (
+            "You've added a Membership Plan to your basket!"))
         return redirect(reverse('membership'))
 
-    messages.error(request, "You need to be signed in to add a Membership Plan to the basket.")
+    messages.error(request, (
+        "You need to be signed in to add a Membership Plan to the basket."))
     return redirect('account_signup')
 
 
