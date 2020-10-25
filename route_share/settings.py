@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'routes',
     'membership',
     'basket',
+    'checkout',
 ]
 
 MIDDLEWARE = [

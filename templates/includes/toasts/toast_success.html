@@ -28,7 +28,7 @@
                         <div class="col bg-black text-white p-2 m-2">
                             <p class="my-0"><strong>Membership Type: {{ item.membership.friendly_name }}</strong></p>
                             <p class="my-0">Item Quantity: {{ item.quantity }}</p>
-                            <p class="my-0">Price: {{ item.membership.price }} / Month</p>
+                            <p class="my-0">Price: €{{ item.membership.price }} / Month</p>
                         </div>
                     </div>
                     <a href="{% url 'view_basket' %}" class="btn rounded-pill btn-orange w-100">
