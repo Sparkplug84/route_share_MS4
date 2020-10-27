@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mb-2">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">Checkout</h2>
+                <hr class="w-50 mb-3">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-last">
+                <p class="text-muted mt-3">Order Summary</p>
+                <div class="summary-container bg-black">
+                    {% for item in basket_items %}
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="text-white p-3">
+                                <span class="icon">
+                                    <i class="fas fa-tag"></i>
+                                </span>
+                                {{ item.membership.friendly_name }} Membership
+                            </h5>
+                        </div>
+                    </div>
+                    <hr class="card-divider w-100 bg-orange">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-white p-3">
+                                <span class="icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </span>
+                                    {{ item.membership.description }}
+                                </p>
+                            <p class="text-white px-3">
+                                <span class="icon">
+                                    <i class="fas fa-coins"></i>
+                                </span>
+                                €{{ item.membership.price }} / Month
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-6">
+                <p class="text-muted mt-3">Please fill out the form below to complete your order.</p>
+                <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                    {% csrf_token %}
+                    <fieldset class="px-3 mb-5 bg-black pt-5">
+                        <legend class="fieldset_label px-3 w-auto text-white">
+                            <span class="icon">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            User Info
+                        </legend>
+                            {{ order_form.full_name | as_crispy_field }}
+                            {{ order_form.email | as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="px-3 mb-5 bg-black pt-5">
+                        <legend class="fieldset_label px-3 text-white w-auto">
+                            <span class="icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </span>
+                                Address
+                            </legend>
+                            {{ order_form.street_address1 | as_crispy_field }}
+                            {{ order_form.street_address2 | as_crispy_field }}
+                            {{ order_form.town_or_city | as_crispy_field }}
+                            {{ order_form.postcode | as_crispy_field }}
+                            {{ order_form.country | as_crispy_field }}
+                            <div class="form-check form_check-inline float_right mr-0">
+                                {% if user.is_authenticated %}
+                                    <label class="form-check-label text-white pb-3" for="id-save-info">Save this delivery information to my profile</label>
+                                    <input class="from_check_input ml-2 mr-0" id="id-save-info" type="checkbox" name="save-info" checked>
+                                {% else %}
+                                    <label class="form-check-label" for="id-save-info">
+                                        <a href="{% url 'account_signup' %}" class="text-info">Sign Up</a> or 
+                                        <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this information
+                                    </label>
+                                {% endif %}
+                            </div>
+                    </fieldset>
+                    <fieldset class="px-3 bg-black pt-5">
+                        <legend class="fieldset_label px-3 text-white w-auto">
+                        <span class="icon">
+                            <i class="far fa-credit-card"></i>
+                        </span>
+                            Payment
+                        </legend>
+                        <!-- Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+                        <!-- Stripe error message will go here -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    </fieldset>
+
+                    <div class="submit-button text-right mt-5 mb-2">
+                        <a href="{% url 'view_basket' %}" class="btn btn-outline-orange rounded-pill mt-2">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Back to basket</span>
+                        </a>
+                        <button id="submit-button" class="btn btn-orange rounded-pill mt-2">
+                            <span class="text-uppercase">Complete Order</span>
+                            <span class="icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </button>
+                        <p class="small text-danger my-0">
+                            <span class="icon">
+                                <i class="fas fa-exclaimation-circle"></i>
+                            </span>
+                            {% if basket_items %}
+                            {% for item in basket_items %}
+                            <span>Your card will be charged <strong>€{{ item.membership.price|floatformat:2 }} / Month</strong></span>
+                            {% endfor %}
+                            {% endif %}
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            
+        </div>
+{% endblock %}

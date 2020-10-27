@@ -3,9 +3,9 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
-    model = Order
-    fields = ('full_name', 'email', 'street_address1', (
-        'street_address2', 'postcode', 'town_or_city', 'country',))
+    class Meta:
+        model = Order
+        fields = ('full_name', 'email', 'street_address1', 'street_address2', 'postcode', 'town_or_city', 'country',)
 
     def __init__(self, *args, **kwargs):
         """ Add placeholders and classes, remove auto-generated
