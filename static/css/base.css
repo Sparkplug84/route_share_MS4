@@ -232,11 +232,10 @@ a:after {
     height: 180px;
     object-fit: cover;
     object-position: center;
-    border-radius: 0;
-}
-
-.card-footer:last-child {
-    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .detail-img {
@@ -285,6 +284,16 @@ a:after {
     max-width: 90%;
 }
 
+.card-top {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.card-footer {
+    border-bottom-right-radius: 20px !important;
+    border-bottom-left-radius: 20px !important;
+}
+
 .membership-desc {
     min-height: 100px;
 }
@@ -300,7 +309,7 @@ a:after {
 
 /* ------------------------------- Checkout */
 
-fieldset {
+/* fieldset {
     position: relative;
     border-radius: 20px;
 }
@@ -313,7 +322,7 @@ legend {
 
 .summary-container {
     border-radius: 20px;
-}
+} */
 
 /* -------------------------------- Media Queries */
 
