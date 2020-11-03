@@ -16,45 +16,30 @@ def checkout(request):
 
     if request.method == 'POST':
         basket = request.session.get('basket', {})
+        for item_id, quantity in basket.items():
+            membership = get_object_or_404(Membership, pk=item_id)
 
-        form_data = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
-            'town_or_city': request.POST['town_or_city'],
-            'postcode': request.POST['postcode'],
-            'country': request.POST['country'],
-        }
-        order_form = OrderForm(form_data)
-        if order_form.is_valid:
-            order = order_form.save()
+            form_data = {
+                'full_name': request.POST['full_name'],
+                'email': request.POST['email'],
+                'street_address1': request.POST['street_address1'],
+                'street_address2': request.POST['street_address2'],
+                'town_or_city': request.POST['town_or_city'],
+                'postcode': request.POST['postcode'],
+                'country': request.POST['country'],
+            }
+            order_form = OrderForm(form_data)
+            if order_form.is_valid():
+                order = order_form.save(commit=False)
+                order.membership = membership
+                order.save()
 
-            total = 0
-            for item_id, quantity in basket.items():
-                try:
-                    membership = get_object_or_404(Membership, pk=item_id)
-                    total += quantity * membership.price
-                    order_items = Order(
-                        order=order,
-                        quantity=quantity,
-                        membership=membership,
-                    )
-                    order_items.save()
-                except membership.DoesNotExist:
-                    messages.error(request,
-                                   "One of the products in your bag wasn't found in our database."
-                                   "Please call us for assisstance!"
-                        )
-                    order.delete()
-                    return redirect(reverse('view_basket'))
-
-            request.session['save-info'] = 'save-info' in request.POST
-            return redirect(reverse(
-                'checkout_success', args=[order.order_number]))
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information')
+                request.session['save-info'] = 'save-info' in request.POST
+                return redirect(reverse(
+                    'checkout_success', args=[order.order_number]))
+            else:
+                messages.error(request, 'There was an error with your form. \
+                    Please double check your information')
 
     else:
         basket = request.session.get('basket', {})

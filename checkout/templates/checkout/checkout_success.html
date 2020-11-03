@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mb-2">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">Thank You</h2>
+                <hr class="w-50 mb-3">
+                <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-lg-7"></div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-7 text-right">
+                <a href="{% url 'routes' %}" class="btn btn-orange rounded-pill my-2">
+                <span class="icon mr-2">
+                    <i class="fas fa-biking"></i>
+                </span>
+                <span class="text-uppercase">Now check out the routes!</span>
+            </a>
+            </div>
+        </div>
+{% endblock %}

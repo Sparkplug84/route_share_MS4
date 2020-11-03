@@ -3,7 +3,8 @@ from django.db import models
 
 class Membership(models.Model):
     name = models.CharField(max_length=50)
-    friendly_name = models.CharField(max_length=50, null=True, blank=True)
+    friendly_name = models.CharField(
+        max_length=50, null=True, blank=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
