@@ -307,6 +307,12 @@ a:after {
     border-bottom: 3px solid rgb(170, 89, 22) !important;
 }
 
+/* ------------------------------- Checkout success */
+
+.order-confirmation-wrapper {
+    border-radius: 20px;
+}
+
 /* ------------------------------- Checkout */
 
 /* fieldset {
@@ -348,5 +354,11 @@ legend {
 @media (min-width: 768px) and (max-width: 991px) {
     .card-container:last-child {
         margin: auto;
+    }
+}
+
+@media (max-width: 365px) {
+    .order-number {
+        font-size: 12px;
     }
 }
