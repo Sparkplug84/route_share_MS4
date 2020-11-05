@@ -9,6 +9,7 @@
 * [How the website works](#How-the-website-works)
 * [UX: Strategy](#UX-Strategy)
 * [Scope](#Scope)
+* [Structure](#Structure)
 
 
 ### Why make Route Share?
@@ -128,3 +129,12 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 12. When the user submits the checkout form, animated loading screen will appear for a few seconds while the payment is being processed. If there is a problem with the form for example they will be redirected back to the checkout page and a message will alert them to the problem. If the checkout was successful they will be directed to a success page where a further summary of their order will be available for them to see.
 
 [↥ Back to top](#Mark-McClean)
+
+## Sketelon
+I used the Balsamiq program for the wireframes and attached them to the directory. The original idea is still recognizable from the finished application. There have obviously been some design changes along the way but the wireframe is useful to have to put the idea in your head down on paper before you start coding. The wireframes can also be view her below.<br/>
+<details>
+    <summary>
+        Home Page - Desktop
+    </summary>
+static/wireframes/Homepage-Desktop.png
+</details>
