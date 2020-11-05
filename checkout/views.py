@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.shortcuts import (
+    render, redirect, get_object_or_404, reverse, HttpResponse)
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
@@ -8,6 +10,28 @@ from membership.models import Membership
 from .models import Order
 
 import stripe
+import json
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        basket = request.session.get('basket', {})
+        for item_id, quantity in basket.items():
+            membership = get_object_or_404(Membership, pk=item_id)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            stripe.PaymentIntent.modify(pid, metadata={
+                'basket': json.dumps(request.session.get('basket', {})),
+                'save_info': request.POST.get('save_info'),
+                'username': request.user,
+                'membership': membership,
+            })
+            return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry your payment cannot be \
+            processed at the moment, please try agaon later.')
+        return HttpResponse(content=e, status=400)
 
 
 def checkout(request):
@@ -34,7 +58,7 @@ def checkout(request):
                 order.membership = membership
                 order.save()
 
-                request.session['save-info'] = 'save-info' in request.POST
+                request.session['save_info'] = 'save-info' in request.POST
                 return redirect(reverse(
                     'checkout_success', args=[order.order_number]))
             else:
