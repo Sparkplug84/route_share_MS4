@@ -313,23 +313,6 @@ a:after {
     border-radius: 20px;
 }
 
-/* ------------------------------- Checkout */
-
-/* fieldset {
-    position: relative;
-    border-radius: 20px;
-}
-
-legend {
-    position: absolute;
-    top: 10px;
-    font-size: 1.2rem;
-}
-
-.summary-container {
-    border-radius: 20px;
-} */
-
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
