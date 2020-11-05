@@ -136,5 +136,5 @@ I used the Balsamiq program for the wireframes and attached them to the director
     <summary>
         Home Page - Desktop
     </summary>
-![alt text](https://github.com/Sparkplug84/route_share_MS4/blob/f7cfa39737d6d1df96308ac81758efe50cc54ce9/static/wireframes/Homepage-Desktop.png)
+![Homepage-Desktop](https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/f7cfa39737d6d1df96308ac81758efe50cc54ce9/static/wireframes/Homepage-Desktop.png)
 </details>
