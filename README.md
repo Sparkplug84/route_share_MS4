@@ -136,5 +136,5 @@ I used the Balsamiq program for the wireframes and attached them to the director
     <summary>
         Home Page - Desktop
     </summary>
-static/wireframes/Homepage-Desktop.png
+![alt text](static/wireframes/Homepage-Desktop.png)
 </details>
