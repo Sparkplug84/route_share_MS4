@@ -22,6 +22,8 @@ class Order(models.Model):
     order_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False,
         blank=False, editable=False)
+    original_basket = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """ Generate a unique random order number """

@@ -10,7 +10,7 @@
 * [UX: Strategy](#UX-Strategy)
 * [Scope](#Scope)
 * [Structure](#Structure)
-* [Sketelon](#Skeleton)
+* [Skeleton](#Skeleton)
 
 
 ### Why make Route Share?
@@ -131,7 +131,7 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 
 [↥ Back to top](#Mark-McClean)
 
-## Sketelon
+## Skeleton
 
 ### Wireframes
 I used the Balsamiq program for the wireframes and attached them to the directory. The original idea is still recognizable from the finished application. There have obviously been some design changes along the way but the wireframe is useful to have to put the idea in your head down on paper before you start coding. The wireframes can also be view her below.<br/>

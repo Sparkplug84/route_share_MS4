@@ -56,6 +56,9 @@ def checkout(request):
             if order_form.is_valid():
                 order = order_form.save(commit=False)
                 order.membership = membership
+                pid = request.POST.get('client_secret').split('_secret')[0]
+                order.stripe_pid = pid
+                order.original_basket = json.dumps(basket)
                 order.save()
 
                 request.session['save_info'] = 'save-info' in request.POST
