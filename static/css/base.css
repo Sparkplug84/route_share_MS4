@@ -131,7 +131,7 @@ a:after {
 }
 
 .btn-outline-orange {
-    background: white;
+    background-color: white;
     color: rgb(170, 89, 22) !important;
     border: 1px solid rgb(170, 89, 22);
 }
@@ -139,7 +139,7 @@ a:after {
 .btn-outline-orange:hover,
 .btn-outline-orange:active,
 .btn-outline-orange:focus {
-    background: rgb(192, 98, 22);
+    background: rgb(170, 89, 22);
     color: white !important;
 }
 
@@ -148,7 +148,7 @@ a:after {
 .callout-btn:focus, .membership-btn:focus,
 .btn-orange:hover, .btn-orange:active,
 .btn-orange:focus {
-    background: rgb(192, 98, 22);
+    background-color: rgb(230, 124, 38);
     color: white;
 }
 
