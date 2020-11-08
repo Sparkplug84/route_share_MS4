@@ -309,7 +309,7 @@ a:after {
 
 /* ------------------------------- Checkout success */
 
-.order-confirmation-wrapper {
+.rounded-wrapper {
     border-radius: 20px;
 }
 

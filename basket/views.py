@@ -28,7 +28,7 @@ def add_to_basket(request, item_id):
 
     messages.error(request, (
         "You need to be signed in to add a Membership Plan to the basket."))
-    return redirect('account_signup')
+    return redirect('account_login')
 
 
 def empty_basket(request):
