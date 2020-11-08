@@ -2,11 +2,15 @@ import uuid
 from django.db import models
 from membership.models import Membership
 from django_countries.fields import CountryField
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
     """ Model to define all the fields required to save an order """
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(UserProfile,
+                                     on_delete=models.SET_NULL, null=True,
+                                     blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.CharField(max_length=250, null=False, blank=False)
     country = CountryField(blank_label='Country *', null=False, blank=False)
@@ -23,7 +27,8 @@ class Order(models.Model):
         max_digits=6, decimal_places=2, null=False,
         blank=False, editable=False)
     original_basket = models.TextField(null=False, blank=False, default='')
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """ Generate a unique random order number """
