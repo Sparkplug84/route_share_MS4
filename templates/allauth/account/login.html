@@ -48,13 +48,13 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a href="{% url 'home' %}" class="btn btn-outline-orange rounded-pill">
+  <a href="{% url 'home' %}" class="btn btn-outline-orange rounded-pill mb-3">
     <span class="icon">
         <i class="fas fa-chevron-left"></i>
     </span>
     <span class="text-uppercase pr-2">Home</span>
   </a>
-  <button type="submit" class="primaryAction btn btn-orange rounded-pill">
+  <button type="submit" class="primaryAction btn btn-orange rounded-pill mb-3">
     <span class="text-uppercase pl-2">{% trans "Sign In" %}</span>
     <span class="icon">
         <i class="fas fa-user"></i>
