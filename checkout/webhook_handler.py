@@ -89,6 +89,7 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            print(f"ORDER (does exist) - WEBHOOK: {order}")
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: \
@@ -96,21 +97,22 @@ class StripeWH_Handler:
         else:
             order = None
             try:
-                for item_id, quantity in json.loads(basket).items():
-                    membership = get_object_or_404(Membership, pk=item_id)
-                    order = Order.objects.create(
-                        full_name=billing_details.name,
-                        user_profile=profile,
-                        email=billing_details.email,
-                        street_address1=billing_details.line1,
-                        street_address2=billing_details.line2,
-                        town_or_city=billing_details.city,
-                        country=billing_details.address.country,
-                        membership=membership,
-                        original_basket=basket,
-                        stripe_pid=pid,
-                    )
-                    order.save()
+                # for item_id, quantity in json.loads(basket).items():
+                #     membership = get_object_or_404(Membership, pk=item_id)
+                order = Order.objects.create(
+                    full_name=billing_details.name,
+                    user_profile=profile,
+                    email=billing_details.email,
+                    street_address1=billing_details.line1,
+                    street_address2=billing_details.line2,
+                    town_or_city=billing_details.city,
+                    country=billing_details.address.country,
+                    membership=membership,
+                    original_basket=basket,
+                    stripe_pid=pid,
+                )
+                order.save()
+                print(f"ORDER (doesn't exist) - WEBHOOK: {order}")
             except Exception as e:
                 if order:
                     order.delete()
@@ -118,7 +120,7 @@ class StripeWH_Handler:
                         content=f'Webhook received: {event["type"]} \
                              | ERROR: {e}', status=500)
 
-        self._send_confirmation_email(order)
+        # self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} \
                 | SUCCESS: Created order in webhook', status=200)
