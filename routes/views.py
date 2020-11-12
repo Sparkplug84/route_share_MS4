@@ -97,9 +97,20 @@ def route_detail(request, route_id):
 
 def add_route(request):
     """ Add a route to the site """
-    form = RouteForm()
+    if request.method == 'POST':
+        form = RouteForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added a new route!')
+            return redirect(reverse('add_route'))
+        else:
+            messages.error(request, 'Failed to add new route. \
+                Please ensure the form is valid.')
+    else:
+        form = RouteForm()
     template = 'routes/add_route.html'
     context = {
         'form': form,
+        'on_add_route': True
     }
     return render(request, template, context)

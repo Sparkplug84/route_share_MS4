@@ -2,6 +2,9 @@ from django.db import models
 
 from django_countries.fields import CountryField
 
+# MinValueValidator found on stack overflow to give length field a min value.
+from django.core.validators import MinValueValidator
+
 
 class BikeType(models.Model):
     name = models.CharField(max_length=254)
@@ -31,10 +34,11 @@ class Route(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     bike_type = models.ForeignKey(
-        'BikeType', null=True, blank=True, on_delete=models.SET_NULL)
-    length = models.DecimalField(max_digits=4, decimal_places=1)
+        'BikeType', null=False, blank=False, on_delete=models.CASCADE)
+    length = models.DecimalField(
+        max_digits=4, decimal_places=1, validators=[MinValueValidator(5)])
     route_type = models.ForeignKey(
-        'RouteType', null=True, blank=True, on_delete=models.SET_NULL)
+        'RouteType', null=False, blank=False, on_delete=models.CASCADE)
     map_url = models.URLField(max_length=1054)
     country = CountryField(blank_label='Country *')
     rating = models.DecimalField(
