@@ -3,13 +3,14 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """ Order form meta data """
     class Meta:
         model = Order
         fields = ('full_name', 'email', 'street_address1',
                   'street_address2', 'postcode', 'town_or_city', 'country',)
 
     def __init__(self, *args, **kwargs):
-        """ Add placeholders and classes, remove auto-generated
+        """ Add placeholders and classes, remove auto-generated \
         labels and set autofocus on first field """
         super().__init__(*args, **kwargs)
         placeholders = {

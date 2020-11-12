@@ -6,6 +6,7 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+
     """ Model to define all the fields required to save an order """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile,

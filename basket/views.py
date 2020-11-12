@@ -9,7 +9,6 @@ def view_basket(request):
 
 def add_to_basket(request, item_id):
     """ A view to add a membership type to the basket """
-
     membership_qty = 1
     basket = request.session.get('basket', {})
 

@@ -31,13 +31,15 @@ def all_routes(request):
             if sortkey == 'route_type':
                 sortkey = 'route_type__name'
             # if sortkey == 'country':
-            #     sortkey = 'country__name'
+                # sortkey = 'country__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             routes = routes.order_by(sortkey)
+            if sortkey == 'country':
+                routes = sorted(routes, key=lambda route: route.country.name)
 
         if 'bike_type' in request.GET:
             biketypes = request.GET['bike_type'].split(',')
