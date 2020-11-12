@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mb-2">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">Route Management</h2>
+                <h4 class="title-font">Add a Route</h4>
+                <hr class="w-50 mb-3">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <form method="POST" action="{% url 'add_route' %}" class="bg-black text-white p-3 rounded-wrapper" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="bg-black pt-1">
+                        <legend class="fieldset_label px-3 w-auto text-white">
+                            <span class="icon">
+                                <i class="fas fa-route"></i>
+                            </span>
+                            Route Info
+                        </legend>
+                            {{ form|crispy }}
+                    </fieldset>
+                    <a href="{% url 'home' %}" class="btn btn-outline-orange rounded-pill mt-2">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Back to Routes</span>
+                    </a>
+                    <button class="btn btn-orange rounded-pill mt-2" type="submit">
+                        <span class="text-uppercase">Add Route</span>
+                        <span class="icon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

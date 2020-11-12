@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Route, BikeType, RouteType
+from .forms import RouteForm
 
 # Create your views here.
 
@@ -92,3 +93,13 @@ def route_detail(request, route_id):
         'route': route,
     }
     return render(request, 'routes/route_detail.html', context)
+
+
+def add_route(request):
+    """ Add a route to the site """
+    form = RouteForm()
+    template = 'routes/add_route.html'
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)

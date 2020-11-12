@@ -6,7 +6,7 @@ class RouteForm(forms.ModelForm):
 
     class Meta:
         model = Route
-        fields = '__all__'
+        exclude = ('rating',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -19,6 +19,3 @@ class RouteForm(forms.ModelForm):
 
         self.fields['route_type'].choices = route_type_friendly_names
         self.fields['bike_type'].choices = bike_type_friendly_names
-        for field_name, field in self.fields.items():
-            field.widgets.attrs['class'] = (
-                'bg-black text-white p-3 rounded-wrapper')
