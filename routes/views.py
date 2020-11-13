@@ -114,3 +114,29 @@ def add_route(request):
         'on_add_route': True
     }
     return render(request, template, context)
+
+
+def edit_route(request, route_id):
+    """ Edit an existing route """
+    route = get_object_or_404(Route, pk=route_id)
+    if request.method == 'POST':
+        form = RouteForm(request.POST, request.FILES, instance=route)
+        if form.is_valid():
+            form.save()
+            messages.success(request,
+                             f'You have successfully updated {route.name}')
+            return redirect(reverse('route_detail', args=[route.id]))
+        else:
+            messages.error(
+                request, 'Failed to update route. \
+                    Please ensure the form is valid.')
+    else:
+        form = RouteForm(instance=route)
+        messages.info(request, f'You are now editing {route.name}')
+
+    template = 'routes/edit_route.html'
+    context = {
+        'form': form,
+        'route': route,
+    }
+    return render(request, template, context)
