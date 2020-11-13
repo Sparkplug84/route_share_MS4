@@ -14,6 +14,7 @@ class RouteAdmin(admin.ModelAdmin):
         'country',
         'rating',
         'image',
+        'user',
     )
 
     ordering = ('bike_type',)

@@ -100,9 +100,9 @@ def add_route(request):
     if request.method == 'POST':
         form = RouteForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            route = form.save()
             messages.success(request, 'Successfully added a new route!')
-            return redirect(reverse('add_route'))
+            return redirect(reverse('route_detail', args=[route.id]))
         else:
             messages.error(request, 'Failed to add new route. \
                 Please ensure the form is valid.')
@@ -140,3 +140,11 @@ def edit_route(request, route_id):
         'route': route,
     }
     return render(request, template, context)
+
+
+def delete_route(request, route_id):
+    """ Delete a route from the database """
+    route = get_object_or_404(Route, pk=route_id)
+    route.delete()
+    messages.success(request, f'You have deleted {route.name}')
+    return redirect(reverse('routes'))

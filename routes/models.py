@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 from django_countries.fields import CountryField
 
@@ -46,6 +47,12 @@ class Route(models.Model):
     image_url = models.URLField(
         max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
+
+    def save(self, *args, **kwargs):
+        """ Overrides the original save the user """
+        self.user = self.request.user
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name

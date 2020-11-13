@@ -36,7 +36,7 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def save(self, *args, **kwargs):
-        """ Overrides the original save method to set the the order total """
+        """ Overrides the original save method to set the order total """
         self.order_total = self.membership.price
         if not self.order_number:
             self.order_number = self._generate_order_number()
