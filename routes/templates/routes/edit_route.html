@@ -24,11 +24,11 @@
                         </legend>
                             {{ form|crispy }}
                     </fieldset>
-                    <a href="{% url 'routes' %}" class="btn btn-outline-orange rounded-pill mt-2">
+                    <a href="{% url 'route_detail' route.id %}" class="btn btn-outline-orange rounded-pill mt-2">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="text-uppercase">Back to Routes</span>
+                        <span class="text-uppercase">Back to Route</span>
                     </a>
                     <button class="btn btn-orange rounded-pill mt-2" type="submit">
                         <span class="text-uppercase">Update Route</span>

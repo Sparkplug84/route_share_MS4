@@ -45,6 +45,24 @@
                     {% else %}
                         <small class="text-muted">No Rating</small>
                     {% endif %}
+
+                    <!-- Only Users who added the route can edit the route -->
+                    {% if request.user == route.user %}
+                    <div>
+                        <a href="{% url 'edit_route' route.id %}" class="btn-transform btn btn-outline-orange rounded-pill mt-2">
+                            <span class="icon">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                            <span class="text-uppercase">Edit Route</span>
+                        </a>
+                        <a href="{% url 'delete_route' route.id %}" class="btn-transform btn btn-outline-orange rounded-pill mt-2">
+                            <span class="icon">
+                                <i class="fas fa-trash-alt"></i>
+                            </span>
+                            <span class="text-uppercase">Delete Route</span>
+                        </a>
+                    </div>
+                    {% endif %}
                     <p class="mt-3">{{ route.description }}</p>
                 </div>
             </div>

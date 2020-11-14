@@ -99,8 +99,11 @@ def add_route(request):
     """ Add a route to the site """
     if request.method == 'POST':
         form = RouteForm(request.POST, request.FILES)
+        user = request.user
         if form.is_valid():
-            route = form.save()
+            route = form.save(commit=False)
+            route.user = user
+            route.save()
             messages.success(request, 'Successfully added a new route!')
             return redirect(reverse('route_detail', args=[route.id]))
         else:
@@ -108,6 +111,7 @@ def add_route(request):
                 Please ensure the form is valid.')
     else:
         form = RouteForm()
+        user = request.user
     template = 'routes/add_route.html'
     context = {
         'form': form,
@@ -120,7 +124,7 @@ def edit_route(request, route_id):
     """ Edit an existing route """
     route = get_object_or_404(Route, pk=route_id)
     if request.method == 'POST':
-        form = RouteForm(request.POST, request.FILES, instance=route)
+        form = RouteForm(request.POST, request.FILES, instance=route,)
         if form.is_valid():
             form.save()
             messages.success(request,
@@ -131,15 +135,24 @@ def edit_route(request, route_id):
                 request, 'Failed to update route. \
                     Please ensure the form is valid.')
     else:
-        form = RouteForm(instance=route)
-        messages.info(request, f'You are now editing {route.name}')
+        # Only users who added the route can edit the route
+        if request.user == route.user:
+            form = RouteForm(instance=route)
+            messages.info(request, f'You are now editing {route.name}')
 
-    template = 'routes/edit_route.html'
-    context = {
-        'form': form,
-        'route': route,
-    }
-    return render(request, template, context)
+            template = (
+                'routes/edit_route.html')
+            context = {
+                'form': form,
+                'route': route,
+            }
+            return render(request, template, context)
+        else:
+            messages.error(
+                request, f'Sorry, you do not have \
+                    authorization to edit {route.name}. \
+                        You can only edit routes you uploaded.')
+            return redirect(reverse('route_detail', args=[route.id]))
 
 
 def delete_route(request, route_id):

@@ -6,7 +6,7 @@ class RouteForm(forms.ModelForm):
 
     class Meta:
         model = Route
-        exclude = ('rating', 'image_url',)
+        exclude = ('rating', 'image_url', 'user',)
 
     def __init__(self, *args, **kwargs):
         """ Getting foreign key friendly names and setting paceholder names """

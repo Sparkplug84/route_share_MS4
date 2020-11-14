@@ -276,6 +276,11 @@ input[name='q']::placeholder {
     top: -8px;
 }
 
+/* -------------------------------- Route Details Page */
+
+.btn-transform {
+    transform: scale(0.8) translateX(-10px);
+}
 /* -------------------------------- Membership Page */
 
 .membership-img {
