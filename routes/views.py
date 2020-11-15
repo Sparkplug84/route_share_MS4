@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Route, BikeType, RouteType
@@ -95,6 +96,7 @@ def route_detail(request, route_id):
     return render(request, 'routes/route_detail.html', context)
 
 
+@login_required
 def add_route(request):
     """ Add a route to the site """
     if request.method == 'POST':
@@ -119,6 +121,7 @@ def add_route(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_route(request, route_id):
     """ Edit an existing route """
     route = get_object_or_404(Route, pk=route_id)
@@ -154,6 +157,7 @@ def edit_route(request, route_id):
             return redirect(reverse('route_detail', args=[route.id]))
 
 
+@login_required
 def delete_route(request, route_id):
     """ Delete a route from the database """
     route = get_object_or_404(Route, pk=route_id)
