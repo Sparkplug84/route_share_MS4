@@ -321,6 +321,13 @@ input[name='q']::placeholder {
     border-radius: 20px;
 }
 
+/* ------------------------- Add Route */
+
+.photo-fit {
+    object-fit: cover;
+    object-position: center;
+}
+
 /* ------------------------- Modal */
 
 .modal {

@@ -1,4 +1,5 @@
 from django import forms
+from .widgets import CustomClearableFileInput
 from .models import Route, RouteType, BikeType
 
 
@@ -7,6 +8,9 @@ class RouteForm(forms.ModelForm):
     class Meta:
         model = Route
         exclude = ('rating', 'image_url', 'user',)
+
+    image = forms.ImageField(
+        label='Image', required=False, widget=CustomClearableFileInput)
 
     def __init__(self, *args, **kwargs):
         """ Getting foreign key friendly names and setting paceholder names """
