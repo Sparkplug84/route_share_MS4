@@ -8,7 +8,7 @@
                 <div class="image-container my-5">
                     {% if route.image %}
                         <a href="{{ route.img.url }}" target="_blank">
-                            <img class="detail-img" src="{{ route.image.url }}" alt="{{ route.name }}">
+                            <img class="detail-img rounded-wrapper" src="{{ route.image.url }}" alt="{{ route.name }}">
                         </a>
                     {% else %}
                         <a href="">
@@ -82,13 +82,13 @@
                             <span class="icon">
                         <i class="fas fa-chevron-left"></i>
                     </span>
-                    <span>Cancel</span>
+                    <span class="mr-2">Cancel</span>
                 </a>
                 <a href="{% url 'delete_route' route.id %}" class="btn btn-orange rounded-pill">
                     <span class="icon ml-1">
                         <i class="fas fa-trash-alt"></i>
                     </span>
-                    <span>Delete</span>
+                    <span class="mr-2">Delete</span>
                 </a>
             </div>
             </div>

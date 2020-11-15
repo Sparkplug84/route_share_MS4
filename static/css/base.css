@@ -343,10 +343,6 @@ input[name='q']::placeholder {
     cursor: pointer;
 }
 
-.custom-checkbox .custom-coontrol-label::before {
-    
-}
-
 /* ------------------------- Modal */
 
 .modal {
