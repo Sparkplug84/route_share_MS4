@@ -136,6 +136,14 @@ a:after {
     border: 1px solid rgb(170, 89, 22);
 }
 
+.btn-transform {
+    transform: font-size: 5px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 .btn-outline-orange:hover,
 .btn-outline-orange:active,
 .btn-outline-orange:focus {
@@ -276,11 +284,6 @@ input[name='q']::placeholder {
     top: -8px;
 }
 
-/* -------------------------------- Route Details Page */
-
-.btn-transform {
-    transform: scale(0.8) translateX(-10px);
-}
 /* -------------------------------- Membership Page */
 
 .membership-img {
@@ -320,6 +323,12 @@ input[name='q']::placeholder {
 
 .rounded-wrapper {
     border-radius: 20px;
+}
+
+/* ------------------------- Modal */
+
+.modal {
+    top: 30%;
 }
 
 /* ------------------------- Allauth form formatting */

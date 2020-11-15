@@ -111,7 +111,6 @@ def add_route(request):
                 Please ensure the form is valid.')
     else:
         form = RouteForm()
-        user = request.user
     template = 'routes/add_route.html'
     context = {
         'form': form,
@@ -148,7 +147,7 @@ def edit_route(request, route_id):
             }
             return render(request, template, context)
         else:
-            messages.error(
+            messages.warning(
                 request, f'Sorry, you do not have \
                     authorization to edit {route.name}. \
                         You can only edit routes you uploaded.')
@@ -158,6 +157,15 @@ def edit_route(request, route_id):
 def delete_route(request, route_id):
     """ Delete a route from the database """
     route = get_object_or_404(Route, pk=route_id)
-    route.delete()
-    messages.success(request, f'You have deleted {route.name}')
-    return redirect(reverse('routes'))
+    # Only users who added the route can delete the route
+    if request.user == route.user:
+        route = get_object_or_404(Route, pk=route_id)
+        route.delete()
+        messages.success(request, f'You have deleted {route.name}')
+        return redirect(reverse('routes'))
+    else:
+        messages.warning(
+            request, f'Sorry, you do not have \
+                authorization to delete {route.name}. \
+                    You can only delete routes you uploaded.')
+        return redirect(reverse('route_detail', args=[route.id]))

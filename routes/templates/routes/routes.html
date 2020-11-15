@@ -13,7 +13,7 @@
             <div class="route-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                        <div class="sort-select-wrapper w-50">
+                        <div class="sort-select-wrapper w-100">
                             <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                 <option value="length_desc" {% if current_sorting == 'length_desc' %}selected{% endif %}>Length (high to low)</option>
@@ -34,7 +34,7 @@
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-center mt-3 text-muted text-md-left">
                             {% if search_term or current_biketypes or current_countries or current_route_types or current_sorting != 'None_None' %}
-                                <span class="small"><a class="text-orange" href="{% url 'routes' %}">Routes Home</a> | </span>
+                                <span><a class="text-orange" href="{% url 'routes' %}">Back to All Routes</a> | </span>
                             {% endif %}
                             {{ routes|length }} {% if routes|length == 1 %}Route{% else %}Routes{% endif %}{% if search_term %} found for <strong>"{{ search_term }}"</strong>
                                 {% elif current_biketypes %} found for <strong>{% for bike in current_biketypes %}{{ bike.friendly_name }}{% endfor %}</strong>
@@ -65,7 +65,7 @@
                                         <div class="col mt-1">
                                             <p class="mb-0"><i class="fas fa-map-marker-alt mr-1"></i>{{ route.length }}km</p>
                                             <p class="mb-0">
-                                                <a class="text-white" href="">
+                                                <a class="text-white" href="{% url 'routes' %}?country={{ route.country }}">
                                                     <i class="fas fa-flag mr-1"></i>{{ route.country.name }}
                                                 </a>
                                             </p>
