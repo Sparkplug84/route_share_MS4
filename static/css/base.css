@@ -377,21 +377,32 @@ input[name='q']::placeholder {
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
+    .container {
+        max-width: 80%;
+    }
 }
 
-/* fixed top navbar only on medium and up */
-/* @media (min-width: 992px) {
-    .fixed-top-desktop-only {
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1030;
+@media (max-width: 767px) {
+    .nav-link {
+        padding: 0.15rem;
     }
-} */
+    .nav-link i.fa-lg {
+        font-size: 1.2rem;
+    }
+
+    .nav-toggler {
+        padding: 0.6rem 0.6rem;
+    }
+    .title-font {
+        font-size: 12px;
+    }
+    .mobile-text {
+        font-size: 20px;
+    }
+    .dropdown-item {
+        font-size: 12px;
+    }
+}
 
 /* centres the 3rd membership column on medium screens when it wraps */
 @media (min-width: 768px) and (max-width: 991px) {
