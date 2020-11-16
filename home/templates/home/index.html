@@ -9,12 +9,21 @@
                     <h6 class="title-font text-black text-uppercase">Welcome to route share</h6>
                     <h4 class="text-black">Come and join the cycle route sharing community!</h4>
                     <div class="my-5">
-                        <h6>
-                            <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
-                        </h6>
-                        <h6>
-                            <a href="{% url 'account_signup' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Sign Up</a>
-                        </h6>
+                        {% if user.is_authenticated %}
+                            <h6>
+                                <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
+                            </h6>
+                            <h6>
+                                <a href="{% url 'membership' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Membership Options</a>
+                            </h6>
+                        {% else %}
+                            <h6>
+                                <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
+                            </h6>
+                            <h6>
+                                <a href="{% url 'account_signup' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Sign Up</a>
+                            </h6>
+                        {% endif %}
                     </div>
                 </div>
             </div>
