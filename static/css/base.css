@@ -136,6 +136,11 @@ a:after {
     border: 1px solid rgb(170, 89, 22);
 }
 
+.border-orange {
+    border-width: 2px;
+    border-color: rgb(230, 124, 38) !important;
+}
+
 .pointer {
     cursor: pointer;
 }

@@ -10,52 +10,98 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-12">
                 {% if basket_items %}
-                    <div class="table-responsive rounded">
-                        <table class="table">
-                            <thead class="text-white bg-black">
-                                <tr>
-                                    <th class="col w-25">Membership Type</th>
-                                    <th class="col w-25">Description</th>
-                                    <th class="col w-25">Quantity</th>
-                                    <th class="col w-25">Price</th>
-                                </tr>
-                            </thead>
-                            {% for item in basket_items %}
-                                <tr class="text-white bg-black">
-                                    <td class="pt-3"><strong>{{ item.membership.friendly_name }}</strong></td>
-                                    <td class="p-3">{{ item.membership.description }}</td>
-                                    <td class="p-3">{{ item.quantity }}</td>
-                                    <td class="p-3">€{{ item.membership.price }} / Month</td>
-                                </tr>
-                            
-                            <tr>
-                                <td class="py-4 text-right" colspan="5">
-                                    <h6><strong>Grand Total: €{{ item.membership.price }} / Month</strong></h6>
-                                </td>
-                            </tr>
-                            {% endfor %}
+                    <p class="title-font mt-3 font-weight-bold">Order Summary</p>
+                    <div class="summary-container rounded-wrapper bg-black">
+                        {% for item in basket_items %}
+                        <div class="row p-3">
+                            <div class="col-12 col-md-4">
+                                <h5 class="text-white">
+                                    <span class="icon">
+                                        <i class="fas fa-tag"></i>
+                                    </span>
+                                    Membership Type:
+                                </h5>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <h5 class="text-white">
+                                    {{ item.membership.friendly_name }}
+                                </h5>
+                            </div>
+                        </div>
 
-                            <tr>
-                                <td class="pt-5 text-right" colspan="5">
-                                    <a href="{% url 'empty_basket' %}" class="btn rounded-pill btn-outline-orange mt-2">
-                                        <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </span>
-                                        <span class="text-uppercase">Clear Basket</span>
-                                    </a>
-                                    <a href="{% url 'checkout' %}" class="btn rounded-pill btn-orange mt-2">
-                                        <span class="text-uppercase">Secure Checkout</span>
-                                        <span class="icon">
-                                            <i class="fas fa-lock"></i>
-                                        </span>
-                                        
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
+                        <hr class="card-divider w-100 bg-orange">
+
+                        <div class="row px-3 py-2">
+                            <div class="col-12 col-md-4">
+                                <p class="text-white">
+                                    <span class="icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </span>
+                                        Membership Description:
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <p class="text-white">
+                                    {{ item.membership.description }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row px-3 py-2">
+                            <div class="col-12 col-md-4">
+                                <p class="text-white">
+                                    <span class="icon">
+                                        <i class="fas fa-coins"></i>
+                                    </span>
+                                    Item quantity:
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <p class="text-white">
+                                    {{ item.quantity }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row px-3 py-2">
+                            <div class="col-12 col-md-4">
+                                <p class="text-white">
+                                    <span class="icon">
+                                        <i class="fas fa-coins"></i>
+                                    </span>
+                                    Price:
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <p class="text-white">
+                                    {{ item.membership.price }} / Month
+                                </p>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="text-right mt-3">
+                        <h6><strong>Grand Total: €{{ item.membership.price }} / Month</strong></h6>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="text-right">
+                        <a href="{% url 'empty_basket' %}" class="btn rounded-pill btn-outline-orange mt-2">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Clear Basket</span>
+                        </a>
+                        <a href="{% url 'checkout' %}" class="btn rounded-pill btn-orange mt-2">
+                            <span class="text-uppercase">Secure Checkout</span>
+                            <span class="icon">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </a>
+                    </div>
+                
                 {% else %}
                     <p class="lead mb-5">Your basket is empty at the moment...</p>
                     <a href="{% url 'membership' %}" class="btn rounded-pill btn-outline-orange">

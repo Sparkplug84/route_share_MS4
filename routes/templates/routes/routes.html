@@ -14,7 +14,7 @@
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-100">
-                            <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <select id="sort-selector" class="custom-select custom-select-sm rounded-pill bg-black text-white {% if current_sorting != 'None_None' %}border-orange {% else %}black{% endif %}">
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                 <option value="length_desc" {% if current_sorting == 'length_desc' %}selected{% endif %}>Length (high to low)</option>
                                 <option value="length_asc" {% if current_sorting == 'length_asc' %}selected{% endif %}>Length (low to high)</option>
