@@ -1,14 +1,11 @@
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
 from .models import Order
-from membership.models import Membership
 from profiles.models import UserProfile
 
-import json
 import time
 
 
