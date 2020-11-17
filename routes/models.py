@@ -40,7 +40,7 @@ class Route(models.Model):
         max_digits=4, decimal_places=1, validators=[MinValueValidator(5)])
     route_type = models.ForeignKey(
         'RouteType', null=False, blank=False, on_delete=models.CASCADE)
-    map_url = models.URLField(max_length=1054)
+    map_url = models.CharField(max_length=1554)
     country = CountryField(blank_label='Country *')
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)

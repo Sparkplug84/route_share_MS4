@@ -68,6 +68,18 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-12 col-lg-8 offset-lg-2">
+                <div class="map-responsive rounded-wrapper">
+                    <!-- autoescape tag found on stackoverflow to render html entered into the form -->
+                    {% autoescape off %}
+                        {{ route.map_url }}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap modal for delete route confirmation -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="delete-modal">
