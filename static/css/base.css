@@ -362,6 +362,11 @@ input[name='q']::placeholder {
     cursor: pointer;
 }
 
+.instructions-paragraph {
+    padding: 25px 15px 15px 15px;
+    margin-bottom: 0;
+}
+
 /* ------------------------- Modal */
 
 .modal {

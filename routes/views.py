@@ -173,3 +173,9 @@ def delete_route(request, route_id):
                 authorization to delete {route.name}. \
                     You can only delete routes you uploaded.')
         return redirect(reverse('route_detail', args=[route.id]))
+
+
+def add_instructions(request):
+    """ A view to render the add route instructions """
+    template = 'routes/add_instructions.html'
+    return render(request, template)

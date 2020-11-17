@@ -27,7 +27,7 @@ class RouteForm(forms.ModelForm):
             'bike_type': 'Bike Type',
             'length': 'Length (min. 5km)',
             'route_type': 'Route Type',
-            'map_url': 'Google Map link',
+            'map_url': 'Google Map Code',
             'country': 'Country',
             'image': 'Route Image',
         }
