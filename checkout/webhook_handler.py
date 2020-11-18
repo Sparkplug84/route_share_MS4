@@ -94,8 +94,6 @@ class StripeWH_Handler:
         else:
             order = None
             try:
-                # for item_id, quantity in json.loads(basket).items():
-                #     membership = get_object_or_404(Membership, pk=item_id)
                 order = Order.objects.create(
                     full_name=billing_details.name,
                     user_profile=profile,
@@ -117,7 +115,7 @@ class StripeWH_Handler:
                         content=f'Webhook received: {event["type"]} \
                              | ERROR: {e}', status=500)
 
-        # self._send_confirmation_email(order)
+        self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} \
                 | SUCCESS: Created order in webhook', status=200)

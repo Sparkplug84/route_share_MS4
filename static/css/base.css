@@ -191,6 +191,11 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+.social {
+    font-size: 2rem;
+    text-decoration: none;
+}
+
 /* -------------------------------- Bootstrap toasts */
 
 .message-container {
@@ -434,5 +439,11 @@ input[name='q']::placeholder {
 @media (max-width: 365px) {
     .order-number {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 991px) {
+    .fa-2x {
+    font-size: 4em;
     }
 }

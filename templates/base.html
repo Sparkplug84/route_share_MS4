@@ -133,6 +133,69 @@
     {% block content %}
     {% endblock %}
 
+    <footer class="bg-black p-3">
+        <div class="row mt-3">
+            <div class="col-12 col-md-4">
+                <ul>
+                    <li><h4 class="title-font text-white ml-2">Route Share</h4></li>
+                    <li class="m-2">
+                        <a href="{% url 'home' %}" class="text-white">
+                            <span class="icon">
+                                <i class="fas fa-biking"></i>
+                            </span>
+                            Home
+                        </a>
+                    </li>
+                    <li class="m-2">
+                        <a href="{% url 'membership' %}" class="text-white">
+                            <span class="icon">
+                                <i class="fas fa-file-signature"></i>
+                            </span>
+                            Membership
+                        </a>
+                    </li>
+                    <li class="m-2">
+                        <a href="" class="text-white">
+                            <span class="icon">
+                                <i class="fas fa-comments"></i>
+                            </span>
+                            Forum
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 text-center text-white">
+                <h4 class="title-font text-white">Info</h4>
+                <p class="mb-2">Developer: Mark McClean</p>
+                <p>For Educational Purposes</p>
+            </div>
+            <div class="col-12 col-md-4 text-right">
+                <ul class="pr-5">
+                    <li>
+                        <h4 class="title-font text-white mr-2">Social</h4>
+                    </li>
+                    <li class="m-2">
+                        <a href="" class="text-white px-2">
+                            <span class="icon">
+                                <i class="fab fa-github social"></i>
+                            </span>
+                        </a>
+                        <a href="" class="text-white px-2">
+                            <span class="icon">
+                                <i class="fab fa-linkedin social"></i>
+                            </span>
+                        </a>
+                        <a href="" class="text-white px-2 social">
+                            <span class="icon">
+                                <i class="fab fa-facebook "></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
