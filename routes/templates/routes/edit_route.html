@@ -12,6 +12,30 @@
         </div>
 
         <div class="row">
+
+            <div class="col-12 col-lg-6 order-lg-last mb-3">
+                <div class="instructions-container bg-black text-white p-0 rounded-wrapper">
+                    <div class="instructions-head p-3">
+                        <h4 class="pt-1">
+                            <span class="icon">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            Instructions
+                        </h4>
+                        <p>Please use
+                            <a href="https://www.google.com/maps" target="_blank">Google Maps<span class="icon"><i class="fas fa-external-link-alt"></i></span></a>
+                            desktop version to create your route as it will not 
+                            be possible to access the route code in the mobile version.
+                        </p>
+                    </div>
+                    <hr class="card-divider w-100 bg-orange">
+                    <div class="instructions-body p-3">
+                        <p>For a full list of instructions on how to create your Google Map 
+                            route, and get the route code to enter into this form, please click <a href="{% url 'add_instructions' %}" target="_blank">here<span class="icon"><i class="fas fa-external-link-alt"></i></span></a>.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="col-12 col-lg-6">
                 <form method="POST" action="{% url 'edit_route' route.id %}" class="bg-black text-white p-3 rounded-wrapper" enctype="multipart/form-data">
                     {% csrf_token %}

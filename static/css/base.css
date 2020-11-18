@@ -410,18 +410,17 @@ input[name='q']::placeholder {
     .nav-link i.fa-lg {
         font-size: 1.2rem;
     }
-
     .nav-toggler {
         padding: 0.6rem 0.6rem;
-    }
-    .title-font {
-        font-size: 14px;
     }
     .mobile-text {
         font-size: 20px;
     }
     .dropdown-item {
         font-size: 12px;
+    }
+    .loading-icon {
+        font-size: 20px;
     }
 }
 
