@@ -362,6 +362,8 @@ input[name='q']::placeholder {
     cursor: pointer;
 }
 
+/* ------------------------- Add Route Instructions Page */
+
 .instructions-paragraph {
     padding: 25px 15px 15px 15px;
     margin-bottom: 0;
@@ -403,7 +405,7 @@ input[name='q']::placeholder {
 
 @media (max-width: 767px) {
     .nav-link {
-        padding: 0.15rem;
+        padding: 0.3rem;
     }
     .nav-link i.fa-lg {
         font-size: 1.2rem;
@@ -413,7 +415,7 @@ input[name='q']::placeholder {
         padding: 0.6rem 0.6rem;
     }
     .title-font {
-        font-size: 12px;
+        font-size: 14px;
     }
     .mobile-text {
         font-size: 20px;

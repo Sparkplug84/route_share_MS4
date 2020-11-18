@@ -83,7 +83,7 @@
 
     <!-- Bootstrap modal for delete route confirmation -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="delete-modal">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog">
             <div class="modal-content bg-black text-white rounded-wrapper">
             <div class="modal-header">
                 <h6 class="modal-title" id="myModalLabel">Are you sure you want to delete this route?</h6>
@@ -94,13 +94,13 @@
                             <span class="icon">
                         <i class="fas fa-chevron-left"></i>
                     </span>
-                    <span class="mr-2">Cancel</span>
+                    <span class="mr-2 text-uppercase pr-2">Cancel</span>
                 </a>
                 <a href="{% url 'delete_route' route.id %}" class="btn btn-orange rounded-pill">
                     <span class="icon ml-1">
                         <i class="fas fa-trash-alt"></i>
                     </span>
-                    <span class="mr-2">Delete</span>
+                    <span class="mr-2 text-uppercase pl-2">Delete</span>
                 </a>
             </div>
             </div>
