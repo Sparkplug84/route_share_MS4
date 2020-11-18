@@ -103,14 +103,14 @@
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
-                    <div class="submit-button text-right mt-5 mb-2">
+                    <div class="text-right mt-5 mb-2">
                         <a href="{% url 'view_basket' %}" class="btn btn-outline-orange rounded-pill mt-2">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="text-uppercase pr-2">Back to basket</span>
                         </a>
-                        <button id="submit-button" class="btn btn-orange rounded-pill mt-2">
+                        <button id="submit-button" class="btn btn-orange rounded-pill mt-2" type="none">
                             <span class="text-uppercase pl-2">Complete Order</span>
                             <span class="icon">
                                 <i class="fas fa-lock"></i>
