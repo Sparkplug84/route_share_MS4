@@ -234,3 +234,29 @@ I used the Balsamiq program for the wireframes and attached them to the director
 </details>
 
 [↥ Back to top](#Mark-McClean)
+
+## Technologies & tools Used
+* [Gitpod]( https://www.gitpod.io/) – Used as my IDE for the development of the website. 
+* HTML – Used to write the code for the structure and layout of all templates in the site.
+* CSS – Used for custom styling of many HTML elements and some animations.
+* Python – The core backend language used to create the logic for the views.
+* [Django](https://www.djangoproject.com/) – This is a Python based framework which uses a model-template-view approach as the architectural engine. 
+* Jinja - This templating language was used to project some of the Python functionality and template variables onto the frontend to create a dynamic site which automatically updates when user data is submitted.
+* Javascript – Used to provide some interactive features of the website and to handle the checkout form submission
+* jQuery – Used for several post-load JS scripts on the templates, the delete route modal and also to initialize some Bootstrap components.
+* Popper.JS – Used to aid the responsiveness of the website.
+* [Bootstrap]( https://getbootstrap.com/) – Bootstrap was used to provide the navbar, footer and the use of a grid system. Many bootstrap classes were also used throughout the site to add pre-existing colours, padding and margins to elements. 
+* [Font Awesome]( https://fontawesome.com/) - for all site icons
+* [Google Font](https://fonts.google.com/) - 1 Font was imported from Google Fonts and the URL can be found in the base template.
+* sqlite3 – Was used as the backend development database and provided for by the Django framework
+* Postgtres – Was used as the deployed database, provided for through Heroku
+* [Heroku]( https://www.heroku.com/) – Used to deploy the website and hosted on Heroku’s cloud platform
+* Git – Used for version control
+* [Github](https://github.com/Sparkplug84/route_share_MS4) – Used to store the repository of all committed versions of the code. Also linked to Heroku to enable automatic deployment simultaneously. 
+* Balsamiq - This was used to build the wireframes that were then uploaded to the Gitpod IDE.
+* [Tables Generator](https://www.tablesgenerator.com/) - Used to create the tables inserted here in the README file.
+* [Codacy](https://www.codacy.com/) – Used to validate all code on the entire site instead of copying and pasting many files one at a time into the various HTML, CSS, JS and Python code validators.
+* Google Chrome Developer Tools – Used frequently to check and examine all elements and styles throughout the development. Even adjusting live in the browser before updating the corresponding code in Gitpod.
+* [Google Maps](https://www.google.com/maps/) – Used to generate the html <iframe> element of the users route so it can pasted it in to the add route form.
+
+[↥ Back to top](#Mark-McClean)
