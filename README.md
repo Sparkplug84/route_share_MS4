@@ -11,7 +11,15 @@
 * [Scope](#Scope)
 * [Structure](#Structure)
 * [Skeleton](#Skeleton)
+* [Technologies Used](#Technologies-Used)
 
+### View the live project
+The live website hosted by Heroku can be viewed [here](https://bicycle-route-share.herokuapp.com/).
+
+If you wish to test out the checkout form and payment please use the following test card details:
+Card No: 4242 4242 4242 4242
+Expiry Date: Any future Date
+CVC & ZIP: Any numbers
 
 ### Why make Route Share?
 
@@ -134,7 +142,7 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 ## Skeleton
 
 ### Wireframes
-I used the Balsamiq program for the wireframes and attached them to the directory. The original idea is still recognizable from the finished application. There have obviously been some design changes along the way but the wireframe is useful to have to put the idea in your head down on paper before you start coding. The wireframes can also be view her below.<br/>
+I used the Balsamiq program for the wireframes and attached them to the directory. The original idea is still recognizable from the finished application. There have obviously been some design changes along the way but the wireframe is useful to have to put the idea in your head down on paper before you start coding. The wireframes can also be viewed her below.<br/>
 <details>
     <summary>
         Home Page - Desktop

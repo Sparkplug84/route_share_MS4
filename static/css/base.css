@@ -6,8 +6,15 @@ body {
     color: #000;
     font-family: 'Roboto';
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+/* This helps to push footer to bottom when little content, found on stack overflow */
+section {
+    flex: 1 0 auto;
+}
+    
 /* ---------------------------- Homepage */
 
 .homepage-photo1 {
@@ -68,6 +75,25 @@ a:after {
   width: 100%;
   left: 0;
   background: rgb(170, 89, 22)
+}
+
+/* ------------------------- Footer */
+
+/* This helps to push footer to bottom when little content, found on stack overflow */
+footer {
+    flex-shrink: 0;
+}
+
+.footer-link:hover {
+    color: rgb(170, 89, 22) !important;
+}
+
+.footer-link {
+    transition: color 0.5s ease-in-out;
+}
+
+.footer-hr {
+    width: 200px;
 }
 
 /* ------------------------- Site icons */
@@ -182,6 +208,10 @@ a:after {
     background-color: rgb(170, 89, 22) !important;
 }
 
+.bg-white {
+    background-color: #fff;
+}
+
 /* found this tip on stackoverflow on how to change toggler icon to different colour */
 .navbar-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(170,89,22, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
@@ -191,10 +221,6 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
-.social {
-    font-size: 2rem;
-    text-decoration: none;
-}
 
 /* -------------------------------- Bootstrap toasts */
 
@@ -272,7 +298,7 @@ input[name='q']::placeholder {
 .btt-button {
     height: 42px;
     width: 42px;
-    position: fixed;
+    position: sticky;
     bottom: 10px;
     right: 10px;
     border-radius: 50%;
@@ -309,7 +335,7 @@ input[name='q']::placeholder {
 .membership-img {
     background: url(/media/membership1.jpg) no-repeat center;
     background-size: cover;
-    background-position: 50% 75%;
+    height: 75vh;
 }
 
 .membership-card {
@@ -329,8 +355,6 @@ input[name='q']::placeholder {
 .membership-desc {
     min-height: 100px;
 }
-
-
 
 /* -------------------------------- Basket Page */
 
@@ -426,6 +450,13 @@ input[name='q']::placeholder {
     }
     .loading-icon {
         font-size: 20px;
+    }
+    .footer-hr {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .footer-section {
+        margin-bottom: 2rem;
     }
 }
 
