@@ -11,7 +11,7 @@
 * [Scope](#Scope)
 * [Structure](#Structure)
 * [Skeleton](#Skeleton)
-* [Technologies Used](#Technologies-Used)
+* [Technologies Used](#Technologies-&-tools-Used)
 
 ### View the live project
 The live website hosted by Heroku can be viewed [here](https://bicycle-route-share.herokuapp.com/).

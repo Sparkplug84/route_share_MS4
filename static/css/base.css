@@ -23,14 +23,19 @@ section {
 
 img.break-img {
     opacity: 0.1;
+    padding: 30px;
 }
 
+.homepage-photo4 {
+    margin-bottom: -3rem;
+}
 
 .info-container {
     padding: 30px;
     background-color: black;
     opacity: 0.8;
     border-radius: 20px;
+    margin-left: 15px;
 }
 
 .homepage-photo1 {
@@ -46,29 +51,15 @@ img.break-img {
 }
 
 .homepage-photo3 {
-    background: url('/media/homepage3.jpg') no-repeat center center fixed;
+    background: url('/media/homepage11.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
 }
 
-.text-section {
-    background-size: contain;
-    height: 75%;
-    position: relative;
-}
-
-/* from CSS Tricks tranparent background image */
-.text-section::after {
-    content: "";
-    background: url('/media/tours_path.png') no-repeat center center;
-    background-size: contain;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1; 
-    opacity: 0.1;
+.homepage-photo4 {
+    background: url('/media/homepage3.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
 }
 
 /* Underline hover effect on main navbar found on codepen */
@@ -157,7 +148,7 @@ footer {
 .callout-btn {
     background-color: rgb(170, 89, 22);
     color: white;
-    min-width: 260px;
+    min-width: 250px;
 }
 
 .membership-btn {
@@ -474,6 +465,9 @@ input[name='q']::placeholder {
     .footer-section {
         margin-bottom: 2rem;
     }
+    .break-img {
+    padding: 15px !important;
+    }
 }
 
 /* centres the 3rd membership column on medium screens when it wraps */
@@ -491,6 +485,6 @@ input[name='q']::placeholder {
 
 @media (max-width: 991px) {
     .fa-2x {
-    font-size: 4em;
+        font-size: 4em;
     }
 }

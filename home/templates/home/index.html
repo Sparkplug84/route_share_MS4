@@ -5,100 +5,76 @@
     <div class="homepage-photo1">
         <div class="container h-100 ">
             <div class="row h-100">
-                <div class="col-10 col-md-5 my-auto">
-                    <h6 class="title-font text-black text-uppercase">Welcome to route share</h6>
-                    <h4 class="mobile-text text-black">Come and join the cycle route sharing community!</h4>
-                    <div class="my-5">
-                        {% if user.is_authenticated %}
-                            <h6>
-                                <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
-                            </h6>
-                            <h6>
-                                <a href="{% url 'membership' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Membership Options</a>
-                            </h6>
-                        {% else %}
-                            <h6>
-                                <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
-                            </h6>
-                            <h6>
-                                <a href="{% url 'account_signup' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Sign Up</a>
-                            </h6>
-                        {% endif %}
+                <div class="col-10 col-md-6 my-auto">
+                    <div class="row">
+                        <div class="col info-container">
+                            <h6 class="title-font text-white text-uppercase">Welcome to route share</h6>
+                            <h4 class="mobile-text text-white mb-0">Come and join the cycle route sharing community!</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col callout-buttons">
+                            <div class="my-5">
+                                {% if user.is_authenticated %}
+                                    <h6>
+                                        <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
+                                    </h6>
+                                    <h6>
+                                        <a href="{% url 'membership' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Membership Options</a>
+                                    </h6>
+                                {% else %}
+                                    <h6>
+                                        <a href="{% url 'routes' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Find a Route</a>
+                                    </h6>
+                                    <h6>
+                                        <a href="{% url 'account_signup' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Sign Up</a>
+                                    </h6>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="w-100">
-        <img src="{{ MEDIA_URL }}tours_path.png" alt="Cycling sketch" class="img-fluid break-img text-center">
-    </div>
-
-    <!-- <div class="text-section">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="offset-md-7 col-10 col-md-5 my-auto">
-                    <h6 class="title-font text-black text-uppercase">Discover Routes</h6>
-                    <h4 class="mobile-text text-black">Find a great route based on your own needs. Search by country, area or length.</h4>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    <img src="{{ MEDIA_URL }}tours_path.png" alt="Cycling sketch" class="img-fluid break-img">
 
     <div class="homepage-photo2">
         <div class="container h-100">
             <div class="row h-100">
                 <div class="offset-md-7 col-10 col-md-5 my-auto info-container">
                     <h6 class="title-font text-white text-uppercase">Discover Routes</h6>
-                    <h4 class="mobile-text text-white">Find a great route based on your own needs. Search by country, area or length.</h4>
+                    <h4 class="mobile-text text-white mb-0">Find a great route based on your own needs. Search by country, area or length.</h4>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <div class="text-section">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-10 col-md-5 my-auto">
-                    <h6 class="title-font text-black text-uppercase">Cycle and enjoy</h6>
-                    <h4 class="mobile-text text-black">You can even find routes based on your bike type, save them to your profile and give them a rating.</h4>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <img src="{{ MEDIA_URL }}tours_path.png" alt="Cycling sketch" class="img-fluid break-img">
 
     <div class="homepage-photo3">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="col-10 col-md-5 my-auto info-container">
+                <div class="col-10 col-md-6 my-auto info-container">
                     <h6 class="title-font text-white text-uppercase">Cycle and enjoy</h6>
-                    <h4 class="mobile-text text-white">You can even find routes based on your bike type, save them to your profile and give them a rating.</h4>
+                    <h4 class="mobile-text text-white mb-0">You can even find routes based on your bike type, save them to your profile and give them a rating.</h4>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <div class="text-section">
+    <img src="{{ MEDIA_URL }}tours_path.png" alt="Cycling sketch" class="img-fluid break-img">
+
+    <div class="homepage-photo4">
         <div class="container h-100">
             <div class="row h-100">
-                <div class="offset-md-7 col-10 col-md-5 my-auto">
-                    <h6 class="title-font text-black text-uppercase">Inspire others</h6>
-                    <h4 class="mobile-text text-black">Create your own route, upload it and share it with the whole community.</h4>
+                <div class="offset-md-7 col-10 col-md-5 my-auto info-container">
+                    <h6 class="title-font text-white text-uppercase">Inspire others</h6>
+                    <h4 class="mobile-text text-white mb-0">Create your own route, upload it and share it with the whole community.</h4>
                 </div>
             </div>
         </div>
-    </div> -->
-
-    <img src="{{ MEDIA_URL }}tours_path.png" alt="Cycling sketch" class="img-fluid break-img text-center">
-
-    <!-- <div>
-        <img src="{{ MEDIA_URL }}homepage1.jpg" alt="Cycling 1" class="img-fluid position-fixed">
     </div>
-
-    <div>
-        <img src="{{ MEDIA_URL }}tours_path.png" alt="Cycling sketch" class="img-fluid break-img">
-    </div> -->
     
 {% endblock %}
