@@ -35,7 +35,7 @@ img.break-img {
     background-color: black;
     opacity: 0.8;
     border-radius: 20px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 
 .homepage-photo1 {
@@ -148,7 +148,7 @@ footer {
 .callout-btn {
     background-color: rgb(170, 89, 22);
     color: white;
-    min-width: 250px;
+    min-width: 260px;
 }
 
 .membership-btn {
@@ -412,6 +412,14 @@ input[name='q']::placeholder {
     margin-bottom: 0;
 }
 
+.instruction-desktop-1,
+.instruction-desktop-2,
+.instruction-desktop-3,
+.instruction-desktop-4,
+.instruction-desktop-5 {
+    display: none;
+}
+
 /* ------------------------- Modal */
 
 .modal {
@@ -493,5 +501,22 @@ input[name='q']::placeholder {
 @media (max-width: 991px) {
     .fa-2x {
         font-size: 4em;
+    }
+}
+
+@media (min-width: 767px) {
+    .instruction-desktop-1,
+    .instruction-desktop-2,
+    .instruction-desktop-3,
+    .instruction-desktop-4,
+    .instruction-desktop-5 {
+        display: block;
+    }
+    .instruction-mobile-1,
+    .instruction-mobile-2,
+    .instruction-mobile-3,
+    .instruction-mobile-4,
+    .instruction-mobile-5 {
+        display: none;
     }
 }

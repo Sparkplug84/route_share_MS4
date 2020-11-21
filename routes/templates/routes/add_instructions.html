@@ -10,14 +10,14 @@
                 <hr class="w-50 mb-3">
             </div>
         </div>
-
+        
         <div class="row">
             <div class="col">
                 <div class="instructions-container bg-black text-white rounded-wrapper mt-3">
                     <p class="instructions-paragraph">
                         <strong>Important Info:</strong> 
                             You will need to carry out the following instructions on the 
-                            <a href="https://www.google.com/maps" target="_blank">Google Maps<span class="icon"><i class="fas fa-external-link-alt"></i></span></a> desktop version as 
+                            <a href="https://www.google.com/maps" target="_blank">Google Maps<span class="icon"><i class="fas fa-external-link-alt"></i></span></a> <u>desktop version</u> as 
                             the code you will receive is not available on the mobile version of Google Maps.
                     </p>
                     <p class="instructions-paragraph">
@@ -26,21 +26,24 @@
                             click on the menu button in the top left of the screen.
                     </p>
 
-                    <img src="{{ MEDIA_URL }}googlemap1.png" alt="Google Maps Step 1" class="img-fluid">
+                    <img src="{{ MEDIA_URL }}googlemapmobile1.png" alt="Google Maps Step 1" class="img-fluid instruction-mobile-1">
+                    <img src="{{ MEDIA_URL }}googlemap1.png" alt="Google Maps Step 1" class="img-fluid instruction-desktop-1">
 
                     <p class="instructions-paragraph">
                         <strong>Step 2:</strong> 
                             From the menu select 'Share or embed map'.
                     </p>
 
-                    <img src="{{ MEDIA_URL }}googlemap2.png" alt="Google Maps Step 2" class="img-fluid">
+                    <img src="{{ MEDIA_URL }}googlemapmobile2.png" alt="Google Maps Step 2" class="img-fluid instruction-mobile-2">
+                    <img src="{{ MEDIA_URL }}googlemap2.png" alt="Google Maps Step 2" class="img-fluid instruction-desktop-2">
 
                     <p class="instructions-paragraph">
                         <strong>Step 3:</strong> 
                             On the next screen select the tab 'Embed a map'.
                     </p>
 
-                    <img src="{{ MEDIA_URL }}googlemap3.png" alt="Google Maps Step 3" class="img-fluid">
+                    <img src="{{ MEDIA_URL }}googlemapmobile3.png" alt="Google Maps Step 3" class="img-fluid instruction-mobile-3">
+                    <img src="{{ MEDIA_URL }}googlemap3.png" alt="Google Maps Step 3" class="img-fluid instruction-desktop-3">
 
                     <p class="instructions-paragraph">
                         <strong>Step 4:</strong> 
@@ -48,30 +51,32 @@
                             This will copy the map code on to your clipboard.
                     </p>
 
-                    <img src="{{ MEDIA_URL }}googlemap4.png" alt="Google Maps Step 4" class="img-fluid">
+                    <img src="{{ MEDIA_URL }}googlemapmobile4.png" alt="Google Maps Step 4" class="img-fluid instruction-mobile-4">
+                    <img src="{{ MEDIA_URL }}googlemap4.png" alt="Google Maps Step 4" class="img-fluid instruction-desktop-4">
 
                     <p class="instructions-paragraph">
                         <strong>Step 5:</strong>
                             Finally paste the map code into the 'Google Map Code' field of the Add Route form.   
                     </p>
 
-                    <img src="{{ MEDIA_URL }}googlemap5.PNG" alt="Google Maps Step 5" class="img-fluid mt-2">
+                    <img src="{{ MEDIA_URL }}googlemapmobile5.png" alt="Google Maps Step 5" class="img-fluid mt-2 instruction-mobile-5">
+                    <img src="{{ MEDIA_URL }}googlemap5.PNG" alt="Google Maps Step 5" class="img-fluid mt-2 instruction-desktop-5">
                 </div>
 
                 <div class="text-right my-3">
-                        <a href="{% url 'home' %}" class="btn rounded-pill btn-outline-orange mt-2">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="text-uppercase pr-2">Home</span>
-                        </a>
-                        <a href="{% url 'add_route' %}" class="btn rounded-pill btn-orange mt-2">
-                            <span class="text-uppercase pl-2">Back to Add Route</span>
-                            <span class="icon">
-                                <i class="fas fa-plus"></i>
-                            </span>
-                        </a>
-                    </div>
+                    <a href="{% url 'home' %}" class="btn rounded-pill btn-outline-orange mt-2">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase pr-2">Home</span>
+                    </a>
+                    <a href="{% url 'add_route' %}" class="btn rounded-pill btn-orange mt-2">
+                        <span class="text-uppercase pl-2">Back to Add Route</span>
+                        <span class="icon">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

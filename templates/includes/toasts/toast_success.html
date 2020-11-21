@@ -1,4 +1,4 @@
-{% if basket_items and not on_profile_page and not on_add_route %}
+{% if basket_items and not on_profile_page and not on_add_route and not on_route_detail %}
 <div class="toast custom-toast" data-autohide="false">
 {% else %}
 <div class="toast custom-toast" data-autohide="true" data-delay="5000">
@@ -9,7 +9,7 @@
             <i class="far fa-check-circle"></i>
         </span>
         <strong class="mr-auto">Success!</strong>
-        {% if basket_items and not on_profile_page and not on_add_route %}
+        {% if basket_items and not on_profile_page and not on_add_route and not on_route_detail %}
         <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col">
                 {{ message }}
-                {% if basket_items and not on_profile_page and not on_add_route %}
+                {% if basket_items and not on_profile_page and not on_add_route and not on_route_detail %}
                 <hr class="mt-1 mb-3">
                 <p class="text-black bg-white mb-0"><i class="fas fa-shopping-bag fa-lg mr-1"></i><strong>Your Basket</strong></p>
                 {% for item in basket_items %}

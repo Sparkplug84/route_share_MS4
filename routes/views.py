@@ -92,6 +92,7 @@ def route_detail(request, route_id):
 
     context = {
         'route': route,
+        'on_route_detail': True
     }
     return render(request, 'routes/route_detail.html', context)
 
