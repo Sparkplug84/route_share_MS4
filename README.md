@@ -11,7 +11,7 @@
 * [Scope](#Scope)
 * [Structure](#Structure)
 * [Skeleton](#Skeleton)
-* [Technologies Used](#Technologies-&-tools-Used)
+* [Technologies Used](#Technologies-Used)
 
 ### View the live project
 The live website hosted by Heroku can be viewed [here](https://bicycle-route-share.herokuapp.com/).
@@ -243,7 +243,7 @@ I used the Balsamiq program for the wireframes and attached them to the director
 
 [↥ Back to top](#Mark-McClean)
 
-## Technologies & tools Used
+## Technologies Used
 * [Gitpod]( https://www.gitpod.io/) – Used as my IDE for the development of the website. 
 * HTML – Used to write the code for the structure and layout of all templates in the site.
 * CSS – Used for custom styling of many HTML elements and some animations.

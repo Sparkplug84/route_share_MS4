@@ -323,6 +323,9 @@ input[name='q']::placeholder {
     top: -8px;
 }
 
+/* ----------------------------- Route Details */
+
+/* Rendering a responsive google map found on https://www.ostraining.com/blog/coding/responsive-google-maps/ */
 .map-responsive{
     overflow:hidden;
     padding-bottom:56.25%;
@@ -332,9 +335,13 @@ input[name='q']::placeholder {
 .map-responsive iframe{
     left:0;
     top:0;
-    height:400px;
+    height:100%;
     width:100%;
     position:absolute;
+}
+
+.map-container {
+    min-height: 350px;
 }
 
 /* -------------------------------- Membership Page */
