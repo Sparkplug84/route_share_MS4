@@ -17,22 +17,38 @@ section {
     
 /* ---------------------------- Homepage */
 
+.img-fluid {
+    width: 100vw;
+}
+
+img.break-img {
+    opacity: 0.1;
+}
+
+
+.info-container {
+    padding: 30px;
+    background-color: black;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
 .homepage-photo1 {
     background: url('/media/homepage10.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: 100%;
+    height: 100vh;
 }
 
 .homepage-photo2 {
     background: url('/media/homepage2.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: 100%;
+    height: 100vh;
 }
 
 .homepage-photo3 {
     background: url('/media/homepage3.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: 100%;
+    height: 100vh;
 }
 
 .text-section {
