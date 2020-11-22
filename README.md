@@ -17,9 +17,9 @@
 The live website hosted by Heroku can be viewed [here](https://bicycle-route-share.herokuapp.com/).
 
 If you wish to test out the checkout form and payment please use the following test card details:
-Card No: 4242 4242 4242 4242
-Expiry Date: Any future Date
-CVC & ZIP: Any numbers
+* Card No: 4242 4242 4242 4242
+* Expiry Date: Any future Date
+* CVC & ZIP: Any numbers
 
 ### Why make Route Share?
 

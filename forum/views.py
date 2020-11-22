@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
 
-def index(request):
+def forum(request):
     """ A view to return index page """
-    return render(request, 'home/index.html')
+    return render(request, 'forum/forum.html')
