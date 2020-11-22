@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from .models import ForumPost, ForumPostReply
 from .forms import ForumForm
@@ -13,6 +13,20 @@ def forum(request):
         'on_forum_page': True
     }
     return render(request, 'forum/forum.html', context)
+
+
+def view_post(request, post_id):
+    """ A view to render the selected post along with any comments """
+    post = get_object_or_404(ForumPost, pk=post_id)
+    post_replies = ForumPostReply.objects.filter(
+        post_id=post_id).order_by('-reply_date')
+
+    template = 'forum/view_post.html'
+    context = {
+        'post': post,
+        'post_replies': post_replies,
+    }
+    return render(request, template, context)
 
 
 def add_post(request):

@@ -53,6 +53,7 @@
                             <div class="col">
                                 <strong>Post:</strong><p class="minimize d-inline"> {{ post.post }}</p>
                                 <p class="small mt-3">Posted by: {{ post.post_user }} on {{ post.post_date }}</p>
+                                <a href="{% url 'view_post' post.id %}">Comments</a>
                             </div>
                         </div>
                     </div>

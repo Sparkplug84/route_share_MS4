@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">Forum</h2>
+                <hr class="w-50 mb-3">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-12 col-md-8">
+                <div class="post-container bg-black text-white rounded-wrapper mb-5">
+                    <div class="row p-3">
+                        <div class="col">
+                            <h4 class="mb-0"><strong>Title:</strong> {{ post.title }}</h4>
+                        </div>
+                    </div>
+                    <hr class="card-divider w-100 bg-orange">
+                    <div class="row p-3">
+                        <div class="col">
+                            <strong>Post:</strong><p class="d-inline"> {{ post.post }}</p>
+                            <p class="small mt-3">Posted by: {{ post.post_user }} on {{ post.post_date }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="btt-button shadow-sm bg-orange float-right">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up text-white mx-auto my-auto"></i>
+        </a>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+        <script type="text/javascript">
+            $('.btt-link').click(function(e) {
+                window.scrollTo(0,0)
+            })
+        </script>
+{% endblock %}
