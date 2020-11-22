@@ -10,10 +10,64 @@
             </div>
         </div>
     </div>
-    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                {% for post in forum_posts %}
+                    <div class="post-container bg-black text-white rounded-wrapper">
+                        <div class="row p-3">
+                            <div class="col">
+                                <h4 class="mb-0">Title: {{ post.title }}</h4>
+                            </div>
+                        </div>
+                        <hr class="card-divider w-100 bg-orange">
+                        <div class="row p-3">
+                            <div class="col">
+                                <p class="minimize">Post: {{ post.post }}</p>
+                                <p class="small">Posted by: {{ post.post_user }} on {{ post.post_date }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="btt-button shadow-sm bg-orange float-right">
         <a class="btt-link d-flex h-100">
             <i class="fas fa-arrow-up text-white mx-auto my-auto"></i>
         </a>
     </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+        <!-- Function to reveal and hide more of the post found on
+            http://jsfiddle.net/iambriansreed/bjdSF/ -->
+        <script type="text/javascript">
+            jQuery(function(){
+
+                var minimized_elements = $('p.minimize');
+                minimized_elements.each(function(){    
+                    var t = $(this).text();        
+                    if(t.length < 100) return;
+                    
+                    $(this).html(
+                        t.slice(0,100)+'<span>... </span><a href="#" class="more">More</a>'+
+                        '<span style="display:none;">'+ t.slice(100,t.length)+' <a href="#" class="less">Less</a></span>'
+                    );
+                    
+                }); 
+                $('a.more', minimized_elements).click(function(event){
+                    event.preventDefault();
+                    $(this).hide().prev().hide();
+                    $(this).next().show();        
+                });
+                $('a.less', minimized_elements).click(function(event){
+                    event.preventDefault();
+                    $(this).parent().hide().prev().show().prev().show();    
+                });
+            });
+        </script>
 {% endblock %}
