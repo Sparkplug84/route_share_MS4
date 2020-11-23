@@ -45,14 +45,28 @@
                     <div class="post-container bg-black text-white rounded-wrapper mb-5">
                         <div class="row p-3">
                             <div class="col">
-                                <h4 class="mb-0"><strong>Title:</strong> {{ post.title }}</h4>
+                                <h4 class="mb-0">
+                                    <span class="icon">
+                                    <i class="fas fa-pen-alt"></i>
+                                </span>
+                                <strong>Title:</strong> {{ post.title }}
+                            </h4>
                             </div>
                         </div>
                         <hr class="card-divider w-100 bg-orange">
                         <div class="row p-3">
                             <div class="col">
-                                <strong>Post:</strong><p class="minimize d-inline"> {{ post.post }}</p>
-                                <p class="small mt-3">Posted by: {{ post.post_user }} on {{ post.post_date }}</p>
+                                <span class="icon">
+                                        <i class="fas fa-file-alt"></i>
+                                    </span>
+                                <p class="minimize d-inline">
+                                    <strong>Post:</strong> {{ post.post }}
+                                </p>
+                                <p class="small mt-3">
+                                    <span class="icon">
+                                        <i class="fas fa-user"></i>
+                                    </span>Posted by: {{ post.post_user }} on {{ post.post_date }}
+                                </p>
                                 <a href="{% url 'view_post' post.id %}" class="text-link">
                                     <span class="icon">
                                         <i class="fas fa-comments"></i>

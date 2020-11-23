@@ -32,7 +32,7 @@ img.break-img {
 
 .info-container {
     padding: 30px;
-    background-color: black;
+    background-color: rgb(48, 47, 47);
     opacity: 0.8;
     border-radius: 20px;
     /* margin-left: 15px; */
@@ -42,12 +42,22 @@ img.break-img {
     background: url('/media/homepage10.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 .homepage-photo2 {
     background: url('/media/homepage2.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
 .homepage-photo3 {
@@ -204,12 +214,13 @@ footer {
 
 .text-link {
     color: #c86815;
+    transition: color 0.5s ease-in-out;
 
 }
 .text-link:hover {
     color: #ffffff;
+    text-decoration: none;
 }
-
 
 .text-black {
     color: #000 !important;

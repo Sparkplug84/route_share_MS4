@@ -81,9 +81,9 @@ def edit_post(request, post_id):
             messages.success(request, f'You have updated {post.title}')
             return redirect('view_post', post_id)
         else:
-            messages.error(request, f'You have updated {post.title}')
-            return redirect('Failed to update post. \
+            messages.error(request, 'Failed to update post. \
                     Please ensure the form is valid.')
+            return redirect('view_post', post_id)
     else:
         if request.user == post.post_user:
             form = ForumForm(instance=post)
@@ -100,3 +100,20 @@ def edit_post(request, post_id):
                     authorization to edit {post.title}. \
                         You can only edit posts you uploaded.')
         return redirect('view_post', post_id)
+
+
+@login_required
+def delete_post(request, post_id):
+    """ A view to delete a post """
+    post = get_object_or_404(ForumPost, pk=post_id)
+    # Only users who added the post can delete the post
+    if request.user == post.post_user:
+        post.delete()
+        messages.success(request, f'You have deleted {post.title}')
+        return redirect('forum')
+    else:
+        messages.warning(
+            request, f'Sorry, you do not have \
+            authorization to delete {post.title}. \
+                You can only delete posts you added.')
+        return redirect('forum')

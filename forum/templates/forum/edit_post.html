@@ -25,16 +25,16 @@
                             {{ form|crispy }}
                     </fieldset>
                     <div class="text-right">
-                        <a href="{% url 'forum' %}" class="btn btn-outline-orange rounded-pill mt-2">
+                        <a href="{% url 'view_post' post.id %}" class="btn btn-outline-orange rounded-pill mt-2">
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
                             </span>
-                            <span class="text-uppercase pr-2">Back to Forum</span>
+                            <span class="text-uppercase pr-2">Back to Post</span>
                         </a>
                         <button class="btn btn-orange rounded-pill mt-2" type="submit">
                             <span class="text-uppercase pl-2">Edit Post</span>
                             <span class="icon">
-                                <i class="fas fa-plus"></i>
+                                <i class="fas fa-edit"></i>
                             </span>
                         </button>
                     </div>
