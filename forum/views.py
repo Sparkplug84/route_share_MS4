@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from .models import ForumPost, ForumPostReply
-from .forms import ForumForm
+from .forms import ForumForm, ForumReplyForm
 
 
 def forum(request):
@@ -21,8 +21,21 @@ def view_post(request, post_id):
     post_replies = ForumPostReply.objects.filter(
         post_id=post_id).order_by('-reply_date')
 
+    if request.method == 'POST':
+        form = ForumPostReply(
+            reply=request.POST.get('reply'),
+            reply_user=request.user,
+            post=post,
+        )
+        form.save()
+        messages.success(request, 'You have replied to this post!')
+        return redirect('view_post', post_id)
+
+    else:
+        form = ForumReplyForm()
     template = 'forum/view_post.html'
     context = {
+        'form': form,
         'post': post,
         'post_replies': post_replies,
     }

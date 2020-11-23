@@ -12,7 +12,7 @@ class ForumForm(forms.ModelForm):
         ]
 
     def __init__(self, *args, **kwargs):
-        """ Getting foreign key friendly names and setting paceholder names """
+        """ Setting paceholder names """
         super().__init__(*args, **kwargs)
         placeholders = {
             'title': 'Post Title',
@@ -27,3 +27,22 @@ class ForumForm(forms.ModelForm):
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
+
+
+class ForumReplyForm(forms.ModelForm):
+
+    class Meta:
+        model = ForumPostReply
+        fields = [
+            'reply',
+        ]
+
+    reply = forms.CharField(
+        required=True,
+        label='',
+        widget=forms.Textarea(attrs={
+            'rows': 2,
+            'class': 'form-control',
+            'placeholder': 'Add your reply...'
+        })
+    )
