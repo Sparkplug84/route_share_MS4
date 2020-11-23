@@ -6,7 +6,7 @@
         <div class="row"> 
             <div class="col text-center mt-3">
                 <h2 class="title-font font-weight-bold">Forum</h2>
-                <hr class="w-50 mb-3">
+                <hr class="w-50 mb-2">
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12 col-md-8">
-                <div class="post-container bg-black text-white rounded-wrapper mb-5">
+                <div class="post-container bg-black text-white rounded-wrapper mb-3">
                     <div class="row p-3">
                         <div class="col">
                             <h4 class="mb-0"><strong>Title:</strong> {{ post.title }}</h4>
@@ -25,17 +25,62 @@
                         <div class="col">
                             <strong>Post:</strong><p class="d-inline"> {{ post.post }}</p>
                             <p class="small mt-3">Posted by: {{ post.post_user }} on {{ post.post_date }}</p>
+
+                            <!-- Only Users who added the post can edit/delete the post -->
+                            {% if request.user == post.post_user %}
+                            <div>
+                                <a href="{% url 'edit_post' post.id %}" class="text-info mt-2 mr-2">
+                                    <span class="icon">
+                                        <i class="fas fa-edit"></i>
+                                    </span>
+                                    <span>Edit Post</span>
+                                </a>|
+                                <a id="delete-post-confirm" class="text-danger mt-2 pointer">
+                                    <span class="icon ml-1">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </span>
+                                    <span>Delete Post</span>
+                                </a>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
+                
+                
+
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 offset-md-4 col-md-8">
-                <form method="POST" action="{% url 'view_post' post.id %}" class="bg-black text-white p-3 rounded-wrapper">
+                
+                <h4 class="title-font font-weight-bold mt-3">Previous Comments</h4>
+                <hr class="w-100 mb-3">
+                
+                {% if post_replies %}
+                    {% for reply in post_replies %}
+                    <div class="post-container bg-grey text-white rounded-wrapper my-4">
+                        <div class="row">
+                            <div class="col mx-3 my-2">
+                                <p class="small m-0">Posted by: {{ reply.reply_user }} on {{ reply.reply_date }}</p>
+                            </div>
+                        </div>
+                        <hr class="card-divider w-100 bg-orange">
+                        <div class="row">
+                            <div class="col m-3">
+                                <strong>Reply:</strong><p class="minimize d-inline"> {{ reply.reply }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <h6 class="text-black mb-4">There are no replies for this post yet...</h6>
+                {% endif %}
+                
+                <form method="POST" action="{% url 'view_post' post.id %}" class="bg-grey text-white p-3 rounded-wrapper">
                     {% csrf_token %}
-                    <fieldset class="bg-black pt-1">
+                    <fieldset class="bg-grey pt-1">
                         <legend class="fieldset_label px-3 w-auto text-white">
                             <span class="icon">
                                 <i class="fas fa-comments"></i>
@@ -60,22 +105,6 @@
                     </div>
                 </form>
 
-                {% for reply in post_replies %}
-                    <div class="post-container bg-black text-white rounded-wrapper mb-5">
-                        <div class="row p-3">
-                            <div class="col">
-                                <p class="small mt-3">Posted by: {{ reply.reply_user }} on {{ reply.reply_date }}</p>
-                            </div>
-                        </div>
-                        <hr class="card-divider w-100 bg-orange">
-                        <div class="row p-3">
-                            <div class="col">
-                                <strong>Reply:</strong><p class="minimize d-inline"> {{ reply.reply }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
             </div>
         </div>
     </div>
@@ -89,6 +118,33 @@
 
 {% block postloadjs %}
     {{ block.super }}
+        <!-- Function to reveal and hide more of the post found on
+            http://jsfiddle.net/iambriansreed/bjdSF/ -->
+        <script type="text/javascript">
+            jQuery(function(){
+                var minimized_elements = $('p.minimize');
+                minimized_elements.each(function(){    
+                    var t = $(this).text();        
+                    if(t.length < 100) return;
+                    
+                    $(this).html(
+                        t.slice(0,100)+'<span>... </span><a href="#" class="more text-link">More</a>'+
+                        '<span style="display:none;">'+ t.slice(100,t.length)+' <a href="#" class="less text-link">Less</a></span>'
+                    );
+                    
+                }); 
+                $('a.more', minimized_elements).click(function(event){
+                    event.preventDefault();
+                    $(this).hide().prev().hide();
+                    $(this).next().show();        
+                });
+                $('a.less', minimized_elements).click(function(event){
+                    event.preventDefault();
+                    $(this).parent().hide().prev().show().prev().show();    
+                });
+            });
+        </script>
+
         <script type="text/javascript">
             $('.btt-link').click(function(e) {
                 window.scrollTo(0,0)

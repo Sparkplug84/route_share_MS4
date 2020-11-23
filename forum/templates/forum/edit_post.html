@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mb-2">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">Add a Forum Post</h2>
+                <hr class="w-50 mb-3">
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-lg-6 mx-auto">
+                <form method="POST" action="{% url 'edit_post' post.id %}" class="bg-black text-white p-3 rounded-wrapper">
+                    {% csrf_token %}
+                    <fieldset class="bg-black pt-1">
+                        <legend class="fieldset_label px-3 w-auto text-white">
+                            <span class="icon">
+                                <i class="fas fa-pen-alt"></i>
+                            </span>
+                            Post Info
+                        </legend>
+                            {{ form|crispy }}
+                    </fieldset>
+                    <div class="text-right">
+                        <a href="{% url 'forum' %}" class="btn btn-outline-orange rounded-pill mt-2">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase pr-2">Back to Forum</span>
+                        </a>
+                        <button class="btn btn-orange rounded-pill mt-2" type="submit">
+                            <span class="text-uppercase pl-2">Edit Post</span>
+                            <span class="icon">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
