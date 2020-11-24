@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container mb-2">
+        <div class="row"> 
+            <div class="col text-center mt-3">
+                <h2 class="title-font font-weight-bold">404 Page Error</h2>
+                <hr class="w-50 mb-5">
+                <p>Oops! The page you are trying to reach doesn't exist or is temporarily unavailable. Sorry for the inconvenience.</p>
+                <p>Please use the navigation panel above to find your way back or click below to return to the home page.</p>
+                <h6>
+                    <a href="{% url 'home' %}" class="btn rounded-pill text-uppercase py-2 callout-btn title-font">Home Page</a>
+                </h6>
+            </div>
+        </div>
+    </div>    
+{% endblock %}
