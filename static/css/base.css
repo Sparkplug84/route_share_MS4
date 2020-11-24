@@ -495,7 +495,12 @@ input[name='q']::placeholder {
         margin-bottom: 2rem;
     }
     .break-img {
-    padding: 15px !important;
+        padding: 15px !important;
+    }
+    .homepage-photo1 {
+        width: 100%;
+        height: 100vh;
+        background-position: center top;
     }
 }
 
