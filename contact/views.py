@@ -13,9 +13,9 @@ def contact(request):
             name = form.cleaned_data['name']
             sender = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            recipients = ['settings.EMAIL_HOST_USER']
+            recipients = [settings.EMAIL_HOST_USER]
 
-            send_mail(name, message, sender, recipients)
+            send_mail(name, message, sender, recipients, fail_silently=False)
             form.save()
             messages.success(request, 'You have sent a message to the Route Share Team. \
                              We will reply as soon as possible.')
