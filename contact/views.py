@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.core.mail import send_mail
 from .forms import ContactForm
 
 
@@ -8,6 +9,12 @@ def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
+            name = form.cleaned_data['name']
+            message = form.cleaned_data['message']
+            sender = form.cleaned_data['email']
+            recipients = ['settings.EMAIL_HOST_USER']
+
+            send_mail(name, message, sender, recipients)
             form.save()
             messages.success(request, 'You have sent a message to the Route Share Team. \
                              We will reply as soon as possible.')
