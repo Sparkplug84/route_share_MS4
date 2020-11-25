@@ -92,7 +92,7 @@ def route_detail(request, route_id):
 
     context = {
         'route': route,
-        'on_route_detail': True
+        'not_basket': False
     }
     return render(request, 'routes/route_detail.html', context)
 
@@ -117,7 +117,7 @@ def add_route(request):
     template = 'routes/add_route.html'
     context = {
         'form': form,
-        'on_add_route': True
+        'not_basket': False
     }
     return render(request, template, context)
 

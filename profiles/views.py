@@ -25,7 +25,7 @@ def profile(request):
     context = {
         'form': form,
         'profile': profile,
-        'on_profile_page': True
+        'not_basket': False
     }
 
     return render(request, template, context)

@@ -84,6 +84,10 @@ a:after {
   background: rgb(170, 89, 22)
 }
 
+.navbar-toggler {
+    border: none;
+}
+
 /* ------------------------- Footer */
 
 /* This helps to push footer to bottom when little content, found on stack overflow */

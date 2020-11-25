@@ -80,9 +80,11 @@
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'add_route' %}" class="dropdown-item">Add a Route</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                <a href="{% url 'contact' %}" class="dropdown-item">Contact Us</a>
                             {% else %}
                                 <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                                 <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                <a href="{% url 'contact' %}" class="dropdown-item">Contact Us</a>
                             {% endif %}
                         </div>
                     </li>
@@ -145,14 +147,6 @@
                     <li><h4 class="title-font text-white">Route Share</h4></li>
                     <hr class="bg-white ml-0 footer-hr">
                     <li class="my-2">
-                        <a href="{% url 'home' %}" class="text-white text-decoration-none footer-link">
-                            <span class="icon">
-                                <i class="fas fa-biking"></i>
-                            </span>
-                            Home
-                        </a>
-                    </li>
-                    <li class="my-2">
                         <a href="{% url 'membership' %}" class="text-white text-decoration-none footer-link">
                             <span class="icon">
                                 <i class="fas fa-file-signature"></i>
@@ -166,6 +160,14 @@
                                 <i class="fas fa-comments"></i>
                             </span>
                             Forum
+                        </a>
+                    </li>
+                    <li class="my-2">
+                        <a href="{% url 'contact' %}" class="text-white text-decoration-none footer-link">
+                            <span class="icon">
+                                <i class="fas fa-at"></i>
+                            </span>
+                            Contact Us
                         </a>
                     </li>
                 </ul>

@@ -13,7 +13,7 @@ def forum(request):
     context = {
         'forum_posts': forum_posts,
         'post_replies': post_replies,
-        'on_forum_page': True
+        'not_basket': False
     }
     return render(request, 'forum/forum.html', context)
 

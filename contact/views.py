@@ -15,7 +15,16 @@ def contact(request):
             message = form.cleaned_data['message']
             recipients = [settings.EMAIL_HOST_USER]
 
-            send_mail(name, message, sender, recipients, fail_silently=False)
+            send_mail(
+                'New Contact Message',
+                'Hi Route Share Team, \n\nThere is a new '
+                f'contact message from {name}.\n'
+                f'Email address of the sender is {sender}\n'
+                f'Sender left the following message: \n\n{message}\n\n'
+                'This email was automatically generated.',
+                sender,
+                recipients,
+                fail_silently=False)
             form.save()
             messages.success(request, 'You have sent a message to the Route Share Team. \
                              We will reply as soon as possible.')
@@ -27,5 +36,6 @@ def contact(request):
     template = 'contact/contact.html'
     context = {
         'form': form,
+        'not_basket': False
     }
     return render(request, template, context)
