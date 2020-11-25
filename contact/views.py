@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.core.mail import send_mail
 from .forms import ContactForm
+from django.conf import settings
 
 
 def contact(request):
@@ -11,8 +12,8 @@ def contact(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             message = form.cleaned_data['message']
-            sender = form.cleaned_data['email']
-            recipients = ['settings.EMAIL_HOST_USER']
+            sender = [settings.EMAIL_HOST_USER]
+            recipients = [settings.EMAIL_HOST_USER]
 
             send_mail(name, message, sender, recipients)
             form.save()
