@@ -497,11 +497,6 @@ input[name='q']::placeholder {
     .break-img {
         padding: 15px !important;
     }
-    .homepage-photo1 {
-        width: 100%;
-        height: 100vh;
-        background-position: center top;
-    }
 }
 
 /* centres the 3rd membership column on medium screens when it wraps */

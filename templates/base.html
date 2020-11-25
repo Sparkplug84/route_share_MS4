@@ -34,9 +34,10 @@
     {% block extra_js %}
     {% endblock %}
 
+    <!-- A link to render the site icon in the browser tab -->
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 
-    <title>Route Share {% block extra_title %}{% endblock %}</title>
+    <title>Route Share - {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
     <header class="container-fluid">
