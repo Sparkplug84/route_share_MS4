@@ -11,9 +11,9 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
+            sender = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            sender = [settings.EMAIL_HOST_USER]
-            recipients = [settings.EMAIL_HOST_USER]
+            recipients = ['settings.EMAIL_HOST_USER']
 
             send_mail(name, message, sender, recipients)
             form.save()
