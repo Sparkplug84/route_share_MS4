@@ -20,9 +20,7 @@ def contact(request):
             if copy_myself:
                 recipients.append(sender)
 
-            completed_form = form.save(commit=False)
-            completed_form.contact_user = request.user
-            completed_form.save()
+            form.save()
 
             send_mail(
                 f'New Contact Message - {subject}',
