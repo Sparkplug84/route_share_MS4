@@ -12,11 +12,20 @@ def contact(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             sender = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             recipients = [settings.EMAIL_HOST_USER]
+            copy_myself = form.cleaned_data['copy_myself']
+
+            if copy_myself:
+                recipients.append(sender)
+
+            completed_form = form.save(commit=False)
+            completed_form.contact_user = request.user
+            completed_form.save()
 
             send_mail(
-                'New Contact Message',
+                f'New Contact Message - {subject}',
                 'Hi Route Share Team, \n\nThere is a new '
                 f'contact message from {name}.\n'
                 f'Email address of the sender is {sender}\n'
@@ -25,7 +34,7 @@ def contact(request):
                 sender,
                 recipients,
                 fail_silently=False)
-            form.save()
+
             messages.success(request, 'You have sent a message to the Route Share Team. \
                              We will reply as soon as possible.')
         else:

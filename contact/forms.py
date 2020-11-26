@@ -9,7 +9,9 @@ class ContactForm(forms.ModelForm):
         fields = [
             'name',
             'email',
+            'subject',
             'message',
+            'copy_myself',
         ]
 
     def __init__(self, *args, **kwargs):
@@ -18,11 +20,16 @@ class ContactForm(forms.ModelForm):
         placeholders = {
             'name': 'Full Name',
             'email': 'Email Address',
+            'subject': 'Subject',
             'message': 'Your message here...',
+            'copy_myself': '',
         }
 
         self.fields['name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].label = False
+            if field != 'copy_myself':
+                self.fields[field].label = False
+            else:
+                self.fields[field].label = 'Send me a copy'
