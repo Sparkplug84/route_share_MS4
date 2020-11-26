@@ -36,6 +36,6 @@ def contact(request):
     template = 'contact/contact.html'
     context = {
         'form': form,
-        'not_basket': False
+        'not_basket': True
     }
     return render(request, template, context)

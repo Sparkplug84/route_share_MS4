@@ -13,7 +13,7 @@ def forum(request):
     context = {
         'forum_posts': forum_posts,
         'post_replies': post_replies,
-        'not_basket': False
+        'not_basket': True
     }
     return render(request, 'forum/forum.html', context)
 
@@ -41,7 +41,7 @@ def view_post(request, post_id):
         'form': form,
         'post': post,
         'post_replies': post_replies,
-        'on_forum_page': True
+        'not_basket': True
     }
     return render(request, template, context)
 
