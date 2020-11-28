@@ -97,13 +97,15 @@
                         </div>
                         {% endfor %}
                     {% else %}
-                        <p class="lead mb-5">Your have no routes at the moment...</p>
-                        <a href="{% url 'membership' %}" class="btn rounded-pill btn-outline-orange">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class=" text-uppercase pr-2">Membership Options</span>
-                        </a>
+                        <div class="col">
+                            <p>You currently have no routes...</p>
+                                    <a href="{% url 'routes' %}" class="btn rounded-pill btn-outline-orange">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class=" text-uppercase pr-2">Back to routes</span>
+                            </a>
+                        </div>
                     {% endif %}
                     
                 </div>

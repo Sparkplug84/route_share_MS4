@@ -89,7 +89,7 @@ def route_detail(request, route_id):
 
     # route = get_object_or_404(Route, pk=route_id)
     is_saved = False
-    if route.save.filter(id=request.user.id).exists():
+    if route.save_route.filter(id=request.user.id).exists():
         is_saved = True
 
     context = {
@@ -187,7 +187,7 @@ def add_instructions(request):
 
 def save_route_list(request):
     user = request.user
-    saved_routes = user.save.all()
+    saved_routes = user.save_route.all()
 
     context = {
         'saved_routes': saved_routes,
@@ -197,8 +197,8 @@ def save_route_list(request):
 
 def save_route(request, route_id):
     route = get_object_or_404(Route, pk=route_id)
-    if route.save.filter(id=request.user.id).exists():
-        route.save.remove(request.user)
+    if route.save_route.filter(id=request.user.id).exists():
+        route.save_route.remove(request.user)
     else:
-        route.save.add(request.user)
+        route.save_route.add(request.user)
     return redirect(reverse('route_detail', args=[route.id]))

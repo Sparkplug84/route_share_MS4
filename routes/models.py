@@ -48,15 +48,11 @@ class Route(models.Model):
         max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    save = models.ManyToManyField(
-        User, related_name='save', blank=True)
+    save_route = models.ManyToManyField(
+        User, related_name='save_route', blank=True)
 
     def __str__(self):
         return self.name
 
     def total_saved(self):
         return self.save.count()
-
-    # def save(self, *args, **kwargs):
-    #     """saving to DB disabled"""
-    #     pass
