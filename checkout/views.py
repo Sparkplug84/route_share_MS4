@@ -136,6 +136,7 @@ def checkout_success(request, order_number):
             'default_town_or_city': order.town_or_city,
             'default_postcode': order.postcode,
             'default_country': order.country,
+            'membership': order.membership,
         }
         user_profile_form = UserProfileForm(profile_data, instance=profile)
         if user_profile_form.is_valid():

@@ -20,7 +20,14 @@
             </div>
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="route-detail-container mb-5 mt-md-5">
-                    <h5 class="title-font mb-3">{{ route.name }}</h5>
+                    <h5 class="title-font mb-3">{{ route.name }}
+                        {% if is_saved %}
+                        <span class="icon float-right text-danger">
+                            <i class="fas fa-heart fa-lg"></i>
+                        </span>
+                        {% endif %}
+                    </h5>
+                    
                     <p class="mb-0 text-left"><i class="fas fa-map-marker-alt mr-1"></i>{{ route.length }}km</p>
                     <p class="mb-0 text-left">
                         <a class="text-black" href="{% url 'routes' %}?country={{ route.country }}">
@@ -65,10 +72,29 @@
                     </div>
                     {% endif %}
                     <p class="mt-3">{{ route.description }}</p>
+                    {% if request.user.is_authenticated %}
+                        {% if not is_saved %}
+                        <a href="{% url 'save_route' route.id %}" class="btn rounded-pill btn-orange mt-2 callout-btn">
+                            <span class="icon">
+                                <i class="fas fa-route"></i>
+                            </span>
+                            <span class="text-uppercase pr-2">Get Route</span>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'save_route' route.id %}" class="btn rounded-pill btn-orange mt-2 callout-btn">
+                            <span class="icon">
+                                <i class="fas fa-route"></i>
+                            </span>
+                            <span class="text-uppercase pr-2">Remove Route</span>
+                        {% endif %}
+                    {% endif %}
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+
+    {% if is_saved %}
     <div class="container-fluid">
         <div class="row"> 
             <div class="col-12 col-lg-8 offset-lg-2 map-container">
@@ -81,6 +107,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- Bootstrap modal for delete route confirmation -->
     <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" id="delete-modal">

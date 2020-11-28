@@ -5,6 +5,8 @@ from django.dispatch import receiver
 
 from django_countries.fields import CountryField
 
+from membership.models import Membership
+
 
 class UserProfile(models.Model):
     """ A user profile model for maintaining default
@@ -25,6 +27,8 @@ class UserProfile(models.Model):
         max_length=20, null=True, blank=True)
     default_country = CountryField(
         blank_label='Country', null=True, blank=True)
+    membership = models.ForeignKey(
+        Membership, null=False, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username

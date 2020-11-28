@@ -10,8 +10,8 @@
 * [UX: Strategy](#UX-Strategy)
 * [Scope](#Scope)
 * [Structure](#Structure)
-* [Skeleton](#Skeleton)
 * [Surface](#Surface)
+* [Skeleton](#Skeleton)
 * [Technologies Used](#Technologies-Used)
 
 ### View the live project
@@ -268,11 +268,11 @@ I used the Balsamiq program for the wireframes and attached them to the director
 * Popper.JS – Used to aid the responsiveness of the website.
 * [Bootstrap]( https://getbootstrap.com/) – Bootstrap was used to provide the navbar, footer and the use of a grid system. Many bootstrap classes were also used throughout the site to add pre-existing colours, padding and margins to elements. 
 * [Font Awesome]( https://fontawesome.com/) - for all site icons
-* [Google Font](https://fonts.google.com/) - 1 Font was imported from Google Fonts and the URL can be found in the base template.
+* [Google Font](https://fonts.google.com/) - 1 Font was imported from Google Fonts and the URL can be found in the core css block of the base template.
 * sqlite3 – Was used as the backend development database and provided for by the Django framework
 * Postgtres – Was used as the deployed database, provided for through Heroku
 * [Heroku]( https://www.heroku.com/) – Used to deploy the website and hosted on Heroku’s cloud platform
-* Git – Used for version control
+* Git – Used for version control on the CLI (Command Line Interface) within Gitpod.
 * [Github](https://github.com/Sparkplug84/route_share_MS4) – Used to store the repository of all committed versions of the code. Also linked to Heroku to enable automatic deployment simultaneously. 
 * Balsamiq - This was used to build the wireframes that were then uploaded to the Gitpod IDE.
 * [Tables Generator](https://www.tablesgenerator.com/) - Used to create the tables inserted here in the README file.

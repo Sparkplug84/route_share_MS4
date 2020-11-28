@@ -6,8 +6,6 @@ from django.db.models.functions import Lower
 from .models import Route, BikeType, RouteType
 from .forms import RouteForm
 
-# Create your views here.
-
 
 def all_routes(request):
     """ A view to show all routes, including sorting and search queries """
@@ -87,12 +85,17 @@ def all_routes(request):
 
 def route_detail(request, route_id):
     """ A view to show individual route details """
+    route = Route.objects.get(pk=route_id)
 
-    route = get_object_or_404(Route, pk=route_id)
+    # route = get_object_or_404(Route, pk=route_id)
+    is_saved = False
+    if route.save.filter(id=request.user.id).exists():
+        is_saved = True
 
     context = {
         'route': route,
-        'not_basket': False
+        'not_basket': True,
+        'is_saved': is_saved,
     }
     return render(request, 'routes/route_detail.html', context)
 
@@ -117,7 +120,7 @@ def add_route(request):
     template = 'routes/add_route.html'
     context = {
         'form': form,
-        'not_basket': False
+        'not_basket': True
     }
     return render(request, template, context)
 
@@ -180,3 +183,22 @@ def add_instructions(request):
     """ A view to render the add route instructions """
     template = 'routes/add_instructions.html'
     return render(request, template)
+
+
+def save_route_list(request):
+    user = request.user
+    saved_routes = user.save.all()
+
+    context = {
+        'saved_routes': saved_routes,
+    }
+    return render(request, 'routes/saved_routes.html', context)
+
+
+def save_route(request, route_id):
+    route = get_object_or_404(Route, pk=route_id)
+    if route.save.filter(id=request.user.id).exists():
+        route.save.remove(request.user)
+    else:
+        route.save.add(request.user)
+    return redirect(reverse('route_detail', args=[route.id]))
