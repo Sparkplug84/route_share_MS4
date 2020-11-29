@@ -7,7 +7,7 @@ class RouteForm(forms.ModelForm):
 
     class Meta:
         model = Route
-        exclude = ('rating', 'image_url', 'user',)
+        exclude = ('rating', 'image_url', 'user', 'save_route')
 
     image = forms.ImageField(
         label='Image', required=False, widget=CustomClearableFileInput)

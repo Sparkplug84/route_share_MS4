@@ -5,6 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Route, BikeType, RouteType
 from .forms import RouteForm
+from profiles.models import UserProfile
 
 
 def all_routes(request):
@@ -30,8 +31,6 @@ def all_routes(request):
                 sortkey = 'bike_type__name'
             if sortkey == 'route_type':
                 sortkey = 'route_type__name'
-            # if sortkey == 'country':
-                # sortkey = 'country__name'
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -49,7 +48,6 @@ def all_routes(request):
         if 'country' in request.GET:
             countries = request.GET['country']
             routes = routes.filter(country=countries)
-            # countries = Route.objects.filter(country=countries)
 
         if 'route_type' in request.GET:
             route_types = request.GET['route_type'].split(',')
@@ -85,9 +83,7 @@ def all_routes(request):
 
 def route_detail(request, route_id):
     """ A view to show individual route details """
-    route = Route.objects.get(pk=route_id)
-
-    # route = get_object_or_404(Route, pk=route_id)
+    route = get_object_or_404(Route, pk=route_id)
     is_saved = False
     if route.save_route.filter(id=request.user.id).exists():
         is_saved = True
@@ -185,6 +181,7 @@ def add_instructions(request):
     return render(request, template)
 
 
+@login_required
 def save_route_list(request):
     user = request.user
     saved_routes = user.save_route.all()
@@ -195,8 +192,13 @@ def save_route_list(request):
     return render(request, 'routes/saved_routes.html', context)
 
 
+@login_required
 def save_route(request, route_id):
     route = get_object_or_404(Route, pk=route_id)
+    profile = get_object_or_404(UserProfile, user=request.user)
+    print(profile.membership)
+    if profile.membership == 'unlimited_membership':
+        print('hello')
     if route.save_route.filter(id=request.user.id).exists():
         route.save_route.remove(request.user)
     else:

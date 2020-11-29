@@ -13,34 +13,10 @@
         <div class="row">
             <div class="route-container col-10 offset-1">
                 <div class="row mt-1 mb-2">
-                    <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
-                        <div class="sort-select-wrapper w-100">
-                            <select id="sort-selector" class="custom-select custom-select-sm rounded-pill bg-black text-white {% if current_sorting != 'None_None' %}border-orange {% else %}black{% endif %}">
-                                <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
-                                <option value="length_desc" {% if current_sorting == 'length_desc' %}selected{% endif %}>Length (high to low)</option>
-                                <option value="length_asc" {% if current_sorting == 'length_asc' %}selected{% endif %}>Length (low to high)</option>
-                                <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
-                                <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
-                                <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
-                                <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
-                                <option value="bike_type_asc" {% if current_sorting == 'bike_type_asc' %}selected{% endif %}>Bike Type (A-Z)</option>
-                                <option value="bike_type_desc" {% if current_sorting == 'bike_type_desc' %}selected{% endif %}>Bike Type (Z-A)</option>
-                                <option value="country_asc" {% if current_sorting == 'country_asc' %}selected{% endif %}>Country (A-Z)</option>
-                                <option value="country_desc" {% if current_sorting == 'country_desc' %}selected{% endif %}>Country (Z-A)</option>
-                                <option value="route_type_asc" {% if current_sorting == 'route_type_asc' %}selected{% endif %}>Route Type (A-Z)</option>
-                                <option value="route_type_desc" {% if current_sorting == 'route_type_desc' %}selected{% endif %}>Route Type (Z-A)</option>
-                            </select>
-                        </div>
-                    </div>
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-center mt-3 text-muted text-md-left">
-                            {% if search_term or current_biketypes or current_countries or current_route_types or current_sorting != 'None_None' %}
                                 <span><a class="text-orange" href="{% url 'routes' %}">Back to All Routes</a> | </span>
-                            {% endif %}
-                            {{ saved_routes|length }} {% if saved_routes|length == 1 %}Route{% else %}Routes{% endif %}{% if saved_routes %} found for <strong>"{{ request.user }}"</strong>
-                                {% elif current_biketypes %} found for <strong>{% for bike in current_biketypes %}{{ bike.friendly_name }}{% endfor %}</strong>
-                                {% elif current_countries %} found for <strong>{% for country in current_countries %}{{ country }}{% endfor %}</strong>
-                                {% elif current_route_types %} found for <strong>{% for type in current_route_types %}{{ type.friendly_name }}{% endfor %}</strong>{% endif %}
+                            {{ saved_routes|length }} {% if saved_routes|length == 1 %}Route{% else %}Routes{% endif %}{% if saved_routes %} found for <strong>"{{ request.user }}"</strong>{% endif %}
                         </p>
                     </div>
                 </div>
