@@ -137,6 +137,11 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 10. After a user adds a membership type to the basket, a message will appear to alert them to this and specify what has been added and a link to view the basket. Unlike all other messages on the site which appear for 5 seconds, this one has the alternative functionality of an exit button that the user will have to use to close the message. This is because this particular message has a lot more information than most so it gives the user more time to think about what they want to do.
 11. When a user wants to purchase the chosen membership they can navigate to the checkout page through the basket page. This will then display a further order summary and a form to fill out basic user details and payment card details. Within in the payment card element is a hidden card error section where potential card errors will alert the user in real time to prevent them submitting the wrong card details.
 12. When the user submits the checkout form, animated loading screen will appear for a few seconds while the payment is being processed. If there is a problem with the form for example they will be redirected back to the checkout page and a message will alert them to the problem. If the checkout was successful they will be directed to a success page where a further summary of their order will be available for them to see.
+13. On successful checkout a user profile will be created for the user to view their current details and membership information including how many routes they have currently saved. This will automatically update when a user saves a route so the user can keep up to date with the current status of the membership.
+14. In the route details page of any route there will be a button to get the route map and directions. There will first be a check if the user has a profile and which membership type they have and a further check to see how many routes they currently have saved and if all the conditions are met the map will be revealed and the route added to the users saved routes. If the conditions are not met the user will receive a message informing them of the reason.
+15. The user's saved routes can all be viewed on a seperate page which is accessable from the user profile or the profile icon dropdown menu.
+16. There is a forum page on the site which gives users the chance to create a post about something cycling related. Other users can browse through the posts and toggle the full post text to reveal it or hide it again. If the user clicks on the 'View Comments' link they will be brought to a new page for that post where they can comment on the post. All posts are editable and deletable only by the user who created them.
+17. A 'Contact Us' section is also available if users, registered or not, wish to contact the Route Share owner to make a query. There is an option for the user to get a copy of the mail that is created, sent to them so they can receive the same mail that the Route Share team will receive. This mail will also contain all the details they filled in on the form.
 
 [↥ Back to top](#Mark-McClean)
 
@@ -148,8 +153,10 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 
 ### Overall Structure
 On the homepage I wanted to use several large full screen cycling images in conjunction with small snippets of information about the site. The overall design I tried to implement was fixed positioned images, seperated by a cycling graphic which scrolls up over the image to hide the image above and reveal the image below. The information snippets also scroll up over the fixed images. I think this gives a nice vsual effect to welcome the user to the site.
-The navigation panel along the top of the site is split into 2 sections. Theres the head section which is always visible on all screens but changes slightly depending on device size. It incorporates a site name/logo, a search bar, a profile icon and a basket icon. On smaller screens the site logo toggles to become the menu button for the main page navigation below. Inside this dropdown menu in a seperate link to the homepage. The search bar also toggles to a button on smaller screens which reveals the navbar below to save some space on smaller devices.
-For the lower part of the navigation panel I went with centrally alligned links to the routes, membership and forum pages.
+The navigation panel along the top of the site is split into 2 sections. Theres the head section which is always visible on all screens but changes slightly depending on device size. It incorporates a site name/logo, a search bar, a profile icon and a basket icon. On smaller screens the site logo toggles to become the menu button for the main page navigation below. Inside this dropdown menu in a seperate link to the homepage. The search bar also toggles to a button on smaller screens which reveals the search bar below to save some space on smaller devices.
+For the lower part of the navigation panel I went with centrally alligned links to the routes, membership and forum pages. Several of these links have their own dropdown menus to choose filtering options when browsing for routes. On smaller devices this navigation panel disappears and transfers to inside the menu button, which will reveal the list of links when clicked.
+The footer section is a fairly standard but modern responsive information panel with links on the left to other parts of the site and on the right for social links, which all open in a new tab so the user is not permanently directed away from the site. The 3 footer sections trnasform into a centrally aligned single column on smaller screens.
+For the overall styles within the site I wanted to use coloured background sections with white text. These coloured background sections were all styled with rounded edges and often with an orange horizontal dividers to seperate information. I think this gave an attractive, soft and fun feel to the overall appearance ot the site. All existing allauth templates were also updated to reflect the sites main styles to provide consistency throughout the website.
 
 [↥ Back to top](#Mark-McClean)
 
@@ -295,3 +302,40 @@ I used the Balsamiq program for the wireframes and attached them to the director
 * [Google Maps](https://www.google.com/maps/) – Used to generate the html <iframe> element of the users route so it can pasted it in to the add route form.
 
 [↥ Back to top](#Mark-McClean)
+
+## Database design
+
+### Database Schema
+Despite a lot of advice to thoroughly plan my database schema I still found it difficult to fully realise my database setup until I was already developing the project and many instances the models I had created were adapted and changed to reflect my evolving vision of how I wanted my site to function.
+This is something I can put down to inexperience but the knowledge I have gained from this process has been invaluable in developing my own skills in planning the project before hand.
+In the development environment I used the built-in mySQLite3 as the database frovided for by Django. As I was changing models frequently I held back on deploying the project to Heroku to save on double migrations. This is also something I can avoid by better planning of the database schema from the beginning.
+For the deployed version of the project, the database used is Prosgres provided for by Heroku and set up during the deployment of the project. Some pre-writen data created by myself at the start of the project did have to be transferred over to the new database but that was done with the loaddata function in the command line during deployment.
+
+See below the database relationships
+* One User/User Profile can have one:
+    1. Order at a time
+    2. Membership at a time
+* One user can have many:
+    1. Forum posts
+    2. Forum comments
+* Many Users can have many:
+    1. Saved Routes
+* One Order can have one:
+    1. Memerbship
+* One Route can have one:
+    1. Bike type
+    2. Route Type
+
+The membership type is the most important piece of information in the database schema as it needs to be saved on to the User Profile to set the conditions under which the user can save routes or not.
+Not surprisingly this was challenging as the membership type has to pass from the membership model to the basket when added by the user. It then needs to transfer from the basket to the order during checkout. Finally when the order is fully processed, the membership type has to be transferred to the User Profile.
+This was not fully successful in the beginning and several alterations had to be made to the model and views in which the membership type was been passed through on each step.
+The membership type is not fully passed through to the User Profile and can also be updated if the user decides to change their membership by buying a different membership after the initial purchase.
+I decided against an order line item model as each order can only have 1 membership type and I thought it would be simpler and more efficient to pass through all the order details directly in the main order model.
+To give the users the ability to save routes depending on their membership conditions, I went for a ManyToMany relationship between the user and the route. I was advised against going for a ManyToMany relationship but found it difficult to find an alternative method to achieve the desired functionality.
+
+<details>
+    <summary>
+        Database - Schema
+    </summary>
+    <img alt="Database Schema" src="https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/master/static/wireframes/Database.PNG">
+</details>

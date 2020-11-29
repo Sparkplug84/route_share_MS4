@@ -49,12 +49,23 @@
                                 <span class="icon">
                                     <i class="fas fa-route"></i>
                                 </span>
+                                <!-- Displays the current membership status -->
                                 {% if profile.membership.name == 'unlimited_membership' %}
                                     {{ saved_routes|length }} saved routes
                                 {% elif profile.membership.name == 'limited_membership' %}
-                                    {{ saved_routes|length }}/5 routes saved this month
+                                    <!-- This is in the event that the user downgrades to a lower membership
+                                        to prevent the profile stating for example 8/5 routes saved this month -->
+                                    {% if saved_routes|length > 5 %}
+                                        5/5 routes saved this month
+                                    {% else %}
+                                        {{ saved_routes|length }}/5 routes saved this month
+                                    {% endif %}
                                 {% else %}
-                                    {{ saved_routes|length }}/1 routes saved this month
+                                    {% if saved_routes|length > 1 %}
+                                        1/1 routes saved this month
+                                    {% else %}
+                                        {{ saved_routes|length }}/1 routes saved this month
+                                    {% endif %}
                                 {% endif %}
                             </p>
                         </div>

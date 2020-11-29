@@ -183,6 +183,7 @@ def add_instructions(request):
 
 @login_required
 def save_route_list(request):
+    """ A view to render the users saved routes """
     user = request.user
     saved_routes = user.save_route.all()
 
@@ -194,23 +195,27 @@ def save_route_list(request):
 
 @login_required
 def save_route(request, route_id):
-
+    """ A view to check membership conditions \
+        and get/save route if possible """
     route = get_object_or_404(Route, pk=route_id)
     profile = get_object_or_404(UserProfile, user=request.user)
     user = request.user
     saved_routes = user.save_route.all()
 
-    if profile.membership and profile.membership.name == 'unlimited_membership':
+    if profile.membership and \
+            profile.membership.name == 'unlimited_membership':
         if not route.save_route.filter(id=request.user.id).exists():
             route.save_route.add(request.user)
             messages.success(request, 'You have added\
                 this route to your saved routes')
             return redirect(reverse('route_detail', args=[route.id]))
         else:
+            # Required in the event that the user types the url in manually
             messages.info(request, 'You already have this route saved.')
             return redirect(reverse('route_detail', args=[route.id]))
 
-    elif profile.membership and profile.membership.name == 'limited_membership':
+    elif profile.membership and \
+            profile.membership.name == 'limited_membership':
         if saved_routes.count() < 5:
             if not route.save_route.filter(id=request.user.id).exists():
                 route.save_route.add(request.user)
@@ -218,22 +223,34 @@ def save_route(request, route_id):
                     added this route to your saved routes')
                 return redirect(reverse('route_detail', args=[route.id]))
             else:
+                # Required in the event that the user types the url in manually
                 messages.info(request, 'You already have this route saved.')
                 return redirect(reverse('route_detail', args=[route.id]))
         else:
             messages.warning(request, 'You have already \
-                reached your membership limited this month. \
+                reached your membership limit this month. \
                     Please wait till next month or upgrade to Unlimited')
             return redirect(reverse('route_detail', args=[route.id]))
-    else:
-        if saved_routes < 1:
+
+    elif profile.membership and \
+            profile.membership.name == 'trial_membership':
+        if saved_routes.count() < 1:
             if not route.save_route.filter(id=request.user.id).exists():
                 route.save_route.add(request.user)
                 messages.success(request, 'You have added \
                     this route to your saved routes')
                 return redirect(reverse('route_detail', args=[route.id]))
+            else:
+                # Required in the event that the user types the url in manually
+                messages.info(request, 'You already have this route saved.')
+                return redirect(reverse('route_detail', args=[route.id]))
         else:
-            messages.warning(request, 'You already have \
-                already reached your membership limited this month.\
+            messages.warning(request, 'You have \
+                already reached your membership limit this month.\
                      Please wait till next month or upgrade to Unlimited')
             return redirect(reverse('route_detail', args=[route.id]))
+
+    else:
+        messages.info(request, 'You currently have no Membership. \
+            Check out the membership options on this page')
+        return redirect(reverse('membership'))

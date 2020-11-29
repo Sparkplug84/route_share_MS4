@@ -77,16 +77,11 @@
                             {{ order_form.town_or_city | as_crispy_field }}
                             {{ order_form.postcode | as_crispy_field }}
                             {{ order_form.country | as_crispy_field }}
-                            <div class="form-check form-check-inline pb-3">
-                                {% if user.is_authenticated %}
-                                    <label class="form-check-label text-white" for="id-save-info">Save this delivery information to my profile</label>
-                                    <input class="from_check_input ml-2" id="id-save-info" type="checkbox" name="save-info" checked>
-                                {% else %}
-                                    <label class="form-check-label" for="id-save-info">
-                                        <a href="{% url 'account_signup' %}" class="text-info">Sign Up</a> or 
-                                        <a href="{% url 'account_login' %}" class="text-info">Login</a> to save this information
-                                    </label>
-                                {% endif %}
+                            <!-- This checkbox input in now hidden as I require the users to have a userprofile
+                            so that their membership type can be passed in and stored in the profile for saving routes later -->
+                            <div class="form-check form-check-inline pb-3 d-none">
+                                <label class="form-check-label text-white" for="id-save-info">Save this delivery information to my profile</label>
+                                <input class="from_check_input ml-2" id="id-save-info" type="checkbox" name="save-info" checked>
                             </div>
                     </fieldset>
                     <fieldset class="px-3 bg-black pt-5">
