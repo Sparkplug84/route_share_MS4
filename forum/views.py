@@ -25,14 +25,19 @@ def view_post(request, post_id):
         post_id=post_id).order_by('-reply_date')
 
     if request.method == 'POST':
-        form = ForumPostReply(
-            reply=request.POST.get('reply'),
-            reply_user=request.user,
-            post=post,
-        )
-        form.save()
-        messages.success(request, 'You have replied to this post!')
-        return redirect('view_post', post_id)
+        if request.user.is_authenticated:
+            form = ForumPostReply(
+                reply=request.POST.get('reply'),
+                reply_user=request.user,
+                post=post,
+            )
+            form.save()
+            messages.success(request, 'You have replied to this post!')
+            return redirect('view_post', post_id)
+        else:
+            messages.error(request, 'You need to \
+                be logged in to comment on posts.')
+            return redirect('account_login')
 
     else:
         form = ForumReplyForm()

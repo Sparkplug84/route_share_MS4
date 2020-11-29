@@ -10,8 +10,10 @@
 * [UX: Strategy](#UX-Strategy)
 * [Scope](#Scope)
 * [Structure](#Structure)
+* [Defensive Design](#Defensive-design-features)
 * [Surface](#Surface)
 * [Skeleton](#Skeleton)
+* [Database Design](#Database-design)
 * [Technologies Used](#Technologies-Used)
 
 ### View the live project
@@ -160,6 +162,17 @@ For the overall styles within the site I wanted to use coloured background secti
 
 [↥ Back to top](#Mark-McClean)
 
+## Defensive design features
+A number a defensive design practises and tools were used throughout the site to prevent certain actions or errors occuring. They are outlined below.
+1. Before a user can add a membership plan to the basket, they need to have an account and be logged in to add the membership. If they are not, they will be redirected to the login page with an error message alerting them to the problem.
+2. Before a user can add a route to the database, they will also require an account and be logged in. Of course this is not a full prevention but more of a deterrant for any one not serious about adding quanity routes to the database. The link to add a route is not available unless the user is logged in and attempting to access the URL manually will redirect the user to the login page.
+3. Attempting to access the checkout manually by typing in the URL will result in a redirect to the membership page and an error message that there is nothing in your basket at the moment.
+4. Viewing posts and post comments in the forum section is open to view for all users. However only logged in users will be able to post or comment. Redirects to the login page and messages have been added to aid the user.
+5. Only users who have added a particular route or forum post can edit or delete that route or forum post. The links are only available for them to see and any users tryin to type in the urls manually will be redirected and receive a warning message that they don't have authorisation to edit or delete that particular route or post.
+6. Custom 404 and 500 pages have been created for the site where users will land if they type in a url that doesn't exist or experience an error. They will see the custom 404 page if they navigate to a page that doesn't exist and if there is an error in the site they will arrive at the custom 500 page. Both pages are displayed within the base template so all navbar and footer links will still be available to the users to find their way back to the flow of the site and additional links are provided within the main page display.
+7. Modals are used for route and post deletion to give the user a confirmation option in the event that they accidently clicked delete route/post. This action can then be cancelled and the user will return to the route/post.
+
+[↥ Back to top](#Mark-McClean)
 
 ## Surface
 
@@ -277,32 +290,6 @@ I used the Balsamiq program for the wireframes and attached them to the director
 
 [↥ Back to top](#Mark-McClean)
 
-## Technologies Used
-* [Gitpod]( https://www.gitpod.io/) – Used as my IDE for the development of the website. 
-* HTML – Used to write the code for the structure and layout of all templates in the site.
-* CSS – Used for custom styling of many HTML elements and some animations.
-* Python – The core backend language used to create the logic for the views.
-* [Django](https://www.djangoproject.com/) – This is a Python based framework which uses a model-template-view approach as the architectural engine. 
-* Jinja - This templating language was used to project some of the Python functionality and template variables onto the frontend to create a dynamic site which automatically updates when user data is submitted.
-* Javascript – Used to provide some interactive features of the website and to handle the checkout form submission
-* jQuery – Used for several post-load JS scripts on the templates, the delete route modal and also to initialize some Bootstrap components.
-* Popper.JS – Used to aid the responsiveness of the website.
-* [Bootstrap]( https://getbootstrap.com/) – Bootstrap was used to provide the navbar, footer and the use of a grid system. Many bootstrap classes were also used throughout the site to add pre-existing colours, padding and margins to elements. 
-* [Font Awesome]( https://fontawesome.com/) - for all site icons
-* [Google Font](https://fonts.google.com/) - 1 Font was imported from Google Fonts and the URL can be found in the core css block of the base template.
-* sqlite3 – Was used as the backend development database and provided for by the Django framework
-* Postgtres – Was used as the deployed database, provided for through Heroku
-* [Heroku]( https://www.heroku.com/) – Used to deploy the website and hosted on Heroku’s cloud platform
-* Git – Used for version control on the CLI (Command Line Interface) within Gitpod.
-* [Github](https://github.com/Sparkplug84/route_share_MS4) – Used to store the repository of all committed versions of the code. Also linked to Heroku to enable automatic deployment simultaneously. 
-* Balsamiq - This was used to build the wireframes that were then uploaded to the Gitpod IDE.
-* [Tables Generator](https://www.tablesgenerator.com/) - Used to create the tables inserted here in the README file.
-* [Codacy](https://www.codacy.com/) – Used to validate all code on the entire site instead of copying and pasting many files one at a time into the various HTML, CSS, JS and Python code validators.
-* Google Chrome Developer Tools – Used frequently to check and examine all elements and styles throughout the development. Even adjusting live in the browser before updating the corresponding code in Gitpod.
-* [Google Maps](https://www.google.com/maps/) – Used to generate the html <iframe> element of the users route so it can pasted it in to the add route form.
-
-[↥ Back to top](#Mark-McClean)
-
 ## Database design
 
 ### Database Schema
@@ -337,5 +324,34 @@ To give the users the ability to save routes depending on their membership condi
     <summary>
         Database - Schema
     </summary>
-    <img alt="Database Schema" src="https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/master/static/wireframes/Database.PNG">
+    <img alt="Database Schema" src="https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/master/media/Database.PNG">
+                                    
 </details>
+
+[↥ Back to top](#Mark-McClean)
+
+## Technologies Used
+* [Gitpod]( https://www.gitpod.io/) – Used as my IDE for the development of the website. 
+* HTML – Used to write the code for the structure and layout of all templates in the site.
+* CSS – Used for custom styling of many HTML elements and some animations.
+* Python – The core backend language used to create the logic for the views.
+* [Django](https://www.djangoproject.com/) – This is a Python based framework which uses a model-template-view approach as the architectural engine. 
+* Jinja - This templating language was used to project some of the Python functionality and template variables onto the frontend to create a dynamic site which automatically updates when user data is submitted.
+* Javascript – Used to provide some interactive features of the website and to handle the checkout form submission
+* jQuery – Used for several post-load JS scripts on the templates, the delete route modal and also to initialize some Bootstrap components.
+* Popper.JS – Used to aid the responsiveness of the website.
+* [Bootstrap]( https://getbootstrap.com/) – Bootstrap was used to provide the navbar, footer and the use of a grid system. Many bootstrap classes were also used throughout the site to add pre-existing colours, padding and margins to elements. 
+* [Font Awesome]( https://fontawesome.com/) - for all site icons
+* [Google Font](https://fonts.google.com/) - 1 Font was imported from Google Fonts and the URL can be found in the core css block of the base template.
+* sqlite3 – Was used as the backend development database and provided for by the Django framework
+* Postgtres – Was used as the deployed database, provided for through Heroku
+* [Heroku]( https://www.heroku.com/) – Used to deploy the website and hosted on Heroku’s cloud platform
+* Git – Used for version control on the CLI (Command Line Interface) within Gitpod.
+* [Github](https://github.com/Sparkplug84/route_share_MS4) – Used to store the repository of all committed versions of the code. Also linked to Heroku to enable automatic deployment simultaneously. 
+* Balsamiq - This was used to build the wireframes that were then uploaded to the Gitpod IDE.
+* [Tables Generator](https://www.tablesgenerator.com/) - Used to create the tables inserted here in the README file.
+* [Codacy](https://www.codacy.com/) – Used to validate all code on the entire site instead of copying and pasting many files one at a time into the various HTML, CSS, JS and Python code validators.
+* Google Chrome Developer Tools – Used frequently to check and examine all elements and styles throughout the development. Even adjusting live in the browser before updating the corresponding code in Gitpod.
+* [Google Maps](https://www.google.com/maps/) – Used to generate the html <iframe> element of the users route so it can pasted it in to the add route form.
+
+[↥ Back to top](#Mark-McClean)
