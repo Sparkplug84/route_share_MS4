@@ -55,4 +55,4 @@ class Route(models.Model):
         return self.name
 
     def total_saved(self):
-        return self.save.count()
+        return self.save_route.count()

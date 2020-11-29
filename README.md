@@ -140,6 +140,20 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 
 [↥ Back to top](#Mark-McClean)
 
+### Features left to implement
+1. Pagination for the routes and forum pages. Over time more and more routes and forum posts/comments will be added to the site and it may get quuite unruly scrolling all the way down to the bottom of a very a very long page to view them. It would be better to set limit per page and then take a new page when the amount of routes/posts exceeds that amount.
+2. The ability to edit/delete a forum comment. There is currently functionality to edit/delete a forum post but not yet for forum comments. This functionality would be useful in the future.
+3. On the main forum page an indication of how many comments there currenly are per post. This would be useful instead of clicking the 'View Comments' link each time to see if there are comments.
+4. Rating the routes. A function to give users the ability to rate each route out of 5 and count up and average all ratings to dynamically update and display the rating for each route.
+
+### Overall Structure
+On the homepage I wanted to use several large full screen cycling images in conjunction with small snippets of information about the site. The overall design I tried to implement was fixed positioned images, seperated by a cycling graphic which scrolls up over the image to hide the image above and reveal the image below. The information snippets also scroll up over the fixed images. I think this gives a nice vsual effect to welcome the user to the site.
+The navigation panel along the top of the site is split into 2 sections. Theres the head section which is always visible on all screens but changes slightly depending on device size. It incorporates a site name/logo, a search bar, a profile icon and a basket icon. On smaller screens the site logo toggles to become the menu button for the main page navigation below. Inside this dropdown menu in a seperate link to the homepage. The search bar also toggles to a button on smaller screens which reveals the navbar below to save some space on smaller devices.
+For the lower part of the navigation panel I went with centrally alligned links to the routes, membership and forum pages.
+
+[↥ Back to top](#Mark-McClean)
+
+
 ## Surface
 
 ### Colours and icons

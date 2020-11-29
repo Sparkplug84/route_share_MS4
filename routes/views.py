@@ -194,13 +194,46 @@ def save_route_list(request):
 
 @login_required
 def save_route(request, route_id):
+
     route = get_object_or_404(Route, pk=route_id)
     profile = get_object_or_404(UserProfile, user=request.user)
-    print(profile.membership)
-    if profile.membership == 'unlimited_membership':
-        print('hello')
-    if route.save_route.filter(id=request.user.id).exists():
-        route.save_route.remove(request.user)
+    user = request.user
+    saved_routes = user.save_route.all()
+
+    if profile.membership and profile.membership.name == 'unlimited_membership':
+        if not route.save_route.filter(id=request.user.id).exists():
+            route.save_route.add(request.user)
+            messages.success(request, 'You have added\
+                this route to your saved routes')
+            return redirect(reverse('route_detail', args=[route.id]))
+        else:
+            messages.info(request, 'You already have this route saved.')
+            return redirect(reverse('route_detail', args=[route.id]))
+
+    elif profile.membership and profile.membership.name == 'limited_membership':
+        if saved_routes.count() < 5:
+            if not route.save_route.filter(id=request.user.id).exists():
+                route.save_route.add(request.user)
+                messages.success(request, 'You have \
+                    added this route to your saved routes')
+                return redirect(reverse('route_detail', args=[route.id]))
+            else:
+                messages.info(request, 'You already have this route saved.')
+                return redirect(reverse('route_detail', args=[route.id]))
+        else:
+            messages.warning(request, 'You have already \
+                reached your membership limited this month. \
+                    Please wait till next month or upgrade to Unlimited')
+            return redirect(reverse('route_detail', args=[route.id]))
     else:
-        route.save_route.add(request.user)
-    return redirect(reverse('route_detail', args=[route.id]))
+        if saved_routes < 1:
+            if not route.save_route.filter(id=request.user.id).exists():
+                route.save_route.add(request.user)
+                messages.success(request, 'You have added \
+                    this route to your saved routes')
+                return redirect(reverse('route_detail', args=[route.id]))
+        else:
+            messages.warning(request, 'You already have \
+                already reached your membership limited this month.\
+                     Please wait till next month or upgrade to Unlimited')
+            return redirect(reverse('route_detail', args=[route.id]))

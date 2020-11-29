@@ -9,6 +9,8 @@ from django.contrib import messages
 def profile(request):
     """ View to render the user profile """
     profile = get_object_or_404(UserProfile, user=request.user)
+    user = request.user
+    saved_routes = user.save_route.all()
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -25,7 +27,7 @@ def profile(request):
     context = {
         'form': form,
         'profile': profile,
-        'not_basket': True
+        'not_basket': True,
+        'saved_routes': saved_routes,
     }
-
     return render(request, template, context)

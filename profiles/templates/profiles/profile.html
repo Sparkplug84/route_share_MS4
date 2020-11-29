@@ -16,6 +16,58 @@
             </div>
         </div>
         <div class="row">
+
+            <div class="col-12 col-lg-6 order-lg-last">
+                <p class="title-font mt-3 font-weight-bold">Memebership Details for <span class="d-inline">"{{ profile.user }}"</span></p>
+                <div class="summary-container bg-black rounded-wrapper">
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="text-white p-3">
+                                <span class="icon">
+                                    <i class="fas fa-tag"></i>
+                                </span>
+                                {{ profile.membership.friendly_name }} Membership
+                            </h5>
+                        </div>
+                    </div>
+                    <hr class="card-divider w-100 bg-orange">
+                    <div class="row">
+                        <div class="col">
+                            <p class="text-white px-3 pt-3">
+                                <span class="icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </span>
+                                    {{ profile.membership.description }}
+                                </p>
+                            <p class="text-white px-3">
+                                <span class="icon">
+                                    <i class="fas fa-coins"></i>
+                                </span>
+                                €{{ profile.membership.price }} / Month
+                            </p>
+                            <p class="text-white px-3">
+                                <span class="icon">
+                                    <i class="fas fa-route"></i>
+                                </span>
+                                {% if profile.membership.name == 'unlimited_membership' %}
+                                    {{ saved_routes|length }} saved routes
+                                {% elif profile.membership.name == 'limited_membership' %}
+                                    {{ saved_routes|length }}/5 routes saved this month
+                                {% else %}
+                                    {{ saved_routes|length }}/1 routes saved this month
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'save_route_list' %}" class="btn btn-orange rounded-pill my-2">
+                    <span class="text-uppercase ml-2">My Saved Routes</span>
+                    <span class="icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                </a>
+            </div>
+
             <div class="col-12 col-lg-6">
                 <p class="title-font mt-3 font-weight-bold">Current User Details</p>
                 <form class="bg-black text-white p-3 rounded-wrapper" action="{% url 'profile' %}" method="POST" id="profile-update-form">
@@ -30,15 +82,12 @@
                             {{ form|crispy }}
                     </fieldset>
                     <button id="submit-button" class="btn btn-orange rounded-pill my-2">
-                        <span class="text-uppercase">Update Information</span>
+                        <span class="text-uppercase ml-2">Update Information</span>
                         <span class="icon">
                             <i class="fas fa-check-circle"></i>
                         </span>
                     </button>
                 </form>
-            </div>
-            <div class="col-12 col-lg-6">
-                {{ profile }}
             </div>
         </div>
     </div>
