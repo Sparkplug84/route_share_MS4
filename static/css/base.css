@@ -63,7 +63,7 @@ img.break-img {
 }
 
 /* Underline hover effect on main navbar found on codepen */
-a:after {
+a::after {
   content: '';
   display: block;
   position: absolute;
@@ -74,14 +74,14 @@ a:after {
   background: transparent;
 }
 
-.hover-centre:after {
-  transition: width .5s ease, background-color .5s ease, left .5s ease;
+.hover-centre::after {
+  transition: width 0.5s ease, background-color 0.5s ease, left 0.5s ease;
 }
 
-.hover-centre:hover:after {
+.hover-centre:hover::after {
   width: 100%;
   left: 0;
-  background: rgb(170, 89, 22)
+  background: rgb(170, 89, 22);
 }
 
 .navbar-toggler {
@@ -127,8 +127,9 @@ footer {
 .navbar-toggler>.close {
     display: inline;
 }
-.navbar-toggler.collapsed>.close, 
-.navbar-toggler:not(.collapsed)>.navbar-toggler-icon {
+
+.navbar-toggler.collapsed > .close,
+.navbar-toggler:not(.collapsed) > .navbar-toggler-icon {
     display: none;
 }
 
@@ -138,7 +139,7 @@ footer {
     opacity: 1;
 }
 
-/*-------------------- Buttons, colours and fonts */
+/* -------------------- Buttons, colours and fonts */
 
 .title-font {
     letter-spacing: 2px;

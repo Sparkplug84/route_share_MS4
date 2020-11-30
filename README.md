@@ -468,4 +468,17 @@ There are a few issues that I was unfortunately unable to overcome before submis
     * **Info** - I had come up with a nice plan to reveal the actual Google map of each route on the site. This required the users to first mke their route in Google Maps, get the `<iframe>` html element provided by Google and paste it into the form. The whole thing works nicely and looks good but it provides an obvious security risk to my site that people may post malicious content or even cause the site to crash.
     * **Possible Fix** - Adding some form of validation to the form field to make sure it comes from a Google Maps source.
 
+3.  * **Issue** - Webhook not working completely
+    * **Info** - When completing an order the webhook should check if the order has been saved in the database. If the order is not in teh database after 5 seconds the order information that was captured during submission, is then passed into the database automatically by the webhook. This is in the event that the order submission fails after clicking the submit button. This way the user will still have their order processed. When I tested the form submission failing to see if the webhook worked, everything appeared to work. In the stripe webhook events the `payment_intent.succeeded` showed a 200 response and the with the statement `Order created in the webhook` as opposed to `Order already eists in database` under normal checkouts. However when I checked the admin panel of my application, the order was not there. 
+    * **Possible Fix** - I did go through this with the tudors a couple of times but we couldn't figure out what the problem was. I think the best thing to do would be to put several print statements throughout the webhook handler file and see which ones print as see at which point the code breaks out of the sequence. Unfortunately I ran out of time to fully dive into this.
+
 [↥ Back to top](#Mark-McClean)
+
+### Code Validation
+Since this was a much bigger project than I had done before, I used an online code validator called [Codacy](https://www.codacy.com/). This was recomended by my mentor and it links to my Github account and analyses my code everytime I push it to Github. Ireceive an email with a list of new or previously resolved code issues.
+
+Below is an outline of the problems I encountered ad fixed per code language:
+* **HTML** - Fortunately there were no error in all my HTML templates throughout the whole project.
+* **CSS** - I had used several pseudo elements where I had forgot the double colon `::after`. Other problems included trailing white space and missing semi-colons. I was able to quickly fix these issues. There were also a lot of issues regrding '2 space indentation'. I just used the automatic indention when you hit the enter button so I ignored this issue as I don't think it's a problem. There were also many warnings for the use of `!important`. I also ignored these as it is sometime necessary to override bootstrap stlyes to accomplish what you are looking for.
+* **JavaScript** - 
+* **Python** - Like JavaScript, within the Gitpod environment I used the 'Problems' tab which I checked often during the development. For external validation I used [PEP8](http://pep8online.com/). The only issues I had were lines that were too long or over indented lines. These things are easily fixed and did not affect the functionality.

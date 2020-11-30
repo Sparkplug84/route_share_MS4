@@ -18,7 +18,7 @@
 }
 
 .stripe-style-input::placeholder {
-    color: #aab7c4
+    color: #aab7c4;
 }
 
 .StripeElement--webkit-autofill {
@@ -70,11 +70,11 @@ select option[value=""] {
     animation-name: move;
     animation-duration: 0.7s;
     animation-iteration-count: infinite;
-    animation-timing-function : linear;
+    animation-timing-function: linear;
 }
 
 @keyframes move {
-    0% { transform : translateX(-6%) }
-    50% { transform : translateX(0%) }
-    100% { transform : translateX(6%) }
+    0% { transform: translateX(-6%) };
+    50% { transform: translateX(0%) };
+    100% { transform: translateX(6%) };
 }

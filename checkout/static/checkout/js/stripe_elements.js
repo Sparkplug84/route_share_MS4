@@ -39,7 +39,7 @@ card.addEventListener('change', function (event) {
             </span>
             <span>${event.error.message}</span>
         `;
-        $(errorDiv).html(html)
+        $(errorDiv).html(html);
     } else {
         errorDiv.textContent = '';
     }
@@ -96,13 +96,13 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 // The payment has been processed
-                if (result.paymentIntent.status == 'succeeded') {
-                    form.submit()
-                }
-            }
-        })
+                if (result.paymentIntent.status === 'succeeded') {
+                    // form.submit()
+                };
+            };
+        });
     }).fail(function() {
         // just reload the page, the error will be in django messages
         location.reload();
-    })
+    });
 });
