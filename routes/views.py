@@ -39,8 +39,9 @@ def all_routes(request):
             routes = routes.order_by(sortkey)
             if sortkey == 'country':
                 routes = sorted(routes, key=lambda route: route.country.name)
-                if direction == 'desc':
-                    routes = sorted(routes, key=lambda route: route.country.name, reverse=True)
+            if sortkey == '-country':
+                routes = sorted(
+                    routes, key=lambda route: route.country.name, reverse=True)
 
         if 'bike_type' in request.GET:
             biketypes = request.GET['bike_type'].split(',')

@@ -89,7 +89,7 @@ form.addEventListener('submit', function(ev) {
                         <i class="fas fa-times"></i>
                     </span>
                     <span>${result.error.message}</span>`;
-                $(errorDiv).html(html)
+                $(errorDiv).html(html);
                 $('#payment-form').fadeToggle(100);
                 $('#loading-overlay').fadeToggle(100);
                 card.update({ 'disabled': false });
@@ -97,8 +97,8 @@ form.addEventListener('submit', function(ev) {
             } else {
                 // The payment has been processed
                 if (result.paymentIntent.status === 'succeeded') {
-                    form.submit()
-                };
+                    form.submit();
+                }
             };
         });
     }).fail(function() {

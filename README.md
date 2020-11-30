@@ -469,8 +469,8 @@ There are a few issues that I was unfortunately unable to overcome before submis
     * **Possible Fix** - Adding some form of validation to the form field to make sure it comes from a Google Maps source.
 
 3.  * **Issue** - Webhook not working completely
-    * **Info** - When completing an order the webhook should check if the order has been saved in the database. If the order is not in teh database after 5 seconds the order information that was captured during submission, is then passed into the database automatically by the webhook. This is in the event that the order submission fails after clicking the submit button. This way the user will still have their order processed. When I tested the form submission failing to see if the webhook worked, everything appeared to work. In the stripe webhook events the `payment_intent.succeeded` showed a 200 response and the with the statement `Order created in the webhook` as opposed to `Order already eists in database` under normal checkouts. However when I checked the admin panel of my application, the order was not there. 
-    * **Possible Fix** - I did go through this with the tudors a couple of times but we couldn't figure out what the problem was. I think the best thing to do would be to put several print statements throughout the webhook handler file and see which ones print as see at which point the code breaks out of the sequence. Unfortunately I ran out of time to fully dive into this.
+    * **Info** - When completing an order the webhook should check if the order has been saved in the database. If the order is not in the database after 5 seconds the order information that was captured during submission, is then passed into the database automatically by the webhook. This is in the event that the order submission fails after clicking the submit button. This way the user will still have their order processed. When I tested the form submission failing to see if the webhook worked, everything appeared to work. In the stripe webhook events the `payment_intent.succeeded` showed a 200 response and the with the statement `Order created in the webhook` as opposed to `Order already eists in database` under normal checkouts. However when I checked the admin panel of my application, the order was not there. While trying to fix the issue I may have caused another a further problem as the `payment_intent.succeeded` in the stripe dashboard is now showing a 500 error.
+    * **Possible Fix** - I did go through this with the tudors a couple of times but we couldn't figure out what the problem was. I think the best thing to do would be to put several print statements throughout the webhook handler file and see which ones print and see at which point the code breaks out of the sequence. Unfortunately I ran out of time to fully dive into this. Ordering normally without the use of the webhook works perfectly but it is bug that remains to be fixed.
 
 [↥ Back to top](#Mark-McClean)
 
@@ -480,5 +480,54 @@ Since this was a much bigger project than I had done before, I used an online co
 Below is an outline of the problems I encountered ad fixed per code language:
 * **HTML** - Fortunately there were no error in all my HTML templates throughout the whole project.
 * **CSS** - I had used several pseudo elements where I had forgot the double colon `::after`. Other problems included trailing white space and missing semi-colons. I was able to quickly fix these issues. There were also a lot of issues regrding '2 space indentation'. I just used the automatic indention when you hit the enter button so I ignored this issue as I don't think it's a problem. There were also many warnings for the use of `!important`. I also ignored these as it is sometime necessary to override bootstrap stlyes to accomplish what you are looking for.
-* **JavaScript** - 
-* **Python** - Like JavaScript, within the Gitpod environment I used the 'Problems' tab which I checked often during the development. For external validation I used [PEP8](http://pep8online.com/). The only issues I had were lines that were too long or over indented lines. These things are easily fixed and did not affect the functionality.
+* **JavaScript** - In my Javascript files a had a lot of errors regarding the use of double quotes instead of single quotes. I decided to ignore these as the single quotes were used in the course content and I don't think this is a problem. Other problems were missing semi-colons, and using == instead of ===. I was able to fix most issues withour any problems.
+* **Python** - For my Python files I mainly used the built in flake8 function in Gitpod. This would instantly tell me if the code was invalid and I mainly fixed all issues immediately during development. Near the end I ran a `python3 -m flake8` command in the terminal which would list all issue throughout all Python files saved so I'm able to see all issues in one place. I was quickly able to go through each file an validate the code. The ones I ignored were automatically generated files like migrations and some preinstalled code in the settings file. I also ignored warning to Avoid using `null=True` on string-based fields as in my project it is sometimes fine if the user wants to leave this field empty.
+
+## Deployment
+The code environment was taken from a code institute [Gitpod template](https://github.com/Code-Institute-Org/gitpod-full-template) that is stored on Github. 
+
+This is then cloned and saved onto my own Github account as a new repository. From there I use the built in 'Gitpod' button to open up the new repository on my own Gitpod account. 
+
+The template then opens with a boiler plate to start coding including links for Bootstrap, jQuery, Popper and Font Awesome so I didn’t need to look for the CDN’s myself. 
+
+After every session of coding I committed my work using the Git terminal in Gitpod. Every commit has a message attached to clearly explain the changes that were made since the last commit. After the commit, the code is also then pushed to my Github account, also using the Git terminal.
+
+### Heroku Deployment
+* Create a requirements.txt file using the terminal command `pip freeze > requirements.txt`
+* Create a Procfile with the terminal command `echo web: python app.py > Procfile`
+* git add and git commit the new requirements and Procfile and then git push the project to GitHub.
+* Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+* From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+* Confirm the linking of the heroku app to the correct GitHub repository.
+* In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+
+<details>
+    <summary>
+        Set the following config vars
+    </summary>
+    <img alt="Database Schema" src="https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/master/media/config-vars.png">
+</details>
+
+* In the heroku dashboard, click "Deploy"
+* In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch"
+* The site should now be successfully deployed.
+
+## Credits
+* All content was written by myself
+* All images on the site were talken from various google image results
+* For the contact app I used a stack overflow article to help with the sending of the main functionality, the article can be found [here](https://stackoverflow.com/questions/48023948/handling-contact-form-in-django-email-not-sent)
+* For the set up of the 'Save Routes' functionality for users with a membership I found a handy video turorial outlining the steps I could roughly apply to my application to achieve something similar. The tutorial can be viewed [here](https://www.youtube.com/watch?v=1XiJvIuvqhs)
+* For the forum app on my site I mostly used code I already knew and had implemented similarly on the adding routes section however I did read through and take some tip form this forum app example [here](https://data-flair.training/blogs/discussion-forum-python-django/)
+* Code institute tudors helped me throughout the project, for example with passing the membership type through different apps so it would appear in the User Profile. Also with sign up issues and attempting to resolve my webhook issue.
+* Stack overflow was used to find articles on similar issues I had throughout development and the credits for that can also be found in comments within the code itself especially in the CSS file.
+* CSS Tricks and codepen were also useful for finding creative style solutions for creating triangles and implementing an underline hover for the navbar links.
+
+### Special thanks
+* Special thanks to my mentor [Anthony Ngene](https://github.com/tonymontaro) who talked me through several pieces of code, for example the `key:lambda` function used to alphbetically sort the coutries by `country.name` instead of the standard 2 letter country code as it's not the same alphbetical order. He also helps me withh other issues such as membership and registration errors.
+* Many thanks to the Code Institute tudors, who also helped me out with some small and larger issues I had during the development process
+* Thanks to all the friends and family who tested the application on various devides and gave me feedback to improve the game
+
+Disclaimer:
+The content of the website is for educational purposes only.
+
+[↥ Back to top](#Mark-McClean)

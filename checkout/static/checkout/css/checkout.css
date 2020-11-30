@@ -74,7 +74,7 @@ select option[value=""] {
 }
 
 @keyframes move {
-    0% { transform: translateX(-6%) };
-    50% { transform: translateX(0%) };
-    100% { transform: translateX(6%) };
+    0% { transform: translateX(-6%); }
+    50% { transform: translateX(0%); }
+    100% { transform: translateX(6%); }
 }
