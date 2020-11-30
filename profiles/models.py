@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     default_country = CountryField(
         blank_label='Country', null=True, blank=True)
     membership = models.ForeignKey(
-        Membership, null=True, default=3, on_delete=models.CASCADE)
+        Membership, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
