@@ -26,7 +26,11 @@
                                 <span class="icon">
                                     <i class="fas fa-tag"></i>
                                 </span>
-                                {{ profile.membership.friendly_name }} Membership
+                                {% if profile.membership %}
+                                    {{ profile.membership.friendly_name }} Membership
+                                {% else %}
+                                    Currently No Memebership
+                                {% endif %}
                             </h5>
                         </div>
                     </div>
@@ -37,46 +41,61 @@
                                 <span class="icon">
                                     <i class="fas fa-file-alt"></i>
                                 </span>
+                                {% if profile.membership %}
                                     {{ profile.membership.description }}
+                                {% endif %}
                                 </p>
                             <p class="text-white px-3">
                                 <span class="icon">
                                     <i class="fas fa-coins"></i>
                                 </span>
-                                €{{ profile.membership.price }} / Month
+                                {% if profile.membership %}
+                                    €{{ profile.membership.price }} / Month
+                                {% endif %}
                             </p>
                             <p class="text-white px-3">
                                 <span class="icon">
                                     <i class="fas fa-route"></i>
                                 </span>
-                                <!-- Displays the current membership status -->
-                                {% if profile.membership.name == 'unlimited_membership' %}
-                                    {{ saved_routes|length }} saved routes
-                                {% elif profile.membership.name == 'limited_membership' %}
-                                    <!-- This is in the event that the user downgrades to a lower membership
-                                        to prevent the profile stating for example 8/5 routes saved this month -->
-                                    {% if saved_routes|length > 5 %}
-                                        5/5 routes saved this month
+                                {% if profile.membership %}
+                                    <!-- Displays the current membership status -->
+                                    {% if profile.membership.name == 'unlimited_membership' %}
+                                        {{ saved_routes|length }} saved routes
+                                    {% elif profile.membership.name == 'limited_membership' %}
+                                        <!-- This is in the event that the user downgrades to a lower membership
+                                            to prevent the profile stating for example 8/5 routes saved this month -->
+                                        {% if saved_routes|length > 5 %}
+                                            5/5 routes saved this month
+                                        {% else %}
+                                            {{ saved_routes|length }}/5 routes saved this month
+                                        {% endif %}
                                     {% else %}
-                                        {{ saved_routes|length }}/5 routes saved this month
-                                    {% endif %}
-                                {% else %}
-                                    {% if saved_routes|length > 1 %}
-                                        1/1 routes saved this month
-                                    {% else %}
-                                        {{ saved_routes|length }}/1 routes saved this month
+                                        {% if saved_routes|length > 1 %}
+                                            1/1 routes saved this month
+                                        {% else %}
+                                            {{ saved_routes|length }}/1 routes saved this month
+                                        {% endif %}
                                     {% endif %}
                                 {% endif %}
                             </p>
                         </div>
                     </div>
                 </div>
-                <a href="{% url 'save_route_list' %}" class="btn btn-orange rounded-pill my-2">
-                    <span class="text-uppercase ml-2">My Saved Routes</span>
-                    <span class="icon">
-                        <i class="fas fa-chevron-right"></i>
-                    </span>
-                </a>
+                {% if profile.membership %}
+                    <a href="{% url 'save_route_list' %}" class="btn btn-orange rounded-pill my-2">
+                        <span class="text-uppercase ml-2">My Saved Routes</span>
+                        <span class="icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </a>
+                {% else %}
+                    <a href="{% url 'membership' %}" class="btn btn-orange rounded-pill my-2">
+                        <span class="text-uppercase ml-2">Membership Options</span>
+                        <span class="icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </a>
+                {% endif %}
             </div>
 
             <div class="col-12 col-lg-6">

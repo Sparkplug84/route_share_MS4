@@ -121,6 +121,9 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 |     21         |     Member               |     Admin & Route Management        |     Delete a route                                       |     To delete a route that is no longer correct                                         |
 |     22         |     Member               |     Admin & Route Management        |     Rate and review a route                              |     To have a rating and review of a route posted on the website                        |
 |     23         |     Member               |     Admin & Route Management        |     Create a forum post                                  |     Create a post on the site about a subject I’d like to discuss                       |
+|     24         |     Member               |     Admin & Route Management        |     Reply to a forum post                                |     Reply to post by another user                                                       |
+|     25         |     Member               |     Admin & Route Management        |     Save Routes to my profile                            |     To save a route based on your membership conditions                                 |
+|     26         |     Member               |     Admin & Route Management        |     View saved routes                                    |     To view your saved routes separately for quick access                               |
 
 [↥ Back to top](#Mark-McClean)
 
@@ -366,5 +369,38 @@ When the basic functionality of the site was in place, I shared by the website w
 Through continual monitoring and with the feedback of friends and family, I have fixed a few design faults throughout the project duration.
 
 ### User Story Testing
+
+| Story # | Activity                   | Goal                                              | Outcome                                                                                                                  |
+|---------|----------------------------|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| 1       | Viewing & Navigation       | View a list of routes                             | Success - Routes can be accessed from several links.                                                                     |
+| 2       | Viewing & Navigation       | View route details                                | Success - Clicking on a route photo will show more route details.                                                        |
+| 3       | Viewing & Navigation       | View membership options                           | Success - There are several links to the membership options.                                                             |
+| 4       | Viewing & Navigation       | To see I’ve selected a membership to purchase     | Success - A messages to alert you and basket icon changes colour.                                                        |
+| 5       | Viewing & Navigation       | Instructions on how to upload my favourite route  | Success - A separate dedicated instruction page                                                                          |
+|         |                            |                                                   |                                                                                                                          |
+| 6       | Sorting & Searching        | Sort the list of routes                           | Success - Routes can be sorted on a number of different ways through the sort selector                                   |
+| 7       | Sorting & Searching        | Sort a specific category of route                 | Success - In the navbar users can choose different categories of routes                                                  |
+| 8       | Sorting & Searching        | Search for a route by name or description         | Success - word/number searches will return words from the title, description, length, country, bike type and route type. |
+| 9       | Sorting & Searching        | See what I’ve searched for and number of results  | Success - Resulting search shows number to records and search words/numbers                                              |
+|         |                            |                                                   |                                                                                                                          |
+| 10      | Registration/User Accounts | Register for an account                           | Success - Registration will create a new account                                                                         |
+| 11      | Registration/User Accounts | Log in and out                                    | Success - Logging in and out works and user receives messages of confirmation                                            |
+| 12      | Registration/User Accounts | Recover my lost password                          | Success - Password reset sends an email to the user.                                                                     |
+| 13      | Registration/User Accounts | Receive email notification on registration        | Success - Users receive email after registration with a link to confirm email address.                                   |
+| 14      | Registration/User Accounts | Have a personalised user profile                  | Success - After purchase of a membership, a user profile is created for the user to view                                 |
+|         |                            |                                                   |                                                                                                                          |
+| 15      | Purchasing and checkout    | View membership type in my basket to be purchased | Success - clicking on the basket will display the membership type added by the user                                      |
+| 16      | Purchasing and checkout    | Enter my payment details                          | Success - Payment details can be entered.                                                                                |
+| 17      | Purchasing and checkout    | View an order confirmation after payment          | Success - An order summary appears after a successful checkout.                                                          |
+| 18      | Purchasing and checkout    | Receive an email confirmation after checkout      | Success - the user receives the order confirmation by email                                                              |
+|         |                            |                                                   |                                                                                                                          |
+| 19      | Admin & Route Management   | Add a route                                       | Success - Users ca add routes                                                                                            |
+| 20      | Admin & Route Management   | Edit or update a route                            | Success - Edit a route is possible but only by the user who uploaded it                                                  |
+| 21      | Admin & Route Management   | Delete a route                                    | Success - Delete a route is possible but only by the user who uploaded it                                                |
+| 22      | Admin & Route Management   | Rate and review a route                           | Unsuccessful - Future feature, ran out of time                                                                           |
+| 23      | Admin & Route Management   | Create a forum post                               | Success - Only authenticated users can add posts                                                                         |
+| 24      | Admin & Route Management   | Reply to a forum post                             | Success - Only authenticated users can reply to posts.                                                                   |
+| 25      | Admin & Route Management   | Save Routes to my profile                         | Success - Routes can be saved depending on membership conditions                                                         |
+| 26      | Admin & Route Management   | View saved routes                                 | Success - Saved routes per user can be viewed on a separate page.                                                        |
 
 [↥ Back to top](#Mark-McClean)
