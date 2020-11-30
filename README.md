@@ -313,20 +313,19 @@ See below the database relationships
     1. Bike type
     2. Route Type
 
+<details>
+    <summary>
+        Database - Schema
+    </summary>
+    <img alt="Database Schema" src="https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/master/media/Database.PNG">
+</details>
+
 The membership type is the most important piece of information in the database schema as it needs to be saved on to the User Profile to set the conditions under which the user can save routes or not.
 Not surprisingly this was challenging as the membership type has to pass from the membership model to the basket when added by the user. It then needs to transfer from the basket to the order during checkout. Finally when the order is fully processed, the membership type has to be transferred to the User Profile.
 This was not fully successful in the beginning and several alterations had to be made to the model and views in which the membership type was been passed through on each step.
 The membership type is not fully passed through to the User Profile and can also be updated if the user decides to change their membership by buying a different membership after the initial purchase.
 I decided against an order line item model as each order can only have 1 membership type and I thought it would be simpler and more efficient to pass through all the order details directly in the main order model.
 To give the users the ability to save routes depending on their membership conditions, I went for a ManyToMany relationship between the user and the route. I was advised against going for a ManyToMany relationship but found it difficult to find an alternative method to achieve the desired functionality.
-
-<details>
-    <summary>
-        Database - Schema
-    </summary>
-    <img alt="Database Schema" src="https://raw.githubusercontent.com/Sparkplug84/route_share_MS4/master/media/Database.PNG">
-                                    
-</details>
 
 [↥ Back to top](#Mark-McClean)
 
@@ -353,5 +352,19 @@ To give the users the ability to save routes depending on their membership condi
 * [Codacy](https://www.codacy.com/) – Used to validate all code on the entire site instead of copying and pasting many files one at a time into the various HTML, CSS, JS and Python code validators.
 * Google Chrome Developer Tools – Used frequently to check and examine all elements and styles throughout the development. Even adjusting live in the browser before updating the corresponding code in Gitpod.
 * [Google Maps](https://www.google.com/maps/) – Used to generate the html <iframe> element of the users route so it can pasted it in to the add route form.
+
+[↥ Back to top](#Mark-McClean)
+
+## Testing
+
+### General Testing
+All testing was carried out manually by checking the browser frequently throughout development. How I achieved this was after almost every line of code that I wrote, I refreshed up the browser to check the updated code. Viewing it in Google Chrome I am then able to right click on the website and select inspect from the menu. Chrome Developer tools opens up which allows me to view the elements, styles and console log to see JavaScript errors.
+On the previous project I had used Materialize as the CSS framework but decided to go back to Bootstrap as I felt more comfortable using it instead. Throughout the project I was often cheking the Bootstrap documentation to use as many utility classes as possible to style my site. This was to cut down on the amount of custom CSS being used as I think in previous projects I was writing too much CSS.
+I tried to work with small tasks in the beginning, setting up the navbar, creating some links. During this process I would view the website in the browser many times, select elements to see what default styles had been attached to them and change if necessary. Chrome Developer tools also allows you to add styles to elements and change the website as you view it. I would then add Bootstrap utility classes in the developer tools to see the instant result. This would then be copied into the project if it was the desired outcome. Within the Chrome developer tools there is also the console, which I monitored to find bugs in the JavaScript functions.
+After spending some time on the HTML, Bootstrap and CSS to set up the look, styles and responsiveness of the website, I moved on to writing the Python code. I used the same manual tests as above using Chrome Developer tools. I would often print statements in the python code and check in the command line to see if the statements were printed. This helps to see if the program reaches parts of your function and if there are any bugs, at which point it is going wrong.
+When the basic functionality of the site was in place, I shared by the website with friends and family to get their feeback of usablity and first impressions of the game and functionality.
+Through continual monitoring and with the feedback of friends and family, I have fixed a few design faults throughout the project duration.
+
+### User Story Testing
 
 [↥ Back to top](#Mark-McClean)
