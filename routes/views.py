@@ -39,6 +39,8 @@ def all_routes(request):
             routes = routes.order_by(sortkey)
             if sortkey == 'country':
                 routes = sorted(routes, key=lambda route: route.country.name)
+                if direction == 'desc':
+                    routes = sorted(routes, key=lambda route: route.country.name, reverse=True)
 
         if 'bike_type' in request.GET:
             biketypes = request.GET['bike_type'].split(',')
@@ -207,11 +209,12 @@ def save_route(request, route_id):
         if not route.save_route.filter(id=request.user.id).exists():
             route.save_route.add(request.user)
             messages.success(request, 'You have added\
-                this route to your saved routes')
+                this route to your saved routes. See map below.')
             return redirect(reverse('route_detail', args=[route.id]))
         else:
             # Required in the event that the user types the url in manually
-            messages.info(request, 'You already have this route saved.')
+            messages.info(request, 'You already have \
+                this route saved. See map below.')
             return redirect(reverse('route_detail', args=[route.id]))
 
     elif profile.membership and \
@@ -220,11 +223,12 @@ def save_route(request, route_id):
             if not route.save_route.filter(id=request.user.id).exists():
                 route.save_route.add(request.user)
                 messages.success(request, 'You have \
-                    added this route to your saved routes')
+                    added this route to your saved routes. See map below.')
                 return redirect(reverse('route_detail', args=[route.id]))
             else:
                 # Required in the event that the user types the url in manually
-                messages.info(request, 'You already have this route saved.')
+                messages.info(request, 'You already have \
+                    this route saved. See map below.')
                 return redirect(reverse('route_detail', args=[route.id]))
         else:
             messages.warning(request, 'You have already \
@@ -238,11 +242,12 @@ def save_route(request, route_id):
             if not route.save_route.filter(id=request.user.id).exists():
                 route.save_route.add(request.user)
                 messages.success(request, 'You have added \
-                    this route to your saved routes')
+                    this route to your saved routes. See map below.')
                 return redirect(reverse('route_detail', args=[route.id]))
             else:
                 # Required in the event that the user types the url in manually
-                messages.info(request, 'You already have this route saved.')
+                messages.info(request, 'You already have \
+                    this route saved. See map below.')
                 return redirect(reverse('route_detail', args=[route.id]))
         else:
             messages.warning(request, 'You have \

@@ -19,10 +19,10 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="route-detail-container mb-5 mt-md-5">
+                <div class="route-detail-container bg-black text-white rounded-wrapper mt-5 p-3">
                     <h5 class="title-font mb-3">{{ route.name }}
                         {% if is_saved %}
-                        <span class="icon float-right text-danger">
+                        <span class="icon float-right text-danger m-2">
                             <i class="fas fa-heart fa-lg"></i>
                         </span>
                         {% endif %}
@@ -30,28 +30,28 @@
                     
                     <p class="mb-0 text-left"><i class="fas fa-map-marker-alt mr-1"></i>{{ route.length }}km</p>
                     <p class="mb-0 text-left">
-                        <a class="text-black" href="{% url 'routes' %}?country={{ route.country }}">
+                        <a class="text-white" href="{% url 'routes' %}?country={{ route.country }}">
                             <i class="fas fa-flag mr-1"></i>{{ route.country.name }}
                         </a>
                     </p>
                     {% if route.route_type %}
                     <p class="small mb-0 text-left">
-                        <a class="text-muted" href="{% url 'routes' %}?route_type={{ route.route_type.name }}">
+                        <a class="text-white" href="{% url 'routes' %}?route_type={{ route.route_type.name }}">
                             <i class="fas fa-route mr-1"></i>{{ route.route_type.friendly_name }}
                         </a>
                     </p>
                     {% endif %}
                     {% if route.bike_type %}
                     <p class="small mt-1 mb-0">
-                        <a class="text-muted" href="{% url 'routes' %}?bike_type={{ route.bike_type.name }}">
+                        <a class="text-white" href="{% url 'routes' %}?bike_type={{ route.bike_type.name }}">
                             <i class="fas fa-biking mr-1"></i>{{ route.bike_type.friendly_name }}
                         </a>
                     </p>
                     {% endif %}
                     {% if route.rating %}
-                        <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ route.rating }} / 5</small>
+                        <small class="text-white"><i class="fas fa-star mr-1"></i>{{ route.rating }} / 5</small>
                     {% else %}
-                        <small class="text-muted">No Rating</small>
+                        <small class="text-white">No Rating</small>
                     {% endif %}
 
                     <!-- Only Users who added the route can edit/delete the route -->
@@ -88,10 +88,12 @@
     </div>
 
     {% if is_saved %}
+    
     <div class="container-fluid">
         <div class="row"> 
             <div class="col-12 col-lg-8 offset-lg-2 map-container">
-                <div class="map-responsive rounded-wrapper h-100">
+            <p>See map below of your saved route. Click on more options to get the Google Maps directions.</p>
+                <div class="map-responsive rounded-wrapper h-75">
                     <!-- autoescape tag found on stackoverflow to render html entered into the form -->
                     {% autoescape off %}
                         {{ route.map_url }}

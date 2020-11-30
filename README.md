@@ -15,6 +15,7 @@
 * [Skeleton](#Skeleton)
 * [Database Design](#Database-design)
 * [Technologies Used](#Technologies-Used)
+* [Testing](#Testing)
 
 ### View the live project
 The live website hosted by Heroku can be viewed [here](https://bicycle-route-share.herokuapp.com/).
@@ -158,9 +159,13 @@ I have also recently read that, especially since the Covid-19 crisis, cycling ha
 
 ### Overall Structure
 On the homepage I wanted to use several large full screen cycling images in conjunction with small snippets of information about the site. The overall design I tried to implement was fixed positioned images, seperated by a cycling graphic which scrolls up over the image to hide the image above and reveal the image below. The information snippets also scroll up over the fixed images. I think this gives a nice vsual effect to welcome the user to the site.
+
 The navigation panel along the top of the site is split into 2 sections. Theres the head section which is always visible on all screens but changes slightly depending on device size. It incorporates a site name/logo, a search bar, a profile icon and a basket icon. On smaller screens the site logo toggles to become the menu button for the main page navigation below. Inside this dropdown menu in a seperate link to the homepage. The search bar also toggles to a button on smaller screens which reveals the search bar below to save some space on smaller devices.
+
 For the lower part of the navigation panel I went with centrally alligned links to the routes, membership and forum pages. Several of these links have their own dropdown menus to choose filtering options when browsing for routes. On smaller devices this navigation panel disappears and transfers to inside the menu button, which will reveal the list of links when clicked.
+
 The footer section is a fairly standard but modern responsive information panel with links on the left to other parts of the site and on the right for social links, which all open in a new tab so the user is not permanently directed away from the site. The 3 footer sections trnasform into a centrally aligned single column on smaller screens.
+
 For the overall styles within the site I wanted to use coloured background sections with white text. These coloured background sections were all styled with rounded edges and often with an orange horizontal dividers to seperate information. I think this gave an attractive, soft and fun feel to the overall appearance ot the site. All existing allauth templates were also updated to reflect the sites main styles to provide consistency throughout the website.
 
 [↥ Back to top](#Mark-McClean)
@@ -297,8 +302,11 @@ I used the Balsamiq program for the wireframes and attached them to the director
 
 ### Database Schema
 Despite a lot of advice to thoroughly plan my database schema I still found it difficult to fully realise my database setup until I was already developing the project and many instances the models I had created were adapted and changed to reflect my evolving vision of how I wanted my site to function.
+
 This is something I can put down to inexperience but the knowledge I have gained from this process has been invaluable in developing my own skills in planning the project before hand.
+
 In the development environment I used the built-in mySQLite3 as the database frovided for by Django. As I was changing models frequently I held back on deploying the project to Heroku to save on double migrations. This is also something I can avoid by better planning of the database schema from the beginning.
+
 For the deployed version of the project, the database used is Prosgres provided for by Heroku and set up during the deployment of the project. Some pre-writen data created by myself at the start of the project did have to be transferred over to the new database but that was done with the loaddata function in the command line during deployment.
 
 See below the database relationships
@@ -324,10 +332,15 @@ See below the database relationships
 </details>
 
 The membership type is the most important piece of information in the database schema as it needs to be saved on to the User Profile to set the conditions under which the user can save routes or not.
+
 Not surprisingly this was challenging as the membership type has to pass from the membership model to the basket when added by the user. It then needs to transfer from the basket to the order during checkout. Finally when the order is fully processed, the membership type has to be transferred to the User Profile.
+
 This was not fully successful in the beginning and several alterations had to be made to the model and views in which the membership type was been passed through on each step.
+
 The membership type is not fully passed through to the User Profile and can also be updated if the user decides to change their membership by buying a different membership after the initial purchase.
+
 I decided against an order line item model as each order can only have 1 membership type and I thought it would be simpler and more efficient to pass through all the order details directly in the main order model.
+
 To give the users the ability to save routes depending on their membership conditions, I went for a ManyToMany relationship between the user and the route. I was advised against going for a ManyToMany relationship but found it difficult to find an alternative method to achieve the desired functionality.
 
 [↥ Back to top](#Mark-McClean)
@@ -362,11 +375,19 @@ To give the users the ability to save routes depending on their membership condi
 
 ### General Testing
 All testing was carried out manually by checking the browser frequently throughout development. How I achieved this was after almost every line of code that I wrote, I refreshed up the browser to check the updated code. Viewing it in Google Chrome I am then able to right click on the website and select inspect from the menu. Chrome Developer tools opens up which allows me to view the elements, styles and console log to see JavaScript errors.
+
 On the previous project I had used Materialize as the CSS framework but decided to go back to Bootstrap as I felt more comfortable using it instead. Throughout the project I was often cheking the Bootstrap documentation to use as many utility classes as possible to style my site. This was to cut down on the amount of custom CSS being used as I think in previous projects I was writing too much CSS.
+
 I tried to work with small tasks in the beginning, setting up the navbar, creating some links. During this process I would view the website in the browser many times, select elements to see what default styles had been attached to them and change if necessary. Chrome Developer tools also allows you to add styles to elements and change the website as you view it. I would then add Bootstrap utility classes in the developer tools to see the instant result. This would then be copied into the project if it was the desired outcome. Within the Chrome developer tools there is also the console, which I monitored to find bugs in the JavaScript functions.
+
 After spending some time on the HTML, Bootstrap and CSS to set up the look, styles and responsiveness of the website, I moved on to writing the Python code. I used the same manual tests as above using Chrome Developer tools. I would often print statements in the python code and check in the command line to see if the statements were printed. This helps to see if the program reaches parts of your function and if there are any bugs, at which point it is going wrong.
+
 When the basic functionality of the site was in place, I shared by the website with friends and family to get their feeback of usablity and first impressions of the game and functionality.
+
 Through continual monitoring and with the feedback of friends and family, I have fixed a few design faults throughout the project duration.
+
+### Testing in different browsers
+I used Google Chrome as my main browser test as I was constantly using the Chrome developer tools to view and adjust my code. I also regularly tested the website on my phone, also using Google Chrome. I occasionally checked Firefox on the laptop. I sent the URL to friends and family to test on ipads(5th generation or younger) and iphones(8 or younger) along with Samsung Galaxy(S9 or younger) and Saumsung Galaxy Tab(S3 or younger). Any issues I found have been documented below in the section: [Issues still to be resolved](#Issues-still-to-be-resolved).
 
 ### User Story Testing
 
@@ -402,5 +423,49 @@ Through continual monitoring and with the feedback of friends and family, I have
 | 24      | Admin & Route Management   | Reply to a forum post                             | Success - Only authenticated users can reply to posts.                                                                   |
 | 25      | Admin & Route Management   | Save Routes to my profile                         | Success - Routes can be saved depending on membership conditions                                                         |
 | 26      | Admin & Route Management   | View saved routes                                 | Success - Saved routes per user can be viewed on a separate page.                                                        |
+
+[↥ Back to top](#Mark-McClean)
+
+### Issued found and solved throughout the development
+
+Below is a overview of the more major issues I faced during development. This these issues I needed the help of the Code Istitute tudors or my mentor.
+
+There were many other smaller issues I came accross during development but I think a whole new README file would be needed to document them all. I was able to figure most of them out by myself so I don't think its necessary to document them all. Escpecially since a lot of them were design based anyway.
+
+1.	* **Issue** – The membership is a vital part of the website so I needed to pass it from the basket to the order but kept getting an 'Order has no membershp' error during checkout.
+    * **Fix** – I was using a for loop to loop through the basket items to get the membership type and tried saving that to the order after I had saved the form data. This resulted in only the membership being saved to the order. I needed to loop through the basket items first and get the membership type, then save the form data with a `commit=False` which doesn't add it to the database yet. Then I set the membership on the order with `order.membership` and then again `order.save()` to commit the save.
+    * **Result** – The order was then saved in the database with both the form data and the membership type.
+
+2.	* **Issue** – Attaching a user to the add and edit route functions.
+    * **Fix** – To attach the user to the route model I initially used a custom save override method inside the model but this seemed to be blocking the entire add and edit route functions from working. I removed the save function from the route model entirely and that seemed to fix the problem for editing the routes but not for adding a new route as there was still no user set on the route. I was able to resolve this by again getting the user in the view with `user = request.user` and saving it like the issue above with `route.user = user` and then saving the route.
+    * **Result** – New routes can be created and existing ones edited with the user attached.
+
+3.	* **Issue** – Couldn't add a comment to a post in the forum.
+    * **Fix** – When trying to add a comment to a forum post, I getting an `*arg` error regarding the field whcich was named 'reply'. I was originally setting the `__init__` method of the form whcih takes in the `*args` as a parameter but it was blocking the comment from being created. Im not completely sure what the issue was in the end but I tried removing the `__init__` method completely and setting the field manually with `reply = forms.CharField` and setting the required, label and placeholder conditions inside this as parameters.
+    * **Result** – Comments on forum posts are now rendering
+
+4.	* **Issue** – Regitration error
+    * **Fix** – The application was throwing a Internal server error when users tried to register for an account. The problem seemed to be coming from the user profile model which has a relationship with the user, even if through no user profile has been created yet. On the User Profile model I had the membership field set to `null=False` which meant that a membership had to be set during the registration but this is only possible during the checkout. The simple fix was to change the membership field on the user profile to `null=True` so it was no longer required.
+    * **Result** – New users were able to register for a new account
+
+5.	* **Issue** – Membership not being attached to user profile
+    * **Fix** – The fix for the previous error caused this error. Because the membership was no longer required on the user profile, it was no longer saving on to the profile during the checkout. To solve this I set the membership like before but this time within the checkout success view. I set it to `profile.membership=order.memberhsip` as the order was being passed into this view then saved it with `profile.save()`. This ensured that the membership was being added or updated for existing users during ever checkout process.
+    * **Result** – Membership types are added to user profiles or updsted to the new membership type if user purchases a different membership.
+
+6.	* **Issue** – Registration error again
+    * **Fix** – While trying to fix the previous issue I added in a `default=1` to the membership field of the User Profile in order to attach a membership type but since I eneded creating a new save of the profile during the checkout success view, the `default=1` was not really required any more as I was overriding it but I forgot to remove it. This was causing an issue only on the deployed version of the project. While setting up my memberships on the deployed version I had deleted several and created new ones so a membership with an id=1 no longer existed in the deployed version. The simple fix here was to remove the `default=1` from the membership field as is was no longer necessary.
+    * **Result** – Registration was again possible for new users.
+
+### Issues still to be resolved
+
+There are a few issues that I was unfortunately unable to overcome before submission. Theses issue are documented as follows.
+
+1.  * **Issue** - Homepage images zooming slightly on mobile screens
+    * **Info** - I am using 4 fixed images on my homepage that are stacked on top of each other and seprated by a scrolling cycling graphic to reveal the next image and hide the previous one. I think this looks really good but on mobile devices it causes a slight zoom of the image while scrolling up and down the page. It is not visibale in the Google Chrome Developer tools but it was visible on my own phone.
+    * **Possible Fix** - I think the `background position: cover` may be causing the problem so I may need to fix the image to the top or bottom of the parent element to stop the zooming
+
+2.  * **Issue** - Security issue using Google Maps `<iframe>`
+    * **Info** - I had come up with a nice plan to reveal the actual Google map of each route on the site. This required the users to first mke their route in Google Maps, get the `<iframe>` html element provided by Google and paste it into the form. The whole thing works nicely and looks good but it provides an obvious security risk to my site that people may post malicious content or even cause the site to crash.
+    * **Possible Fix** - Adding some form of validation to the form field to make sure it comes from a Google Maps source.
 
 [↥ Back to top](#Mark-McClean)
