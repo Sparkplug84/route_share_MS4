@@ -16,14 +16,20 @@
 * [Database Design](#Database-design)
 * [Technologies Used](#Technologies-Used)
 * [Testing](#Testing)
+* [Deployment](#Deployment)
+* [Credits](#Credits)
 
 ### View the live project
 The live website hosted by Heroku can be viewed [here](https://bicycle-route-share.herokuapp.com/).
 
+### Note to Assessors:
 If you wish to test out the checkout form and payment please use the following test card details:
 * Card No: 4242 4242 4242 4242
 * Expiry Date: Any future Date
 * CVC & ZIP: Any numbers
+If you wish to view the database you login [here](https://bicycle-route-share.herokuapp.com/admin/login/?next=/admin/) and the following read-only credentials can be used to view the data:
+* Username: GuestAdmin
+* Password: routeshare2020
 
 ### Why make Route Share?
 
@@ -478,8 +484,8 @@ There are a few issues that I was unfortunately unable to overcome before submis
 Since this was a much bigger project than I had done before, I used an online code validator called [Codacy](https://www.codacy.com/). This was recomended by my mentor and it links to my Github account and analyses my code everytime I push it to Github. Ireceive an email with a list of new or previously resolved code issues.
 
 Below is an outline of the problems I encountered ad fixed per code language:
-* **HTML** - Fortunately there were no error in all my HTML templates throughout the whole project.
-* **CSS** - I had used several pseudo elements where I had forgot the double colon `::after`. Other problems included trailing white space and missing semi-colons. I was able to quickly fix these issues. There were also a lot of issues regrding '2 space indentation'. I just used the automatic indention when you hit the enter button so I ignored this issue as I don't think it's a problem. There were also many warnings for the use of `!important`. I also ignored these as it is sometime necessary to override bootstrap stlyes to accomplish what you are looking for.
+* **HTML** - Fortunately there were no errors in all my HTML templates throughout the whole project.
+* **CSS** - I had used several pseudo elements where I had forgot the double colon `::after`. Other problems included trailing white space and missing semi-colons. I was able to quickly fix these issues. There were also a lot of issues regrding '2 space indentation'. I just used the automatic indention when you hit the enter button so I ignored this issue as I don't think it's a problem. There were also many warnings for the use of `!important`. I also ignored these as it is sometimes necessary to override bootstrap stlyes to accomplish what you are looking for.
 * **JavaScript** - In my Javascript files a had a lot of errors regarding the use of double quotes instead of single quotes. I decided to ignore these as the single quotes were used in the course content and I don't think this is a problem. Other problems were missing semi-colons, and using == instead of ===. I was able to fix most issues withour any problems.
 * **Python** - For my Python files I mainly used the built in flake8 function in Gitpod. This would instantly tell me if the code was invalid and I mainly fixed all issues immediately during development. Near the end I ran a `python3 -m flake8` command in the terminal which would list all issue throughout all Python files saved so I'm able to see all issues in one place. I was quickly able to go through each file an validate the code. The ones I ignored were automatically generated files like migrations and some preinstalled code in the settings file. I also ignored warning to Avoid using `null=True` on string-based fields as in my project it is sometimes fine if the user wants to leave this field empty.
 
@@ -511,6 +517,11 @@ After every session of coding I committed my work using the Git terminal in Gitp
 * In the heroku dashboard, click "Deploy"
 * In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch"
 * The site should now be successfully deployed.
+
+### Media and static file storage
+All media and static files are stored in [AWS](https://aws.amazon.com/console/) and linked to my heroku account throught config variables.
+
+[↥ Back to top](#Mark-McClean)
 
 ## Credits
 * All content was written by myself
